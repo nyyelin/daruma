@@ -20,7 +20,7 @@ Route::get('/',function(){
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+/*Route::get('/home', 'HomeController@index')->name('home');*/
 Route::get('/Admin_Profile','BackendController@profile')->name('profile');
 Route::get('/Dashboard','BackendController@dashboard')->name('dashboard');
 Route::get('/Total_Student_N1_Class','BackendController@total_n1')->name('total_n1_class');
@@ -55,3 +55,20 @@ Route::get('/Journal_Collection','BackendController@journal_collection')->name('
 Route::get('/Journal_Collection_Add','BackendController@journal_collection_add')->name('journal_collection_add');
 Route::get('/Video_Collection','BackendController@video_collection')->name('video_collection');
 Route::get('/Video_Collection_Add','BackendController@video_collection_add')->name('video_collection_add');
+
+Route::get('/', 'FrontendController@home')->name('home');
+Route::get('/About_Us', 'FrontendController@about')->name('about');
+Route::get('/Gallery_Class', 'FrontendController@photo')->name('gallery');
+Route::get('/Our_Class', 'FrontendController@class')->name('class');
+Route::get('/Our_Video', 'FrontendController@video')->name('video');
+Route::get('/Review', 'FrontendController@review')->name('review');
+Route::get('/Our_Contact', 'FrontendController@contact')->name('contact');
+Route::get('/Regular_Class', 'FrontendController@regular_class')->name('regularclass');
+Route::get('/Online_Class', 'FrontendController@online_class')->name('onlineclass');
+Route::get('/Latest_New', 'FrontendController@latestnew')->name('latestnew');
+Route::get('/Books', 'FrontendController@books')->name('books');
+Route::get('/Japan-Myanmar_Day', 'FrontendController@japanmyanmarday')->name('japanmyanmarday');
+Route::get('/General_Journal', 'FrontendController@generaljournal')->name('generaljournal');
+Route::get('/Knowledge_Video', 'FrontendController@knowledgevideo')->name('knowledgevideo');
+Route::get('/Reading_Story', 'FrontendController@readingstory')->name('readingstory');
+Route::get('/Student_Information', 'FrontendController@information')->name('information');
