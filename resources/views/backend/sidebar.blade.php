@@ -40,7 +40,7 @@
             </li>
 
             <li class="dropdown {{ Request::is('staffs*') ? 'active' : '' }}">
-              <a href="#" class="menu-toggle nav-link"><i data-feather="user-check"></i><span>Staff   </span></a>
+              <a href="#" class="menu-toggle nav-link has-dropdown"><i data-feather="user-check"></i><span>Staff   </span></a>
               <ul class="dropdown-menu">
                    <li class="{{ Request::is('staffs') ? 'active' : '' }}"><a class="nav-link" href="{{route('staffs.index')}}">Staff List</a></li>
                    <li class="{{ Request::is('staffs/create') ? 'active' : '' }}"><a class="nav-link " href="{{route('staffs.create')}}">New Staff</a></li>

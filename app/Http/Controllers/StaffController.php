@@ -39,7 +39,7 @@ class StaffController extends Controller
      */
     public function store(Request $request)
     {
-         $validator = $request->validate([
+        $validator = $request->validate([
             'name'  => ['required', 'string', 'max:255'],
             'email'  => ['required','string','email','max:255','unique:users'],
             'password'  => ['required','min:6','confirmed'],
