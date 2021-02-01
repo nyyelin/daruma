@@ -8,7 +8,7 @@
         <ol class="carousel-indicators" id="hero-carousel-indicators"></ol>
 
         <div class="carousel-inner" role="listbox">
-{{asset('frontend/')}}
+
           <!-- Slide 1 -->
           <div class="carousel-item active" style="background: url({{asset('frontend/assets/img/slide/slide-1.jpg')}})">
             <div class="carousel-container">

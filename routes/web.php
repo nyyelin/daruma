@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ContactController;
 
 /*
 |--------------------------------------------------------------------------
@@ -96,3 +97,7 @@ Route::get('/General_Journal', 'FrontendController@generaljournal')->name('gener
 Route::get('/Knowledge_Video', 'FrontendController@knowledgevideo')->name('knowledgevideo');
 Route::get('/Reading_Story', 'FrontendController@readingstory')->name('readingstory');
 Route::get('/Student_Information', 'FrontendController@information')->name('information');
+Route::post('/Send-Message','ContactController@sendEmail')->name('contact.send');
+Route::get('/Our_Contact_Test', 'FrontendController@contacttest')->name('contacttest');
+
+
