@@ -71,4 +71,8 @@ class FrontendController extends Controller
 
     	return view('frontend.information');
     }
+    public function contacttest(){
+
+      return view('frontend.contacttest');
+    }
 }
