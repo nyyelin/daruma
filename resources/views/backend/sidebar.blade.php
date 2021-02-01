@@ -7,7 +7,7 @@
 
           <ul class="sidebar-menu">
             <li class="menu-header">Main</li>
-            <li class="dropdown active">
+            <li class="dropdown {{ Request::is('Dashboard') ? 'active' : '' }}">
               <a href="{{route('dashboard')}}" class="nav-link"><i data-feather="monitor"></i><span>Dashboard</span></a>
             </li>
             <li class="dropdown ">
@@ -22,10 +22,10 @@
               </ul>
             </li>
             
-            <li class="dropdown">
+            <li class="dropdown {{ Request::is('students*') ? 'active' : '' }}">
               <a href="#" class="menu-toggle nav-link has-dropdown"><i data-feather="user-plus"></i><span>Add Students</span></a>
               <ul class="dropdown-menu">
-                  <li><a class="nav-link" href="{{route('new_studnet')}}">New Student</a></li>
+                  <li><a class="nav-link" href="{{route('students.index')}}">New Student</a></li>
                   <li><a class="nav-link" href="{{route('old_studnet')}}">Old Student </a></li>
               
               </ul>
@@ -34,9 +34,22 @@
               <a href="#" class="menu-toggle nav-link has-dropdown"><i data-feather="user-check"></i><span>Accounts   </span></a>
               <ul class="dropdown-menu">
                    <li><a class="nav-link" href="{{route('studnet_account_lists')}}">Accounts List</a></li>
+
                 
               </ul>
             </li>
+
+            <li class="dropdown {{ Request::is('staffs*') ? 'active' : '' }}">
+              <a href="#" class="menu-toggle nav-link"><i data-feather="user-check"></i><span>Staff   </span></a>
+              <ul class="dropdown-menu">
+                   <li class="{{ Request::is('staffs') ? 'active' : '' }}"><a class="nav-link" href="{{route('staffs.index')}}">Staff List</a></li>
+                   <li class="{{ Request::is('staffs/create') ? 'active' : '' }}"><a class="nav-link " href="{{route('staffs.create')}}">New Staff</a></li>
+
+                
+              </ul>
+            </li>
+
+
             <li class="dropdown">
               <a href="#" class="menu-toggle nav-link has-dropdown"><i
                   data-feather="calendar"></i><span>Class Timetables</span></a>

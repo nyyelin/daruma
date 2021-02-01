@@ -15,7 +15,18 @@ class CreateDayTimetableTable extends Migration
     {
         Schema::create('day_timetable', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('day_id');
+            $table->unsignedBigInteger('timetable_id');
+            $table->softDeletes();
             $table->timestamps();
+
+            $table->foreign('day_id')
+                    ->references('id')->on('days')
+                    ->onDelete('cascade');
+
+            $table->foreign('timetable_id')
+                    ->references('id')->on('timetables')
+                    ->onDelete('cascade');
         });
     }
 

@@ -22,8 +22,10 @@ Route::get('/',function(){
 });*/
 Auth::routes();
 
+
 Route::get('/home', 'HomeController@index')->name('home');
 
+// backend
 Route::get('/Admin_Profile','BackendController@profile')->name('profile');
 Route::get('/Dashboard','BackendController@dashboard')->name('dashboard');
 Route::get('/Total_Student_N1_Class','BackendController@total_n1')->name('total_n1_class');
@@ -32,11 +34,32 @@ Route::get('/Total_Student_N3_Class','BackendController@total_n3')->name('total_
 Route::get('/Total_Student_N4_Class','BackendController@total_n4')->name('total_n4_class');
 Route::get('/Total_Student_N5_Class','BackendController@total_n5')->name('total_n5_class');
 Route::get('/Student_Detail','BackendController@detail')->name('detail');
-Route::get('/New_Student','BackendController@new_student')->name('new_studnet');
+
+
+Route::resource('students','StudentController');
 Route::get('/Old_Student','BackendController@old_student')->name('old_studnet');
+
+
+
 Route::get('/Student_Account_Lists','BackendController@student_account_lists')->name('studnet_account_lists');
 Route::get('/Class_Timetables','BackendController@class_timetables')->name('class_timetables');
 Route::get('/Class_Timetables_Add','BackendController@class_timetables_add')->name('class_timetables_add');
+
+
+Route::get('/Contact_Add','BackendController@contact_add')->name('contactadd');
+Route::get('/Journal_Video','BackendController@journal_video')->name('journal_video');
+Route::get('/Journal_Collection','BackendController@journal_collection')->name('journal_collection');
+Route::get('/Journal_Collection_Add','BackendController@journal_collection_add')->name('journal_collection_add');
+Route::get('/Video_Collection','BackendController@video_collection')->name('video_collection');
+Route::get('/Video_Collection_Add','BackendController@video_collection_add')->name('video_collection_add');
+
+
+// staff
+Route::resource('staffs','StaffController');
+
+
+
+// dynamic
 Route::get('/Slider','BackendController@slider')->name('slider');
 Route::get('/Slider_Add','BackendController@slider_add')->name('slideradd');
 Route::get('/Books','BackendController@books')->name('books');
@@ -52,9 +75,24 @@ Route::get('/Class_Subject_Add','BackendController@subject_add')->name('subjecta
 Route::get('/Class_Review','BackendController@review')->name('review');
 Route::get('/Class_Review_Add','BackendController@review_add')->name('reviewadd');
 Route::get('/Contact','BackendController@contact')->name('contact');
-Route::get('/Contact_Add','BackendController@contact_add')->name('contactadd');
-Route::get('/Journal_Video','BackendController@journal_video')->name('journal_video');
-Route::get('/Journal_Collection','BackendController@journal_collection')->name('journal_collection');
-Route::get('/Journal_Collection_Add','BackendController@journal_collection_add')->name('journal_collection_add');
-Route::get('/Video_Collection','BackendController@video_collection')->name('video_collection');
-Route::get('/Video_Collection_Add','BackendController@video_collection_add')->name('video_collection_add');
+
+
+
+
+// frontend
+Route::get('/', 'FrontendController@home')->name('home');
+Route::get('/About_Us', 'FrontendController@about')->name('about');
+Route::get('/Gallery_Class', 'FrontendController@photo')->name('gallery');
+Route::get('/Our_Class', 'FrontendController@class')->name('class');
+Route::get('/Our_Video', 'FrontendController@video')->name('video');
+Route::get('/Review', 'FrontendController@review')->name('review');
+Route::get('/Our_Contact', 'FrontendController@contact')->name('contact');
+Route::get('/Regular_Class', 'FrontendController@regular_class')->name('regularclass');
+Route::get('/Online_Class', 'FrontendController@online_class')->name('onlineclass');
+Route::get('/Latest_New', 'FrontendController@latestnew')->name('latestnew');
+Route::get('/Books', 'FrontendController@books')->name('books');
+Route::get('/Japan-Myanmar_Day', 'FrontendController@japanmyanmarday')->name('japanmyanmarday');
+Route::get('/General_Journal', 'FrontendController@generaljournal')->name('generaljournal');
+Route::get('/Knowledge_Video', 'FrontendController@knowledgevideo')->name('knowledgevideo');
+Route::get('/Reading_Story', 'FrontendController@readingstory')->name('readingstory');
+Route::get('/Student_Information', 'FrontendController@information')->name('information');

@@ -1,4 +1,4 @@
-    @extends('backend_template')
+@extends('backend_template')
 @section('content')
           
  <div class="loader"></div>

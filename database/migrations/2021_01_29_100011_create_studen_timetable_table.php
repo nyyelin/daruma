@@ -15,7 +15,18 @@ class CreateStudenTimetableTable extends Migration
     {
         Schema::create('studen_timetable', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('student_id');
+            $table->unsignedBigInteger('timetable_id');
+            $table->softDeletes();
             $table->timestamps();
+
+            $table->foreign('student_id')
+                    ->references('id')->on('students')
+                    ->onDelete('cascade');
+
+            $table->foreign('timetable_id')
+                    ->references('id')->on('timetables')
+                    ->onDelete('cascade');
         });
     }
 
