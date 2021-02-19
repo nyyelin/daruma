@@ -19,6 +19,7 @@ class DayTableSeeder extends Seeder
         Day::create(['name' => 'Fri']);
         Day::create(['name' => 'Sat']);
         Day::create(['name' => 'Sun']);
+        Day::create(['name' => 'Special Only Class']);
 
 
         

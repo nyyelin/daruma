@@ -6,6 +6,8 @@
 <head>
   <meta charset="UTF-8">
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, shrink-to-fit=no" name="viewport">
+  <meta name="csrf-token" content="{{ csrf_token() }}">
+
    <title>DARUMA Japanese Language School</title>
   <!-- General CSS Files -->
 
@@ -27,16 +29,11 @@
   <link rel="stylesheet" href="{{ asset('backend/assets/bundles/bootstrap-timepicker/css/bootstrap-timepicker.min.css') }}">
   <link rel="stylesheet" href="{{ asset('backend/assets/bundles/bootstrap-tagsinput/dist/bootstrap-tagsinput.css') }}">
   <!-- Template CSS -->
+  <link href="{{asset('plugin/datatables/dataTables.bootstrap4.min.css')}}" rel="stylesheet">
 
 
 
-
-
-
-  
-
-
-
+  <link rel="stylesheet" type="text/css" href="{{ asset('plugin/select2/css/select2.min.css') }}">
 
 </head>
 
@@ -103,9 +100,23 @@
   <script src="  {{ asset('backend/assets/js/page/forms-advanced-forms.js') }}"></script>
 
 
+  {{-- datatable --}}
+  <script src="{{asset('plugin/datatables/jquery.dataTables.min.js')}}"></script>
+  <script src="{{asset('plugin/datatables/dataTables.bootstrap4.min.js')}}"></script>
 
 
+  <script type="text/javascript" src="{{ asset('plugin/select2/js/select2.min.js') }}"></script>
 
+  <script type="text/javascript">
+    $(document).ready(function() {
+      $('.js-example-basic-multiple').select2();
+    })
+  </script>
+
+  <!-- Page level custom scripts -->
+  {{-- <script src="{{asset('plugin/demo/datatables-demo.js')}}"></script> --}}
+
+  @yield('script')
 
 </body>
 

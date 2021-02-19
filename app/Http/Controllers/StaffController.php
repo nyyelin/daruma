@@ -46,7 +46,7 @@ class StaffController extends Controller
             'phoneno'  => ['required'],
             'address'  => ['required','string'],
             'dob'=>['required','date'],
-            'designation'=>['required']
+            
         ]);
         
         $user = new User;
@@ -95,7 +95,7 @@ class StaffController extends Controller
      */
     public function edit(Staff $staff)
     {
-        //
+        return view('backend.staff.edit',compact('staff'));
     }
 
     /**
@@ -107,7 +107,38 @@ class StaffController extends Controller
      */
     public function update(Request $request, Staff $staff)
     {
-        //
+        $validator = $request->validate([
+            'name'  => ['required', 'string', 'max:255'],
+            'phoneno'  => ['required'],
+            'address'  => ['required','string'],
+            'dob'=>['required','date'],
+           
+        ]);
+        
+       
+        $staff->user->name = $request->name;
+        $staff->user->email = $request->email;
+        // $user->password = Hash::make($request->password);
+        $staff->user->phone = $request->phoneno;
+        $staff->user->save();
+        $staff->user->assignRole('staff');
+
+        if($request->hasfile('new_photo')){
+            $name = time().'_'.$request->new_photo->getClientOriginalName();
+            $filepath = $request->file('new_photo')->storeAs('profile',$name,'public');
+            $photo = "/storage/".$filepath;
+        }else{
+            $photo = $request->old_photo;
+        }
+
+        
+        $staff->user_id = $staff->user->id;
+        $staff->address = $request->address;
+        $staff->dob = $request->dob;
+        $staff->photo = $photo;
+        $staff->designation = $request->designation;
+        $staff->save();
+        return redirect()->route('staffs.index');
     }
 
     /**

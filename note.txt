@@ -1,0 +1,3 @@
+Timetable -> 
+			status =
+					 1(online) 2(offline) 3(online/offline)

@@ -18,59 +18,10 @@ class BackendController extends Controller
     }
 
 
-
-
-      public function total_n1(){
-
-    	return view('backend.n1');
-    }
-
-
-     public function total_n2(){
-
-    	return view('backend.n2');
-    }
-
-
-     public function total_n3(){
-
-    	return view('backend.n3');
-    }
-
-
-     public function total_n4(){
-
-    	return view('backend.n4');
-    }
-
-
-     public function total_n5(){
-
-    	return view('backend.n5');
-    }
-
-
-         public function detail(){
-
-    	return view('backend.detail');
-    }
-
-
-
-
-
-    public function new_student(){
-
-    	return view('backend.newstudent');
-    }
-
-
      public function old_student(){
 
     	return view('backend.oldstudent');
     }
-
-
 
 
 

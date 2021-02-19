@@ -29,23 +29,35 @@ Route::get('/home', 'HomeController@index')->name('home');
 // backend
 Route::get('/Admin_Profile','BackendController@profile')->name('profile');
 Route::get('/Dashboard','BackendController@dashboard')->name('dashboard');
-Route::get('/Total_Student_N1_Class','BackendController@total_n1')->name('total_n1_class');
-Route::get('/Total_Student_N2_Class','BackendController@total_n2')->name('total_n2_class');
-Route::get('/Total_Student_N3_Class','BackendController@total_n3')->name('total_n3_class');
-Route::get('/Total_Student_N4_Class','BackendController@total_n4')->name('total_n4_class');
-Route::get('/Total_Student_N5_Class','BackendController@total_n5')->name('total_n5_class');
-Route::get('/Student_Detail','BackendController@detail')->name('detail');
+
+// Route::get('/Student_Detail','BackendController@detail')->name('detail');
 
 
 Route::resource('students','StudentController');
-Route::get('/Old_Student','BackendController@old_student')->name('old_studnet');
+Route::post('/gettimetablebylevel','StudentController@gettimetablebylevel')->name('gettimetablebylevel');
+Route::post('/getdatabytimetable','StudentController@getdatabytimetable')->name('getdatabytimetable');
 
+Route::post('/deletestudenttimetable','StudentController@deletestudenttimetable')->name('deletestudenttimetable');
+
+Route::get('/student/oldstudent/','StudentController@old_student')->name('student.oldstudent');
+
+Route::post('/student/oldstudentstore/','StudentController@oldstudentstore')->name('student.oldstudentstore');
+
+
+Route::post('/getstudentbycodeno','StudentController@getstudentbycodeno')->name('getstudentbycodeno');
+
+Route::post('/getstudentlist','StudentController@getstudentlist')->name('getstudentlist');
 
 
 Route::get('/Student_Account_Lists','BackendController@student_account_lists')->name('studnet_account_lists');
-Route::get('/Class_Timetables','BackendController@class_timetables')->name('class_timetables');
-Route::get('/Class_Timetables_Add','BackendController@class_timetables_add')->name('class_timetables_add');
 
+
+
+
+Route::get('/Class_Timetables','BackendController@class_timetables')->name('class_timetables');
+// Route::get('/Class_Timetables_Add','BackendController@class_timetables_add')->name('class_timetables_add');
+Route::resource('timetables','TimetableController');
+Route::post('timetables/getdata','TimetableController@getdata')->name('timetables.getdata');
 
 Route::get('/Contact_Add','BackendController@contact_add')->name('contactadd');
 Route::get('/Journal_Video','BackendController@journal_video')->name('journal_video');

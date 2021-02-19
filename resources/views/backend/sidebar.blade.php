@@ -10,26 +10,23 @@
             <li class="dropdown {{ Request::is('Dashboard') ? 'active' : '' }}">
               <a href="{{route('dashboard')}}" class="nav-link"><i data-feather="monitor"></i><span>Dashboard</span></a>
             </li>
-            <li class="dropdown ">
+
+
+            <li class="dropdown  {{ Request::is('students*' || 'student') ? 'active' : '' }}">
               <a href="#" class="menu-toggle nav-link has-dropdown"><i
-                  data-feather="users"></i><span>Total Students</span></a>
+                  data-feather="users"></i><span>Students</span></a>
               <ul class="dropdown-menu">
-                <li><a class="nav-link" href="{{route('total_n1_class')}}">N1</a></li>
-                <li><a class="nav-link" href="{{route('total_n2_class')}}">N2</a></li>
-                <li><a class="nav-link" href="{{route('total_n3_class')}}">N3</a></li>
-                <li><a class="nav-link" href="{{route('total_n4_class')}}">N4</a></li>
-                  <li><a class="nav-link" href="{{route('total_n5_class')}}">N5</a></li>
+                <li class="{{ Request::is('students') ? 'active' : '' }}"><a class="nav-link" href="{{route('students.index')}}">Student List</a></li>
+
+                  <li class="{{ Request::is('students/create') ? 'active' : '' }}"><a href="{{route('students.create')}}" class="nav-link">New Student </a></li>
+            
+                <li class="{{ Request::is('student/oldstudent') ? 'active' : '' }}"><a class="nav-link" href="{{route('student.oldstudent')}}">Old Student</a></li>
+                
+                
               </ul>
             </li>
             
-            <li class="dropdown {{ Request::is('students*') ? 'active' : '' }}">
-              <a href="#" class="menu-toggle nav-link has-dropdown"><i data-feather="user-plus"></i><span>Add Students</span></a>
-              <ul class="dropdown-menu">
-                  <li><a class="nav-link" href="{{route('students.index')}}">New Student</a></li>
-                  <li><a class="nav-link" href="{{route('old_studnet')}}">Old Student </a></li>
-              
-              </ul>
-            </li>
+           
             <li class="dropdown ">
               <a href="#" class="menu-toggle nav-link has-dropdown"><i data-feather="user-check"></i><span>Accounts   </span></a>
               <ul class="dropdown-menu">
@@ -43,20 +40,17 @@
               <a href="#" class="menu-toggle nav-link has-dropdown"><i data-feather="user-check"></i><span>Staff   </span></a>
               <ul class="dropdown-menu">
                    <li class="{{ Request::is('staffs') ? 'active' : '' }}"><a class="nav-link" href="{{route('staffs.index')}}">Staff List</a></li>
-                   <li class="{{ Request::is('staffs/create') ? 'active' : '' }}"><a class="nav-link " href="{{route('staffs.create')}}">New Staff</a></li>
-
-                
+                   
               </ul>
             </li>
 
 
-            <li class="dropdown">
-              <a href="#" class="menu-toggle nav-link has-dropdown"><i
+            <li class="dropdown {{ Request::is('timetables*') ? 'active' : '' }}">
+              <a href="#" class="menu-toggle nav-link has-dropdown "><i
                   data-feather="calendar"></i><span>Class Timetables</span></a>
               <ul class="dropdown-menu">
-                <li><a class="nav-link" href="{{route('class_timetables')}}">Add New Class</a></li>
+                <li class="{{ Request::is('timetables*') ? 'active' : '' }}"><a class="nav-link " href="{{route('timetables.index')}}">Class</a></li>
                 
-               
               </ul>
             </li>
             <li class="menu-header">Website Elements</li>

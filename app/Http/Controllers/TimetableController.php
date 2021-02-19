@@ -4,6 +4,11 @@ namespace App\Http\Controllers;
 
 use App\Timetable;
 use Illuminate\Http\Request;
+use App\Level;
+use App\Day;
+use Carbon;
+use Yajra\DataTables\Facades\DataTables;
+
 
 class TimetableController extends Controller
 {
@@ -14,7 +19,8 @@ class TimetableController extends Controller
      */
     public function index()
     {
-        //
+        $timetables = Timetable::orderBy('start_date','DESC')->get();
+        return view('backend.timetable.index',compact('timetables'));
     }
 
     /**
@@ -24,7 +30,9 @@ class TimetableController extends Controller
      */
     public function create()
     {
-        //
+        $levels = Level::orderBy('id','DESC')->get();
+        $days = Day::all();
+        return view('backend.timetable.create',compact('levels','days'));
     }
 
     /**
@@ -35,7 +43,29 @@ class TimetableController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'name'=>'required',
+            'startdate' => 'required',
+            'start_time' => 'required',
+            'end_time' => 'required',
+            'fee' => 'required',
+            'duration' => 'required'
+        ]);
+
+        $timetable = new Timetable;
+        $timetable->name = $request->name;
+        $timetable->start_date = $request->startdate;
+        $timetable->start_time = $request->start_time;
+        $timetable->end_time = $request->end_time;
+        $timetable->fees = $request->fee;
+        $timetable->duration = $request->duration;
+        $timetable->description = $request->description;
+        $timetable->status = $request->class_type;
+        $timetable->level_id = $request->level;
+        $timetable->save();
+
+        $timetable->days()->attach($request->day);
+        return redirect()->route('timetables.index')->with('msg','Successfully added Timetable');
     }
 
     /**
@@ -57,7 +87,10 @@ class TimetableController extends Controller
      */
     public function edit(Timetable $timetable)
     {
-        //
+        $levels = Level::orderBy('id','DESC')->get();
+        $days = Day::all();
+        return view('backend.timetable.edit',compact('levels','days','timetable'));
+
     }
 
     /**
@@ -69,7 +102,31 @@ class TimetableController extends Controller
      */
     public function update(Request $request, Timetable $timetable)
     {
-        //
+        $request->validate([
+            'name'=>'required',
+            'startdate' => 'required',
+            'start_time' => 'required',
+            'end_time' => 'required',
+            'fee' => 'required',
+            'duration' => 'required'
+        ]);
+
+        // $timetable = new Timetable;
+        $timetable->name = $request->name;
+        $timetable->start_date = $request->startdate;
+        $timetable->start_time = $request->start_time;
+        $timetable->end_time = $request->end_time;
+        $timetable->fees = $request->fee;
+        $timetable->duration = $request->duration;
+        $timetable->description = $request->description;
+        $timetable->status = $request->class_type;
+        $timetable->level_id = $request->level;
+        $timetable->save();
+
+        $timetable->days()->detach();
+        $timetable->days()->attach($request->day);
+
+        return redirect()->route('timetables.index')->with('msg','Successfully added Timetable');
     }
 
     /**
@@ -80,6 +137,18 @@ class TimetableController extends Controller
      */
     public function destroy(Timetable $timetable)
     {
-        //
+        $timetable->delete();
+        return redirect()->route('timetables.index')->with('msg','Successfully deleted Timetable');
+
     }
+
+
+    // public function getdata(Request $request)
+    // {
+    //     $start_date = $request->start_date;
+    //     $end_date = $request->end_date;
+
+    //     $timetables = Timetable::where('start_date','>=',$start_date)->where('start_date','<=',$end_date)->with('level')->with('days')->get();
+    //     return Datatables::of($timetables)->addIndexColumn()->toJson(); 
+    // }
 }
