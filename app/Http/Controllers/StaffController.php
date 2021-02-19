@@ -95,7 +95,7 @@ class StaffController extends Controller
      */
     public function edit(Staff $staff)
     {
-        //
+       //
     }
 
     /**
@@ -107,7 +107,7 @@ class StaffController extends Controller
      */
     public function update(Request $request, Staff $staff)
     {
-        //
+       //
     }
 
     /**

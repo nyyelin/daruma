@@ -35,7 +35,8 @@
             </ul>
           </li>
           <li><a href="{{route('contact')}}">Contact</a></li>
-          <li><a href="{{route('home')}}">Log In</a></li>
+
+          <li><a href="{{url('/login')}}">Log In</a></li>
         </ul>
       </nav><!-- .nav-menu -->
 

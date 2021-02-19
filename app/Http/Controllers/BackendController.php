@@ -98,16 +98,17 @@ class BackendController extends Controller
 
 
 
-
+/*
      public function slider(){
 
     	return view('backend.slider');
     }
-     public function slider_add(){
+     
+*/
+    public function slider_add(){
 
-    	return view('backend.slideradd');
+        return view('backend.home.slideradd');
     }
-
 
 
 
@@ -207,5 +208,13 @@ class BackendController extends Controller
       public function video_collection_add(){
 
     	return view('backend.videocollectionadd');
+    }
+
+
+
+
+       public function adminlogin(){
+
+        return view('auth.login2');
     }
 }
