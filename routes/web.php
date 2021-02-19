@@ -24,7 +24,10 @@ Route::get('/',function(){
 Auth::routes();
 
 
+
 Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/Admin/login', 'BackendController@adminlogin')->name('adminlogin');
+
 
 // backend
 Route::get('/Admin_Profile','BackendController@profile')->name('profile');
@@ -60,7 +63,7 @@ Route::resource('timetables','TimetableController');
 Route::post('timetables/getdata','TimetableController@getdata')->name('timetables.getdata');
 
 Route::get('/Contact_Add','BackendController@contact_add')->name('contactadd');
-Route::get('/Journal_Video','BackendController@journal_video')->name('journal_video');
+/*Route::get('/Journal_Video','BackendController@journal_video')->name('journal_video');*/
 Route::get('/Journal_Collection','BackendController@journal_collection')->name('journal_collection');
 Route::get('/Journal_Collection_Add','BackendController@journal_collection_add')->name('journal_collection_add');
 Route::get('/Video_Collection','BackendController@video_collection')->name('video_collection');
@@ -69,25 +72,43 @@ Route::get('/Video_Collection_Add','BackendController@video_collection_add')->na
 
 // staff
 Route::resource('staffs','StaffController');
-
-
+//slider
+Route::resource('slider','SliderController');
+//Book
+Route::resource('book','BookController');
+//About
+Route::resource('backendabout','AboutController');
+//Gallery
+Route::resource('backendgallery','GalleryController');
+//Subject
+Route::resource('backendsubject','SubjectController');
+//Review
+Route::resource('backendreview','ReviewController');
+//Contact
+Route::resource('backendcontact','BackendcontactController');
+//Video
+Route::resource('backendvideo','BackendvideoController');
+//Journal_Video
+Route::resource('backendjournalvideo','BackendjournalvideoController');
 
 // dynamic
-Route::get('/Slider','BackendController@slider')->name('slider');
-Route::get('/Slider_Add','BackendController@slider_add')->name('slideradd');
-Route::get('/Books','BackendController@books')->name('books');
-Route::get('/Books_Add','BackendController@books_add')->name('booksadd');
-Route::get('/AboutUs','BackendController@about')->name('about');
-Route::get('/AboutUs_Add','BackendController@about_add')->name('aboutadd');
-Route::get('/Class_Gallery','BackendController@gallery')->name('gallery');
-Route::get('/Class_Gallery_Add','BackendController@gallery_add')->name('galleryadd');
-Route::get('/Class_Video','BackendController@video')->name('video');
-Route::get('/Class_Video_Add','BackendController@video_add')->name('videoadd');
+/*Route::get('/Slider','BackendController@slider')->name('slider');*/
+/*Route::get('/Slider_Add','BackendController@slider_add')->name('slideradd');*/
+/*Route::get('/Books','BackendController@books')->name('books');
+Route::get('/Books_Add','BackendController@books_add')->name('booksadd');*/
+/*Route::get('/AboutUs','BackendController@about')->name('about');
+Route::get('/AboutUs_Add','BackendController@about_add')->name('aboutadd');*/
+/*Route::get('/Class_Gallery','BackendController@gallery')->name('gallery');
+Route::get('/Class_Gallery_Add','BackendController@gallery_add')->name('galleryadd');*/
+/*Route::get('/Class_Video','BackendController@video')->name('video');
+Route::get('/Class_Video_Add','BackendController@video_add')->name('videoadd');*/
+
+/*
 Route::get('/Class_Subject','BackendController@subject')->name('subject');
-Route::get('/Class_Subject_Add','BackendController@subject_add')->name('subjectadd');
-Route::get('/Class_Review','BackendController@review')->name('review');
-Route::get('/Class_Review_Add','BackendController@review_add')->name('reviewadd');
-Route::get('/Contact','BackendController@contact')->name('contact');
+Route::get('/Class_Subject_Add','BackendController@subject_add')->name('subjectadd');*/
+/*Route::get('/Class_Review','BackendController@review')->name('review');
+Route::get('/Class_Review_Add','BackendController@review_add')->name('reviewadd');*/
+/*Route::get('/Contact','BackendController@contact')->name('contact');*/
 
 
 

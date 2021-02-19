@@ -96,6 +96,7 @@ class StaffController extends Controller
     public function edit(Staff $staff)
     {
         return view('backend.staff.edit',compact('staff'));
+
     }
 
     /**
@@ -107,6 +108,7 @@ class StaffController extends Controller
      */
     public function update(Request $request, Staff $staff)
     {
+
         $validator = $request->validate([
             'name'  => ['required', 'string', 'max:255'],
             'phoneno'  => ['required'],
@@ -139,6 +141,7 @@ class StaffController extends Controller
         $staff->designation = $request->designation;
         $staff->save();
         return redirect()->route('staffs.index');
+
     }
 
     /**

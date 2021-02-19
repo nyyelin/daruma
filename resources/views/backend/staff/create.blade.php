@@ -1,6 +1,5 @@
 @extends('backend_template')
-@section('content')
-          
+@section('content')        
  <div class="loader"></div>
   <div id="app">
     <section class="section">
