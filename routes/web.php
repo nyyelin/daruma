@@ -51,6 +51,8 @@ Route::post('/getstudentbycodeno','StudentController@getstudentbycodeno')->name(
 
 Route::post('/getstudentlist','StudentController@getstudentlist')->name('getstudentlist');
 
+Route::post('/getstudentinstallment','StudentController@getstudentinstallment')->name('getstudentinstallment');
+
 
 Route::get('/Student_Account_Lists','BackendController@student_account_lists')->name('studnet_account_lists');
 

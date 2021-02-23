@@ -1,3 +1,7 @@
 Timetable -> 
 			status =
 					 1(online) 2(offline) 3(online/offline)
+
+Payment -> 
+			status = 
+					1(Yen) 2(MMK)
