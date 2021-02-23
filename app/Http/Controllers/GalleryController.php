@@ -73,6 +73,7 @@ class GalleryController extends Controller
     public function show($id)
     {
         //
+        
     }
 
     /**
@@ -81,9 +82,14 @@ class GalleryController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit($id,Request $request, Gallery $gallery)
     {
-        //
+
+
+        $gallery = Gallery::Find($id);
+         return view('backend.photo.edit',compact('gallery'));
+
+
     }
 
     /**
@@ -93,9 +99,34 @@ class GalleryController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update($id,Request $request, Gallery $gallery)
     {
-        //
+        $gallery = Gallery::Find($id);
+
+        $request->validate([
+            'name'=>'required',
+             'oldimage'=>'required'
+            
+        ]);
+
+         if($request->hasfile('profile')){
+            $name = time().'_'.$request->profile->getClientOriginalName();
+            $filepath = $request->file('profile')->storeAs('profile',$name,'public');
+            $photo = "/storage/".$filepath;
+        }else{
+             $photo = request('oldimage');
+        }
+
+   
+        $gallery->name = $request->name;
+        $gallery->class = $request->class;
+        $gallery->categories = $request->categories;
+        $gallery->photo = $photo;
+      
+        $gallery->save();
+
+       
+        return redirect()->route('backendgallery.index')->with('msg','Successfully Update Gallery');
     }
 
     /**
@@ -104,9 +135,11 @@ class GalleryController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy($id,Request $request,Gallery $gallery)
+
     {
+         $gallery = Gallery::Find($id);
          $gallery->delete();
-        return redirect()->route('backendgallery.gallery');
+        return redirect()->route('backendgallery.index')->with('msg','Successfully deleted Gallery');
     }
 }

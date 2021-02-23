@@ -1,0 +1,18 @@
+<?php
+
+namespace App;
+
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
+
+class Addjournalvideo extends Model
+{
+     use SoftDeletes;
+    protected $table = 'addjournalvideos';
+    protected $fillable=[ 'detail_id','auth_name','header','dob','photo','subject'];
+
+    public function user($value='')
+    {
+    	return $this->belongsTo('App\User');
+    }
+}

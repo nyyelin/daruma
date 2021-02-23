@@ -82,9 +82,11 @@ class ReviewController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit($id,Request $request,Review $review)
     {
-        //
+       
+        $review = Review::Find($id);
+        return view('backend.review.edit',compact('review'));
     }
 
     /**
@@ -94,9 +96,33 @@ class ReviewController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update($id,Request $request,Review $review)
     {
-        //
+        $review = Review::Find($id);
+         $request->validate([
+            'name'=>'required',
+            'subject' => 'required',
+            'oldimage'=>'required'
+        ]);
+
+         if($request->hasfile('profile')){
+            $name = time().'_'.$request->profile->getClientOriginalName();
+            $filepath = $request->file('profile')->storeAs('profile',$name,'public');
+            $photo = "/storage/".$filepath;
+        }else{
+             $photo = request('oldimage');
+        }
+
+      
+        $review->name = $request->name;
+        $review->class = $request->class;
+        $review->subject = $request->subject;
+        $review->photo = $photo;
+      
+        $review->save();
+
+       
+        return redirect()->route('backendreview.index')->with('msg','Successfully Update Review');
     }
 
     /**
@@ -105,9 +131,10 @@ class ReviewController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy($id,Request $request,Review $review)
     {
+        $review = Review::Find($id);
         $review->delete();
-        return redirect()->route('backendreview.backreview');
+       return redirect()->route('backendreview.index')->with('msg','Successfully deleted Review');
     }
 }

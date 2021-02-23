@@ -1,6 +1,15 @@
     @extends('backend_template')
 @section('content')
   
+
+
+<section class="section">
+  @if(session('msg'))
+  <div class="alert alert-success alert_msg">
+    <span>{{session('msg')}}</span>
+  </div>
+  @endif
+
  <section class="section">
           <div class="section-body">
             <div class="row">
@@ -9,7 +18,7 @@
                   <div class="card-header">
                    
                       <div class="col-lg-10 ">
-                        <h4>Contact</h4>
+                        <h4>Add Contact</h4>
                     </div>
                     <div class="col-lg-2"> 
                     <a href="{{route('backendcontact.create')}}"> <button class="btn btn-primary " type="button">+ Add </button></a></div>
@@ -43,7 +52,8 @@
                               <td>{{$contact->address}}</td>
                               <td>{{$contact->phone}}</td>
                               <td>
-                                <a href="#" class="btn btn-warning">Edit</a>
+                                
+                               <a href="{{route('backendcontact.edit',$contact->id)}}" class="btn btn-warning">E d i t</a>
                                 <form action="{{route('backendcontact.destroy',$contact->id)}}" method="post" class="d-inline" onclick="return confirm('Are you sure to delete?')">
                                   @csrf
                                   @method('DELETE')
@@ -69,4 +79,22 @@
 
 
 
+@endsection
+
+
+@section('script')
+<script type="text/javascript">
+  $(document).ready(function(){
+    $.ajaxSetup({
+         headers: {
+          'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        }
+      });
+
+
+
+    $('.alert_msg').hide(3000);
+
+  })
+</script>
 @endsection

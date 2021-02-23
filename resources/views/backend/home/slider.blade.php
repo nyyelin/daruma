@@ -1,6 +1,11 @@
     @extends('backend_template')
 @section('content')
   <section class="section">
+      @if(session('msg'))
+  <div class="alert alert-success alert_msg">
+    <span>{{session('msg')}}</span>
+  </div>
+  @endif
           <div class="section-body">
             <div class="row">
               <div class="col-12">
@@ -8,7 +13,7 @@
                   <div class="card-header">
                    
                            <div class="col-lg-10 ">
-                        <h4>Home Page Slider</h4>
+                        <h4>Add Slider</h4>
                     </div>
                     <div class="col-lg-2"> 
                     <a href="{{route('slider.create')}}"> <button class="btn btn-primary " type="button">+ Add </button></a></div>
@@ -39,12 +44,12 @@
                               <td>{{$i++}}</td>
                               <td>{{$slider->name}}</td>
                           
-                              <td ><img src="{{asset($slider->photo)}} " title="slider Logo" alt="user"  data-toggle="tooltip" width="55"></td>
+                              <td ><img src="{{asset($slider->photo)}} " title="Slider Photo" alt="user"  data-toggle="tooltip" width="55"></td>
                           
-                              <td>{{$slider->subject}}</td>
+                              <td style="width: 500px;">{{$slider->subject}}</td>
                         
                               <td>
-                                <a href="#" class="btn btn-warning">Edit</a>
+                                <a href="{{route('slider.edit',$slider->id)}}" class="btn btn-warning">E d i t</a>
                                 <form action="{{route('slider.destroy',$slider->id)}}" method="post" class="d-inline" onclick="return confirm('Are you sure to delete?')">
                                   @csrf
                                   @method('DELETE')
@@ -67,4 +72,29 @@
         
           </div>
         </section>
+@endsection
+
+@section('script')
+<script type="text/javascript">
+  $(document).ready(function(){
+    $.ajaxSetup({
+         headers: {
+          'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        }
+      });
+
+
+
+    $('.alert_msg').hide(3000);
+
+   
+
+
+    })
+
+   
+
+
+
+</script>
 @endsection

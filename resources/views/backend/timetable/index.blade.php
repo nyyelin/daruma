@@ -1,6 +1,7 @@
 @extends('backend_template')
 @section('content')
   
+  
 <section class="section">
   @if(session('msg'))
   <div class="alert alert-success alert_msg">

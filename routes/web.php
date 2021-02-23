@@ -57,6 +57,7 @@ Route::get('/Student_Account_Lists','BackendController@student_account_lists')->
 
 
 
+
 Route::get('/Class_Timetables','BackendController@class_timetables')->name('class_timetables');
 // Route::get('/Class_Timetables_Add','BackendController@class_timetables_add')->name('class_timetables_add');
 Route::resource('timetables','TimetableController');
@@ -90,6 +91,8 @@ Route::resource('backendcontact','BackendcontactController');
 Route::resource('backendvideo','BackendvideoController');
 //Journal_Video
 Route::resource('backendjournalvideo','BackendjournalvideoController');
+//Add Journal_Video
+Route::resource('backendaddjournalvideo','BackendaddjournalvideoController');
 
 // dynamic
 /*Route::get('/Slider','BackendController@slider')->name('slider');*/

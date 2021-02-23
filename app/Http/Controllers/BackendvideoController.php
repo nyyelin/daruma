@@ -66,7 +66,7 @@ class BackendvideoController extends Controller
         $video->auth_name = $request->auth_name;
         $video->dob = $request->dob;
         $video->subject = $request->subject;
-        $video->photo = $photo; 
+        $video->photo = $request->photo; 
         $video->save();
         
         return redirect()->route('backendvideo.index');
@@ -95,9 +95,11 @@ class BackendvideoController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit($id,Request $request,Video $video)
     {
-        //
+              $video = Video::Find($id);
+           return view('backend.video.edit',compact('video'));
+
     }
 
     /**
@@ -107,9 +109,37 @@ class BackendvideoController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update($id,Request $request, Video $video)
     {
-        //
+         $video = Video::Find($id);
+
+         $request->validate([
+            'name'=>'required',
+            'auth_name'=> 'required',
+            'header'=> 'required',
+            'dob'=> 'required',
+            'subject' => 'required'
+        ]);
+
+         if($request->hasfile('profile')){
+            $name = time().'_'.$request->profile->getClientOriginalName();
+            $filepath = $request->file('profile')->storeAs('profile',$name,'public');
+            $photo = "/storage/".$filepath;
+        }else{
+            $photo = request('oldimage');
+        }
+
+
+        $video->name = $request->name;
+        $video->auth_name = $request->auth_name;
+        $video->header = $request->header;
+        $video->dob = $request->dob; 
+        $video->subject = $request->subject;
+        $video->photo = $photo; 
+        $video->save();
+
+       
+        return redirect()->route('backendvideo.index')->with('msg','Successfully Update Video');
     }
 
     /**
@@ -118,9 +148,10 @@ class BackendvideoController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy($id,Request $request,Video $video)
     {
+         $video = Video::Find($id);
          $video->delete();
-        return redirect()->route('backendvideo.index');
+        return redirect()->route('backendvideo.index')->with('msg','Successfully deleted Video');
     }
 }

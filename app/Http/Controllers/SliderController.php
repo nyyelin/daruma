@@ -7,7 +7,6 @@ use App\Slider;
 use Illuminate\Support\Facades\Hash;
 use App\User;
 
-
 class SliderController extends Controller
 {
     /**
@@ -46,7 +45,6 @@ class SliderController extends Controller
            
         ]);
      
-        
 
         if($request->hasfile('profile')){
             $name = time().'_'.$request->profile->getClientOriginalName();
@@ -82,9 +80,11 @@ class SliderController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Slider $slider)
+
     {
-        //
+           $sliders = Slider::all();
+           return view('backend.home.edit',compact('sliders','slider'));
     }
 
     /**
@@ -94,9 +94,31 @@ class SliderController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Slider $slider)
     {
-        //
+        $request->validate([
+            'name'=>'required',
+            'subject' => 'required',
+            'oldimage'=>'required'
+        ]);
+
+         if($request->hasfile('profile')){
+            $name = time().'_'.$request->profile->getClientOriginalName();
+            $filepath = $request->file('profile')->storeAs('profile',$name,'public');
+            $photo = "/storage/".$filepath;
+        }else{
+            $photo = request('oldimage');
+        }
+
+      
+        $slider->name = $request->name;
+        $slider->subject = $request->subject;
+        $slider->photo = $photo;
+      
+        $slider->save();
+
+       
+        return redirect()->route('slider.index')->with('msg','Successfully Update Slider');
     }
 
     /**
@@ -105,9 +127,11 @@ class SliderController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Slider $slider)
     {
         $slider->delete();
-        return redirect()->route('slider.slider');
+        return redirect()->route('slider.index')->with('msg','Successfully deleted Slider');
     }
 }
+
+

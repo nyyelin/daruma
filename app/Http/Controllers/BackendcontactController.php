@@ -80,9 +80,10 @@ class BackendcontactController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit($id,Request $request,Contact $contact)
     {
-        //
+           $contact = Contact::Find($id);
+           return view('backend.contact.edit',compact('contact'));
     }
 
     /**
@@ -92,9 +93,28 @@ class BackendcontactController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update($id,Request $request, Contact $contact)
     {
-        //
+         $contact = Contact::Find($id);
+
+         $request->validate([
+            'email'=>'required',
+            'phone'=>'required',
+            'map'=>'required',
+            'address' => 'required'
+        ]);
+
+        
+
+        $contact->email = $request->email;
+        $contact->phone = $request->phone;
+        $contact->map = $request->map;
+        $contact->address = $request->address;
+      
+        $contact->save();
+
+       
+        return redirect()->route('backendcontact.index')->with('msg','Successfully Update Contact');
     }
 
     /**
@@ -103,9 +123,10 @@ class BackendcontactController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy($id,Request $request,Contact $contact)
     {
+        $contact = Contact::Find($id);
         $contact->delete();
-        return redirect()->route('backendcontact.index');
+        return redirect()->route('backendcontact.index')->with('msg','Successfully deleted Contact');
     }
 }

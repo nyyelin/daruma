@@ -6,7 +6,7 @@
            <div class="col-12 col-md-6 col-lg-12">
                 <div class="card">
                   <div class="card-header">
-                    <h4>Gallery</h4>
+                    <h4>Add Gallery</h4>
                   </div>
                   <div class="card-body">
                    
@@ -18,14 +18,14 @@
 
                     <div class="form-group col-6">
                       <label for="profile">Class Photo</label>
-                      <input id="profile" type="file" class="form-control-file" name="profile" >
+                      <input id="profile" type="file" class="form-control-file" name="profile"  value="{{old('profile')}}">
                     </div>
 
 
                                         
                   <div class="form-group col-6">
                       <label for="name"> Name</label>
-                      <input id="name" type="text" class="form-control" name="name" autofocus placeholder="Enter a Class Name">
+                      <input id="name" type="text" class="form-control" name="name" autofocus placeholder="Enter a Class Name" value="{{old('name')}}">
                       <div class="form-control-feedback text-danger"> {{$errors->first('name') }} </div>
                     </div>
 
@@ -36,7 +36,7 @@
               
                <div class="form-group">
                     <label for="class">Class</label>
-                   <select class="form-control selectric" name="class">
+                   <select class="form-control selectric" name="class" value="{{old('class')}}">
                         <option value="N1 Class">N1 Class</option>
                         <option value="N2 Class">N2 Class</option>
                         <option value="N3 Class">N3 Class</option>
@@ -50,7 +50,7 @@
 
                     <div class="form-group">
                     <label for="categories">Categories</label>
-                   <select class="form-control selectric" name="categories">
+                   <select class="form-control selectric" name="categories" value="{{old('categories')}}">
                         <option value="Class Photo">Class Photo</option>
                         <option value="Other Photo">Other Photo</option>
                         
@@ -73,7 +73,7 @@
                     
                   <div class="form-group">
                     <button type="submit" class="btn btn-primary btn-lg btn-block">
-                      Register
+                      S A V E
                     </button>
                   </div>
                 </form>

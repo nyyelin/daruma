@@ -1,7 +1,7 @@
 @extends('backend_template')
 @section('content')
   
-
+  
 <section class="section">
 
   <form action="{{route('timetables.store')}}" method="post">

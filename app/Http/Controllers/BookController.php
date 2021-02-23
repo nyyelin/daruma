@@ -101,9 +101,11 @@ class BookController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Book $book)
     {
-        //
+          $books = Book::all();
+    
+         return view('backend.book.edit',compact('books','book'));
     }
 
     /**
@@ -113,9 +115,48 @@ class BookController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Book $book)
     {
-        //
+         $request->validate([
+            'name'=>'required',
+            'fee'   => 'required',
+            'header'  => 'required',
+            'auth_name'  => 'required',
+            'dob'=>'required',
+            'subject' => 'required'
+        ]);
+
+          if($request->hasfile('profile')){
+            $name = time().'_'.$request->profile->getClientOriginalName();
+            $filepath = $request->file('profile')->storeAs('profile',$name,'public');
+            $photo = "/storage/".$filepath;
+        }else{
+            $photo = request('oldimage');
+        }
+
+          if($request->hasfile('profile2')){
+            $name2 = time().'_'.$request->profile2->getClientOriginalName();
+            $filepath2 = $request->file('profile2')->storeAs('profile2',$name2,'public');
+            $photo2 = "/storage/".$filepath2;
+        }else{
+            $photo2 = request('oldimage2');
+        }
+
+     
+        $book->name = $request->name;
+        $book->fee = $request->fee;
+        $book->header = $request->header;
+        $book->auth_name = $request->auth_name;
+        $book->dob = $request->dob;
+        $book->subject = $request->subject;
+        $book->photo = $photo;
+      
+        $book->photo2 = $photo2;
+        $book->save();
+
+       
+
+        return redirect()->route('book.index')->with('msg','Successfully Update Ebook');
     }
 
     /**
@@ -124,9 +165,10 @@ class BookController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Book $book)
     {
          $book->delete();
-        return redirect()->route('book.book');
+        return redirect()->route('book.index')->with('msg','Successfully deleted Ebook');
     }
 }
+

@@ -47,8 +47,6 @@ class SubjectController extends Controller
      
         
 
-      
-
         $subject = new Subject;
         $subject->name = $request->name;
         $subject->subject = $request->subject;
@@ -74,9 +72,11 @@ class SubjectController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit($id,Request $request,Subject $subject)
     {
-        //
+
+         $subject = Subject::Find($id);
+         return view('backend.subject.edit',compact('subject'));
     }
 
     /**
@@ -86,9 +86,23 @@ class SubjectController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update($id,Request $request, Subject $subject)
     {
-        //
+         $subject = Subject::Find($id);
+         $request->validate([
+            'name'=>'required',
+            'subject' => 'required'
+        ]);
+
+         
+
+     
+        $subject->name = $request->name;
+        $subject->subject = $request->subject;   
+        $subject->save();
+
+       
+        return redirect()->route('backendsubject.index')->with('msg','Successfully Update Subject');
     }
 
     /**
@@ -97,9 +111,10 @@ class SubjectController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy($id,Request $request,Subject $subject)
     {
+        $subject = Subject::Find($id);
         $subject->delete();
-        return redirect()->route('backendsubject.revsubject');
+        return redirect()->route('backendsubject.index')->with('msg','Successfully deleted Subject');
     }
 }

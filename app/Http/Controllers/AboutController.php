@@ -80,9 +80,11 @@ class AboutController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit($id,Request $request,About $about)
     {
-        //
+       
+        $about = About::Find($id);
+         return view('backend.about.edit',compact('about'));
     }
 
     /**
@@ -92,9 +94,33 @@ class AboutController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update($id,Request $request,About $about)
     {
-        //
+
+        $about = About::Find($id);
+
+         $request->validate([
+            'name'=>'required',
+            'subject' => 'required',
+            'oldimage'=>'required'
+        ]);
+
+         if($request->hasfile('profile')){
+            $name = time().'_'.$request->profile->getClientOriginalName();
+            $filepath = $request->file('profile')->storeAs('profile',$name,'public');
+            $photo = "/storage/".$filepath;
+        }else{
+             $photo = request('oldimage');
+        }
+
+       
+        $about->name = $request->name;
+        $about->subject = $request->subject;
+        $about->photo = $photo;
+        $about->save();
+
+       
+        return redirect()->route('backendabout.index')->with('msg','Successfully Update About');
     }
 
     /**
@@ -103,9 +129,12 @@ class AboutController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy($id,Request $request,About $about)
     {
+
+        $about = About::Find($id);
+
         $about->delete();
-        return redirect()->route('backendabout.backendabout');
+        return redirect()->route('backendabout.index')->with('msg','Successfully deleted About');
     }
 }

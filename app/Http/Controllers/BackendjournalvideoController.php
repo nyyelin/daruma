@@ -19,7 +19,7 @@ class BackendjournalvideoController extends Controller
     {
         
         $journalvideos = Journalvideo::all();
-        return view('backend.journalvideo.backjournalvideo',compact('journalvideos'));
+        return view('backend.journalvideo.backaddjournalvideo',compact('journalvideos'));
     }
 
     /**
@@ -73,7 +73,7 @@ class BackendjournalvideoController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show($id,Request $request,journalvideo $journalvideo)
     {
         //
     }
@@ -84,9 +84,12 @@ class BackendjournalvideoController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit( $id,Request $request,journalvideo $journalvideo)
+
     {
-        //
+         $journalvideo = Journalvideo::Find($id);
+        
+        return view('backend.journalvideo.edit',compact('journalvideo'));
     }
 
     /**
@@ -96,9 +99,35 @@ class BackendjournalvideoController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update($id,Request $request, journalvideo $journalvideo)
     {
-        //
+         $journalvideo = Journalvideo::Find($id);
+
+         $request->validate([
+            'name'=>'required',
+             'oldimage'=>'required'
+           
+            
+        ]);
+
+         if($request->hasfile('profile')){
+            $name = time().'_'.$request->profile->getClientOriginalName();
+            $filepath = $request->file('profile')->storeAs('profile',$name,'public');
+            $photo = "/storage/".$filepath;
+        }else{
+             $photo = request('oldimage');
+        }
+
+            
+
+        $journalvideo->name = $request->name;
+        $journalvideo->categories = $request->categories;
+        $journalvideo->photo = $photo;
+      
+        $journalvideo->save();
+
+       
+        return redirect()->route('backendjournalvideo.index')->with('msg','Successfully Update Journal Or Video');
     }
 
     /**
@@ -107,9 +136,10 @@ class BackendjournalvideoController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Journalvideo $journalvideo)
+    public function destroy($id,Request $request, journalvideo $journalvideo)
     {
+        $journalvideo = Journalvideo::Find($id);
         $journalvideo->delete();
-        return redirect()->route('backendjournalvideo.index');
+         return redirect()->route('backendjournalvideo.index')->with('msg','Successfully deleted Journal Or Video');
     }
 }

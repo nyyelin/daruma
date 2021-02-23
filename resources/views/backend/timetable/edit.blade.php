@@ -1,10 +1,10 @@
 @extends('backend_template')
 @section('content')
-  
 
 <section class="section">
 
   <form action="{{route('timetables.update',$timetable->id)}}" method="post">
+    
     @csrf
     @method('PUT')
     <div class="row">
@@ -163,7 +163,7 @@
              
 
           <div class="card-footer text-center">
-            <button class="btn btn-primary mr-1" type="submit">Submit</button>
+            <button class="btn btn-primary mr-1" type="submit">U P D A T E</button>
             <a href="{{route('timetables.index')}}">
               <button class="btn btn-danger mr-1" type="button">Back</button>
             </a>
