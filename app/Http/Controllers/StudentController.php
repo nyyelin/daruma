@@ -221,7 +221,13 @@ class StudentController extends Controller
         $payment = new Payment;
         $payment->student_id = $student->id;
         $payment->timetable_id = $request->timetable;
-        $payment->amount = $request->installment;
+        if($request->installment){
+            $payment->amount = $request->installment;
+        }else{
+            $payment->amount = 0;
+        }
+        $payment->discount = $request->discount;
+        $payment->note = $request->note;
         $payment->status = $request->paymenttype;
         $payment->staff_id = 1; //Auth::user()->staff->id
         $payment->save();
@@ -239,5 +245,15 @@ class StudentController extends Controller
         $data = ['timetables' => $timetables,
                  'level' => $level];
         return response()->json($data);
+    }
+
+    public function getstudentinstallment(Request $request)
+    {
+        $student_id = $request->student_id;
+        $timetable_id = $request->timetable_id;
+        $student = Student::where('id',$student_id)->with(array('payments'=>function($query) use ($timetable_id){
+            $query->where('timetable_id',$timetable_id)->with('timetable');
+        }))->first();
+        return response()->json($student);
     }
 }

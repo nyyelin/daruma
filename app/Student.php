@@ -19,4 +19,9 @@ class Student extends Model
     {
     	return $this->belongsTo('App\User');
     }
+
+    public function payments($value='')
+    {
+        return $this->hasMany('App\Payment');
+    }
 }

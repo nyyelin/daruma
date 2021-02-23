@@ -40,94 +40,51 @@
       </div>
     </div>
 
-    <div class="row">
-      <div class="col-12">
-        <div class="card">
-          <div class="card-header">
-           
-            <div class="col-lg-10 "> <h4 class="student">Student List</h4></div>
-             <div class="col-lg-2 ">   
-                <div class="form-group mt-2">
-           
-                </div>
-              </div>
-       
-            </div>
-          <div class="card-body">
-            <div class="table-responsive">
-              <table class="table table-striped" id="table-1">
-                <thead>
-                  <tr>
-                    <th>#</th>
-                    <th class="text-center">Codeno</th>
-                    <th>Student Name</th>
-                    <th>Phone Number</th>
-                    <th>TimeTable</th>
-                    <th>Day/Time</th>
-                    <th>Level</th>
-                    <th>Action</th>
-                  </tr>
-                </thead>
-                <tbody class="tbody">
-                  @php
-                    $i = 1;
-                  @endphp
-                  @foreach($students as $student)
-                  @foreach($student->timetables as $timetable)
-                    @if($timetable->pivot->status == "Active" && $timetable->start_date >= Carbon\Carbon::today())
-
-                      <tr>
-                        <td>
-                          {{$i++}}
-                        </td>
-                        <td>
-                          {{$student->codeno}}
-                        <td class="align-middle">
-                          {{$student->user->name}}
-                        </td>
-
-                        <td class="align-middle">
-                          {{$student->user->phone}}
-                        </td>
-                        <td class="align-middle">
-                          {{$timetable->name}}<br>
-                          <p class="badge badge-dark text-white">{{date('d/m/Y',strtotime($timetable->start_date))}}</p> 
-                        </td>
-                          
-                        <td class="align-middle">
-                          @foreach($timetable->days as $day)
-                            {{ $loop->first ? '' : ', ' }}
-                            {{$day->name}}
-                          @endforeach
-                          <br>
-                          <p class="badge badge-dark text-white">
-                          {{$timetable->start_time}} - {{$timetable->end_time}}
-                          </p>
-                        </td>
-
-                        <td>
-                          {{$timetable->level->name}}
-                        </td>
-                        
-                        <td><a href="{{route('students.show',$student->id)}}" class="btn btn-primary">Detail</a></td>
-                      </tr>
-                    @endif
-
-                    @endforeach
-                  @endforeach
-                  
-                </tbody>
-              </table>
-            </div>
-          </div>
-
-
-        </div>
-      </div>
+    <div class="row table">
+      
     </div>
 
   </div>
 </section>
+
+
+{{-- installment modal --}}
+<div class="modal fade" id="installmentModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title rcode" id="exampleModalLabel">Installment</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+            <div>
+              <h6 class="d-inline-block">Fees :</h6>
+              <p class="fees d-inline-block"></p>
+            </div>
+
+            <div>
+              <h6 class="d-inline-block">Amount :</h6>
+              <p class="amount d-inline-block"></p>
+            </div>
+
+            <div>
+              <h6 class="d-inline-block">Discount :</h6>
+              <p class="discount d-inline-block"></p>
+            </div>
+
+            <div>
+              <h6 class="d-inline-block">Note :</h6>
+              <p class="note d-inline-block"></p>
+            </div>
+
+          
+        </div>
+        
+      </div>
+    </div>
+  </div>
 @endsection
 
 @section('script')
@@ -146,18 +103,46 @@
       var start_date = $('.start_date').val();
       var end_date = $('.end_date').val();
       var html = '';
-      var i =1;
+      var j =1;
       
       
       $.post('/getstudentlist',{level_id:level_id,start_date:start_date,end_date:end_date},function(res) {
         if(res){
-          $('.student').html(res.level.name + ' Student List');
+          html+=`<div class="col-12">
+                  <div class="card">
+                    <div class="card-header">
+                     
+                      <div class="col-lg-10 "> <h4>${res.level.name} Student List</h4></div>
+                       <div class="col-lg-2 ">   
+                          <div class="form-group mt-2">
+                     
+                          </div>
+                        </div>
+                 
+                      </div>
+                    <div class="card-body">
+                      <div class="table-responsive">
+                        <table class="table table-striped" id="table-1">
+                          <thead>
+                            <tr>
+                              <th>#</th>
+                              <th class="text-center">Codeno</th>
+                              <th>Student Name</th>
+                              <th>Phone Number</th>
+                              <th>TimeTable</th>
+                              <th>Day/Time</th>
+                              <th>Level</th>
+                              <th>Action</th>
+                            </tr>
+                          </thead>
+                          <tbody>`;
+          
           $.each(res.timetables,function(i,v){
             $.each(v.students,function(a,b){
               if(b.pivot.status == 'Active'){
                 html+=`<tr>
                         <td>
-                          ${i++}
+                          ${j++}
                         </td>
                         <td>
                           ${b.codeno}
@@ -184,7 +169,8 @@
               }
               
             })
-                          
+                  var route = "{{route('students.show',':id')}}";
+                  route= route.replace(':id',b.id);
                   html+=`<br>
                           <p class="badge badge-dark text-white">
                           ${v.start_time} - ${v.end_time}
@@ -195,14 +181,53 @@
                           ${v.level.name}
                         </td>
                         
-                        <td><a href="{{route('students.show',$student->id)}}" class="btn btn-primary">Detail</a></td>
+                        <td><a href="${route}" class="btn btn-primary">Detail</a>
+                            <a href="javascript:void(0)" class="btn btn-info btn_installment" data-student_id="${b.id}" data-timetable_id = "${v.id}">Installment</a></td>
+
                       </tr>`
               }
             })
           })
-          $('.tbody').html(html);
+          html+=`   </tbody>
+                  </table>
+                </div>
+              </div>
+
+
+            </div>
+          </div>`;
+          $('.table').html(html);
         }
         
+      })
+    })
+
+    $(".table").on('click','.btn_installment',function(){
+      // alert('message?: DOMString');
+      var student_id = $(this).data('student_id');
+      var timetable_id = $(this).data('timetable_id');
+      var html = '';
+      $.post('getstudentinstallment',{student_id:student_id,timetable_id:timetable_id},function(data){
+        // console.log(data);
+        if(data){
+          console.log(data.payments);
+          $.each(data.payments,function(i,v){
+            console.log(v);
+            $('.fees').html(v.timetable.fees);
+            if(v.status == 1){
+              var status = "Yen";
+            }else{
+              var status = "MMK";
+            }
+            $('.amount').html(v.amount +' '+status);
+            $('.discount').html(v.discount +' '+status);
+            $('.note').html(v.note);
+            
+          })
+          
+
+          $('#installmentModal').modal('show');
+        }
       })
     })
   })

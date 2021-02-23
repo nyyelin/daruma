@@ -9,4 +9,6 @@ class Paymenttype extends Model
 {
     use SoftDeletes;
     protected $fillable=[ 'name','amount' ];
+
+    
 }

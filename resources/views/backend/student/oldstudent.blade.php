@@ -82,26 +82,29 @@
                     </div>
                   </div>
 
-                 <div class="form-group">
-                    <label for="email">Class</label>
-                    <select class="form-control level" name="level">
-                      @foreach($levels as $level)
-                        <option value="{{$level->id}}">{{$level->name}} &times <span class="ml-5 pl-5 float-right">$</span></option>
-                      @endforeach
-                    </select>
-                    <div class="invalid-feedback">
+                 <div class="row form-group">
+                  
+                  <div class="col-md-6">
+                      <label for="email">Class</label>
+                      <select class="form-control level" name="level">
+                        @foreach($levels as $level)
+                          <option value="{{$level->id}}">{{$level->name}}</option>
+                        @endforeach
+                      </select>
+                      <div class="invalid-feedback">
                     </div>
                   </div>
-
-                    <div class="form-group">
-                      <label>Time Table</label>
-                      <select class="form-control  timetable_option" name="timetable">
-                      <option>Choose timetable</option>
-                      @foreach($timetables as $timetable)
-                        <option value="{{$timetable->id}}">{{$timetable->name}} ( {{date('d / m / Y',strtotime($timetable->start_date))}} )</option>
-                      @endforeach
+                  <div class="col-md-6">
+                
+                    <label>Time Table</label>
+                    <select class="form-control  timetable_option" name="timetable">
+                    <option>Choose timetable</option>
+                    @foreach($timetables as $timetable)
+                      <option value="{{$timetable->id}}">{{$timetable->name}} ( {{date('d / m / Y',strtotime($timetable->start_date))}} )</option>
+                    @endforeach
                     </select>
-                    </div>
+                  </div>
+                </div>
 
                     <div class="form-group">
                       <label>Day</label>
@@ -166,10 +169,13 @@
 
                   </div>
 
+                  <input type="checkbox" name="discount" id="inputdiscount" class="discount">
+                  <label class="ml-3" for="inputdiscount">Discount</label>
+
                   <div class="row">
                     <div class="col-md-6">
 
-                      <div class="form-group">
+                      <div class="form-group installment_show">
                         <label>Installment</label>
                         <div class="input-group">
                           <div class="input-group-prepend">
@@ -177,7 +183,19 @@
                               $
                             </div>
                           </div>
-                          <input type="text" class="form-control currency installment" name="installment">
+                          <input type="text" class="form-control currency installment" name="installment" placeholder="Enter Installment Amount">
+                        </div>
+                      </div>
+
+                      <div class="form-group discount_show">
+                        <label>Discount</label>
+                        <div class="input-group">
+                          <div class="input-group-prepend">
+                            <div class="input-group-text">
+                              $
+                            </div>
+                          </div>
+                          <input type="text" class="form-control currency" name="discount" placeholder="Enter Discount Amount">
                         </div>
                       </div>
 
@@ -197,9 +215,13 @@
                     </div>
 
                   </div>
+
+                  <div class="form-group">
+                    <label for="password" class="d-block">Note</label>
+                      <textarea class="form-control" name="note"></textarea>
+                      <div class="form-control-feedback text-danger"> {{$errors->first('note') }} </div>
+                  </div>
                    
-                  
-                
                   <div class="form-group">
                     <button type="submit" class="btn btn-primary btn-lg btn-block">
                       Register
@@ -225,6 +247,9 @@
           'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
         }
       });
+
+    $('.discount_show').hide();
+    $('.installment_show').show();
 
     $('.level').change(function(){
       var level_id = $(this).val();
@@ -312,6 +337,16 @@
         })
         $('.level').html(html);
       })
+    })
+
+    $('.discount').click(function(){
+      if($('.discount').is(':checked')){
+        $('.discount_show').show();
+        $('.installment_show').hide();
+      }else{
+        $('.discount_show').hide();
+        $('.installment_show').show();
+      }
     })
 
     function formatDate (input) {
