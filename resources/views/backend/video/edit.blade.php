@@ -6,11 +6,11 @@
            <div class="col-12 col-md-6 col-lg-12">
                 <div class="card">
                   <div class="card-header">
-                    <h4>Video</h4>
+                    <h4>Update Video</h4>
                   </div>
                   <div class="card-body">
                    
-                   <form action="{{route('backendvieo.update',$video->id)}}" method="post">
+                   <form action="{{route('backendvideo.update',$video->id)}}" method="post" enctype="multipart/form-data" >
     
                     @csrf
                     @method('PUT')  
@@ -18,8 +18,9 @@
                     <div class="row">
 
                         <div class="form-group col-6">
-                      <label for="profile">Video</label>
-                      <input id="profile" type="file" class="form-control-file" name="profile" value="{{$video->profile}}" >
+                      <label for="profile"> New Video</label>
+                      <input id="profile" type="file" class="form-control-file" name="profile"  >
+                       <input type="hidden" name="oldimage" value="{{$video->photo}}">
                     </div>
 
 
@@ -58,16 +59,19 @@
                     
                 <div class="form-group">
                       <label for="frist_name">Subject</label>
-                      <textarea class="form-control" name="subject" placeholder="Enter Subject" value="{{$video->subject}}"></textarea>
+                      <textarea class="form-control" name="subject" placeholder="Enter Subject" value="">{{$video->subject}}</textarea>
                       <div class="form-control-feedback text-danger"> {{$errors->first('subject') }} </div>
                     </div>
           
                     
                    
-                <div class="form-group">
-                    <button type="submit" class="btn btn-primary btn-lg btn-block">
-                      U P D A T E
+                <div class="form-group col-12" style="text-align: center;">
+                    <button type="submit" class="btn btn-primary btn-lg">
+                      UPDATE
                     </button>
+                    <a href="{{route('backendgallery.index')}}" style="text-decoration: none;">
+              <button class="btn btn-danger  btn-lg" type="button">B A C K</button>
+            </a>
                   </div>
                 </form>
                 </div>

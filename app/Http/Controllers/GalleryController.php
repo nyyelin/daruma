@@ -61,6 +61,7 @@ class GalleryController extends Controller
         $gallery->categories = $request->categories;
         $gallery->photo = $photo;
         $gallery->save();
+        
         return redirect()->route('backendgallery.index');
     }
 
@@ -104,8 +105,8 @@ class GalleryController extends Controller
         $gallery = Gallery::Find($id);
 
         $request->validate([
-            'name'=>'required',
-             'oldimage'=>'required'
+            'name'=>'required'
+    
             
         ]);
 

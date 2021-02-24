@@ -15,4 +15,9 @@ class Addjournalvideo extends Model
     {
     	return $this->belongsTo('App\User');
     }
+
+     public function detail($value='')
+    {
+    	return $this->belongsTo('App\Journalvideo','detail_id');
+    }
 }

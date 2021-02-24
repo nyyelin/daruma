@@ -44,7 +44,7 @@
                                <td>{{$journalvideo->categories}}</td>
                              
                               <td>
-                                <a href="{{route('backendjournalvideo.index',$journalvideo->id)}}" class="btn btn-info">Detail</a>
+                                <a href="{{route('backendjournalvideo.show',$journalvideo->id)}}" class="btn btn-info">Detail</a>
 
                                <a href="javascript:void(0)" class="btn btn-warning btn_edit" 
                                data-toggle="modal" data-target="#edititemmodal"
@@ -185,10 +185,33 @@
                     <div class="form-group row">
                       <label for="profile" class="col-sm-2 col-form-label">Photo</label>
                       <div class="col-sm-10">
+
+                    
+
+
+
+
+                        <ul class="nav nav-tabs" id="myTab" role="tablist">
+              <li class="nav-item">
+                <a class="nav-link active text-info" id="old-tab" data-toggle="tab" href="#old" role="tab" aria-controls="old" aria-selected="true">Old Photo</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link text-info" id="new-tab" data-toggle="tab" href="#new" role="tab" aria-controls="new" aria-selected="false">New Photo</a>
+              </li>
+            </ul>
+            <div class="tab-content" id="myTabContent">
+              <div class="tab-pane fade show active" id="old" role="tabpanel" aria-labelledby="old-tab">
+                <img src="{{asset($journalvideo->photo)}}" class="img-fluid" width="100px" height="90px"  style="border-radius: 10px;">
+                   <input type="hidden" name="oldimage" value="{{$journalvideo->photo}}">
+              </div>
+              <div class="tab-pane fade" id="new" role="tabpanel" aria-labelledby="new-tab">
+            
                       <input id="profile" type="file" class="form-control-file" name="profile" value="{{$journalvideo->profile}}" >
-                      <br>
-                        <img src="{{asset($journalvideo->photo)}}"  title=" Old Photo" alt="Old Photo"  data-toggle="tooltip" width="55" style="border-radius: 10px;">
-                       <input type="hidden" name="oldimage" value="{{$journalvideo->id}}">
+              </div>
+            </div>
+
+
+
 
                     </div>
                     </div>

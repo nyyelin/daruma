@@ -98,8 +98,8 @@ class SliderController extends Controller
     {
         $request->validate([
             'name'=>'required',
-            'subject' => 'required',
-            'oldimage'=>'required'
+            'subject' => 'required'
+            
         ]);
 
          if($request->hasfile('profile')){
@@ -107,6 +107,7 @@ class SliderController extends Controller
             $filepath = $request->file('profile')->storeAs('profile',$name,'public');
             $photo = "/storage/".$filepath;
         }else{
+            
             $photo = request('oldimage');
         }
 

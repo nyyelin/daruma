@@ -50,7 +50,7 @@
                    
                  <div class="form-group">
                     <button type="submit" class="btn btn-primary btn-lg btn-block">
-                      Register
+                    S A V E
                     </button>
                   </div>
                 </form>

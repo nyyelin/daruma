@@ -26,9 +26,10 @@ class BackendaddjournalvideoController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Request $request)
     {
-        return view('backend.journalvideo.journalcollectionadd');
+        $journalvideo = Journalvideo::Find($request->journalvideoid);
+        return view('backend.journalvideo.journalcollectionadd',compact('journalvideo'));
     }
 
     /**
@@ -39,6 +40,7 @@ class BackendaddjournalvideoController extends Controller
      */
     public function store(Request $request)
     {
+
         $validator = $request->validate([
             'auth_name'  => ['required', 'string', 'max:255'],
              'header'  => ['required', 'string', 'max:255'],
@@ -60,7 +62,7 @@ class BackendaddjournalvideoController extends Controller
          
 
         $addjournalvideo = new Addjournalvideo;
-        $addjournalvideo->detail_id = $request->journalvideo_id;
+        $addjournalvideo->detail_id = $request->detail_id;
         $addjournalvideo->auth_name = $request->auth_name;
         $addjournalvideo->header = $request->header;
         $addjournalvideo->dob = $request->dob;
@@ -68,7 +70,10 @@ class BackendaddjournalvideoController extends Controller
         $addjournalvideo->subject = $request->subject;
       
         $addjournalvideo->save();
-        return redirect()->route('backendaddjournalvideo.index');
+
+        $id=$request->detail_id;
+
+        return redirect()->route('backendjournalvideo.show',$id);
     }
 
     /**
@@ -88,11 +93,12 @@ class BackendaddjournalvideoController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(Addjournalvideo $addjournalvideo)
+    public function edit($id,Request $request,Addjournalvideo $addjournalvideo)
     {
-         $addjournalvideos = Addjournalvideo::all();
-    
-         return view('backend.journalvideo.edit',compact('addjournalvideos','addjournalvideo'));
+
+          $addjournalvideo = Addjournalvideo::Find($id);
+       /*   $journalvideos = Journalvideo::all();*/
+         return view('backend.journalvideo.edit',compact('addjournalvideo'));
     }
 
     /**
@@ -102,8 +108,13 @@ class BackendaddjournalvideoController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Addjournalvideo $addjournalvideo)
+    public function update($id,Request $request, Addjournalvideo $addjournalvideo)
     {
+
+         $addjournalvideo = Addjournalvideo::Find($id);
+
+
+
         $request->validate([
             'auth_name'=>'required',
             'header'=>'required',
@@ -129,12 +140,12 @@ class BackendaddjournalvideoController extends Controller
 
 
             
-        $addjournalvideo->detail_id = $addjournalvideo->journalvideo->id;
+        $addjournalvideo->detail_id = $request->detail_id;
         $addjournalvideo->auth_name = $request->auth_name;
         $addjournalvideo->header = $request->header;
         $addjournalvideo->dob = $request->dob;
         $addjournalvideo->subject = $request->subject;
-        $addjournalvideo->photo = $request->photo;
+        $addjournalvideo->photo = $photo;
       
         $addjournalvideo->save();
 

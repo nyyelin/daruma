@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Journalvideo;
 use Illuminate\Support\Facades\Hash;
 use App\User;
+use App\Addjournalvideo;
 
 
 class BackendjournalvideoController extends Controller
@@ -15,11 +16,12 @@ class BackendjournalvideoController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
         
         $journalvideos = Journalvideo::all();
-        return view('backend.journalvideo.backaddjournalvideo',compact('journalvideos'));
+    
+        return view('backend.journalvideo.backjournalvideo',compact('journalvideos'));
     }
 
     /**
@@ -75,7 +77,13 @@ class BackendjournalvideoController extends Controller
      */
     public function show($id,Request $request,journalvideo $journalvideo)
     {
-        //
+         $journalvideo = Journalvideo::Find($id);
+         
+         $addjournalvideos = Addjournalvideo::all();
+
+        return view('backend.journalvideo.journalcollection',compact('journalvideo','addjournalvideos'));
+
+
     }
 
     /**
