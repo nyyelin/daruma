@@ -51,13 +51,13 @@
 
                    
                     
-             <div class="form-group">
-                    <button type="submit" class="btn btn-primary btn-lg btn-block">
-                     U P D A T E
+             <div class="form-group col-12" style="text-align: center;">
+                    <button type="submit" class="btn btn-primary btn-lg ">
+                     UPDATE
                     </button>
-                    <br>
+              
                      <a href="{{route('backendsubject.index')}}" style="text-decoration: none;">
-              <button class="btn btn-danger  btn-lg btn-block" type="button">B a c k</button>
+              <button class="btn btn-danger  btn-lg " type="button">B A C K</button>
             </a>
                   </div>
                 </form>

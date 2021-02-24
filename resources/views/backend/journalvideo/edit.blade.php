@@ -7,7 +7,7 @@
            <div class="col-12 col-md-6 col-lg-12">
                 <div class="card">
                   <div class="card-header">
-                    <h4>Add Detail Journal & Video</h4>
+                    <h4>Update Detail Journal & Video</h4>
                   </div>
                   <div class="card-body">
                    
@@ -22,7 +22,7 @@
 
                       <div class="form-group col-6">
                       <label for="profile">Detail Photo (OR) Video</label>
-                      <input id="profile" type="file" class="form-control-file" name="profile" value="{{$addjournalvideo->profile}}">
+                      <input id="profile" type="file" class="form-control-file" name="profile" >
                     </div>
 
 

@@ -43,7 +43,7 @@ class BackendvideoController extends Controller
          $validator = $request->validate([
             'name'  => ['required', 'string', 'max:255'],
             'auth_name'  => ['required', 'string', 'max:255'],
-            'header'  => ['required', 'string', 'max:255'],
+            
             'dob'=>['required','date'],
             'subject'  => ['required','string']
            
@@ -51,7 +51,7 @@ class BackendvideoController extends Controller
      
         
 
-        if($request->hasfile('profile')){
+      if($request->hasfile('profile')){
             $name = time().'_'.$request->profile->getClientOriginalName();
             $filepath = $request->file('profile')->storeAs('profile',$name,'public');
             $photo = "/storage/".$filepath;
@@ -60,13 +60,12 @@ class BackendvideoController extends Controller
         }
 
 
-
         $video = new Video;
         $video->name = $request->name;
         $video->auth_name = $request->auth_name;
         $video->dob = $request->dob;
         $video->subject = $request->subject;
-        $video->photo = $request->photo; 
+        $video->photo = $photo; 
         $video->save();
         
         return redirect()->route('backendvideo.index');
@@ -98,6 +97,7 @@ class BackendvideoController extends Controller
     public function edit($id,Request $request,Video $video)
     {
               $video = Video::Find($id);
+              
            return view('backend.video.edit',compact('video'));
 
     }
@@ -116,23 +116,23 @@ class BackendvideoController extends Controller
          $request->validate([
             'name'=>'required',
             'auth_name'=> 'required',
-            'header'=> 'required',
             'dob'=> 'required',
             'subject' => 'required'
         ]);
 
-         if($request->hasfile('profile')){
+
+           if($request->hasfile('profile')){
             $name = time().'_'.$request->profile->getClientOriginalName();
             $filepath = $request->file('profile')->storeAs('profile',$name,'public');
             $photo = "/storage/".$filepath;
         }else{
-            $photo = request('oldimage');
+             $photo = request('oldimage');
         }
+
 
 
         $video->name = $request->name;
         $video->auth_name = $request->auth_name;
-        $video->header = $request->header;
         $video->dob = $request->dob; 
         $video->subject = $request->subject;
         $video->photo = $photo; 

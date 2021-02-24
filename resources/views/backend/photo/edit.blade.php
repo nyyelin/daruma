@@ -11,7 +11,7 @@
                   </div>
                   <div class="card-body">
                    
-                <form action="{{route('backendgallery.update',$gallery->id)}}" method="post">
+                <form action="{{route('backendgallery.update',$gallery->id)}} " enctype="multipart/form-data" method="post">
     
                   @csrf
                   @method('PUT')     
@@ -21,10 +21,35 @@
 
                     <div class="form-group col-6">
                       <label for="profile">Class Photo</label>
-                      <input id="profile" type="file" class="form-control-file" name="profile"  value="{{$gallery->photo}}">
-                       <br>
-                        <img src="{{asset($gallery->photo)}}"  title=" Old Photo" alt="Old Photo"  data-toggle="tooltip" width="55" style="border-radius: 10px;">
-                       <input type="hidden" name="oldimage" value="{{$gallery->id}}">
+
+                   
+
+
+
+
+                       <ul class="nav nav-tabs" id="myTab" role="tablist">
+              <li class="nav-item">
+                <a class="nav-link active text-info" id="old-tab" data-toggle="tab" href="#old" role="tab" aria-controls="old" aria-selected="true">Old Photo</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link text-info" id="new-tab" data-toggle="tab" href="#new" role="tab" aria-controls="new" aria-selected="false">New Photo</a>
+              </li>
+            </ul>
+            <div class="tab-content" id="myTabContent">
+              <div class="tab-pane fade show active" id="old" role="tabpanel" aria-labelledby="old-tab">
+                <img src="{{asset($gallery->photo)}}" class="img-fluid" width="100px" height="90px"  style="border-radius: 10px;">
+                  <input type="hidden" name="oldimage" value="{{$gallery->photo}}">
+              </div>
+              <div class="tab-pane fade" id="new" role="tabpanel" aria-labelledby="new-tab">
+             <input id="profile" type="file" class="form-control-file" name="profile"  value="{{$gallery->photo}}">
+              </div>
+            </div>
+
+
+
+
+
+
                     </div>
 
 
@@ -77,13 +102,13 @@
 
                    
                     
-                  <div class="form-group">
-                    <button type="submit" class="btn btn-primary btn-lg btn-block">
-                      U P D A T E
+                  <div class="form-group col-12" style="text-align: center;">
+                    <button type="submit" class="btn btn-primary btn-lg">
+                      UPDATE
                     </button>
-                     <br>
+               
                      <a href="{{route('backendgallery.index')}}" style="text-decoration: none;">
-              <button class="btn btn-danger  btn-lg btn-block" type="button">B a c k</button>
+              <button class="btn btn-danger  btn-lg" type="button">B A C K</button>
             </a>
                   </div>
                 </form>

@@ -19,7 +19,15 @@
                         <h4>Add Detail Journal & Video</h4>
                     </div>
                     <div class="col-lg-2"> 
-                    <a href="{{route('backendaddjournalvideo.create')}}"> <button class="btn btn-primary " type="button">+ Add </button></a></div>
+                  <!--   <a href="{{route('backendaddjournalvideo.create',)}}"> --> <!-- </a> -->
+                       <form method="GET" enctype="multipart/form-data" action="{{route('backendaddjournalvideo.create')}}">
+
+                  @csrf    
+                  <input type="hidden" name="journalvideoid" value="{{$journalvideo->id}}">
+                        <button class="btn btn-primary " type="submit">+ Add </button>
+  
+                  </form>  
+                  </div> 
                        
                   </div>
                   <div class="card-body">
@@ -44,9 +52,9 @@
                           @foreach($addjournalvideos as $addjournalvideo)
                             <tr>
                               <td>{{$i++}}</td>
-                              <td>{{$addjournalvideo->name}}</td>
+                              <td>{{$addjournalvideo->auth_name}}</td>
                           
-                              <td ><img src="{{asset($addjournalvideo->photo)}} " title="Class Photo" alt="user"  data-toggle="tooltip" width="55"></td>
+                              <td ><img src="{{asset($addjournalvideo->photo)}} " title="Journal & Video Photo" alt="Video"  data-toggle="tooltip" width="55"></td>
                               <td>{{$addjournalvideo->header}}</td>
                                <td>{{$addjournalvideo->dob}}</td>
                              

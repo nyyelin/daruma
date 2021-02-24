@@ -54,23 +54,57 @@
 
 
                       <div class="form-group col-6">
-                      <label for="profile">Book Photo</label>
-                      <input id="profile" type="file" class="form-control-file" name="profile" value="{{$book->profile}}" >
-                      <br>
-                       <img src="{{asset($book->photo)}}"  title=" Old Photo" alt="Old Photo"  data-toggle="tooltip" width="55" style="border-radius: 10px;">
-                       <input type="hidden" name="oldimage" value="{{$book->id}}">
+
+                   <label for="profile1"> Book Photo</label>
+
+
+                       <ul class="nav nav-tabs" id="myTab" role="tablist">
+              <li class="nav-item">
+                <a class="nav-link active text-info" id="old-tab" data-toggle="tab" href="#old" role="tab" aria-controls="old" aria-selected="true">Old Photo</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link text-info" id="new-tab" data-toggle="tab" href="#new" role="tab" aria-controls="new" aria-selected="false">New Photo</a>
+              </li>
+            </ul>
+            <div class="tab-content" id="myTabContent">
+              <div class="tab-pane fade show active" id="old" role="tabpanel" aria-labelledby="old-tab">
+                <img src="{{asset($book->photo)}}" class="img-fluid" width="100px" height="90px"  style="border-radius: 10px;">
+                 <input type="hidden" name="oldimage" value="{{$book->photo}}">
+              </div>
+              <div class="tab-pane fade" id="new" role="tabpanel" aria-labelledby="new-tab">
+              <input id="profile" type="file" class="form-control-file" name="profile" value="{{$book->profile}}" >
+              </div>
+            </div>
                     </div>
 
 
 
                           
                    <div class="form-group col-6">
+
                       <label for="profile2">Latest New Book Photo</label>
-                      <input id="profile2" type="file" class="form-control-file" name="profile2"  value="{{$book->profile2}}" >
-                      <br>
-                       <img src="{{asset($book->photo2)}}"  title=" Old Photo" alt="Old Photo"  data-toggle="tooltip" width="55" style="border-radius: 10px;">
-                       <input type="hidden" name="oldimage2" value="{{$book->id}}">
+                  
+
+
+                       <ul class="nav nav-tabs" id="myTab" role="tablist">
+              <li class="nav-item">
+                <a class="nav-link active text-info" id="old-tab" data-toggle="tab" href="#old2" role="tab" aria-controls="old" aria-selected="true">Old Photo</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link text-info" id="new-tab" data-toggle="tab" href="#new2" role="tab" aria-controls="new" aria-selected="false">New Photo</a>
+              </li>
+            </ul>
+            <div class="tab-content" id="myTabContent">
+              <div class="tab-pane fade show active" id="old2" role="tabpanel" aria-labelledby="old-tab">
+                <img src="{{asset($book->photo2)}}" class="img-fluid" width="100px" height="90px"  style="border-radius: 10px;">
+                 <input type="hidden" name="oldimage2" value="{{$book->photo2}}">
+              </div>
+              <div class="tab-pane fade" id="new2" role="tabpanel" aria-labelledby="new-tab">
+                <input id="profile2" type="file" class="form-control-file" name="profile2"  value="{{$book->profile2}}" >
+              </div>
+            </div>
                     </div>
+
                    
                        
                     </div>
@@ -118,13 +152,14 @@
                   </div>
           
                     
-                <div class="form-group">
-                    <button type="submit" class="btn btn-primary btn-lg btn-block">
-                      U P D A T E
+
+                <div class="form-group col-12" style="text-align: center;"> 
+                    <button type="submit" class="btn btn-primary btn-lg">
+                      UPDATE
                     </button>
-                    <br>
+                 
                      <a href="{{route('book.index')}}" style="text-decoration: none;">
-              <button class="btn btn-danger  btn-lg btn-block" type="button">B a c k</button>
+              <button class="btn btn-danger  btn-lg" type="button">B A C K</button>
             </a>
                   </div>
                 </form>

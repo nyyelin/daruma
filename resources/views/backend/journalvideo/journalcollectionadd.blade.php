@@ -21,7 +21,7 @@
 
                       <div class="form-group col-12">
                     
-                      <input type="hidden" class="form-control-file" name="detail_id" value="{{journalvideo_id}}" >
+                      <input type="hidden" class="form-control-file" name="detail_id" value="{{$journalvideo->id}}" >
                     </div>
 
 

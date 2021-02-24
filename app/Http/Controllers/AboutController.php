@@ -101,22 +101,24 @@ class AboutController extends Controller
 
          $request->validate([
             'name'=>'required',
-            'subject' => 'required',
-            'oldimage'=>'required'
+            'subject' => 'required'
+            
         ]);
 
-         if($request->hasfile('profile')){
+       
+          if($request->hasfile('profile')){
             $name = time().'_'.$request->profile->getClientOriginalName();
             $filepath = $request->file('profile')->storeAs('profile',$name,'public');
             $photo = "/storage/".$filepath;
         }else{
-             $photo = request('oldimage');
+            $photo = request('oldimage');
         }
 
        
         $about->name = $request->name;
         $about->subject = $request->subject;
         $about->photo = $photo;
+        
         $about->save();
 
        
