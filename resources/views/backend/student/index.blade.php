@@ -41,8 +41,41 @@
     </div>
 
     <div class="row table">
+      {{-- <div class="col-12">
+        <div class="card">
+          <div class="card-header">
+           
+            <div class="col-lg-10 "> <h4>${res.level.name} Student List</h4></div>
+             <div class="col-lg-2 ">   
+                <div class="form-group mt-2">
+           
+                </div>
+              </div>
+       
+            </div>
+          <div class="card-body">
+            <div class="table-responsive">
+              <table class="table table-striped" id="onwaytable">
+                <thead>
+                  <tr>
+                    <th>#</th>
+                    <th class="text-center">Codeno</th>
+                    <th>Student Name</th>
+                    <th>Phone Number</th>
+                    <th>TimeTable</th>
+                    <th>Day/Time</th>
+                    <th>Level</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
       
-    </div>
+    </div> --}}
 
   </div>
 </section>
@@ -107,36 +140,37 @@
       
       
       $.post('/getstudentlist',{level_id:level_id,start_date:start_date,end_date:end_date},function(res) {
+
         if(res){
-          html+=`<div class="col-12">
-                  <div class="card">
-                    <div class="card-header">
-                     
-                      <div class="col-lg-10 "> <h4>${res.level.name} Student List</h4></div>
-                       <div class="col-lg-2 ">   
-                          <div class="form-group mt-2">
-                     
-                          </div>
+        html+=`<div class="col-12">
+                <div class="card">
+                  <div class="card-header">
+                   
+                    <div class="col-lg-10 "> <h4>${res.level.name} Student List</h4></div>
+                     <div class="col-lg-2 ">   
+                        <div class="form-group mt-2">
+                   
                         </div>
-                 
                       </div>
-                    <div class="card-body">
-                      <div class="table-responsive">
-                        <table class="table table-striped" id="table-1">
-                          <thead>
-                            <tr>
-                              <th>#</th>
-                              <th class="text-center">Codeno</th>
-                              <th>Student Name</th>
-                              <th>Phone Number</th>
-                              <th>TimeTable</th>
-                              <th>Day/Time</th>
-                              <th>Level</th>
-                              <th>Action</th>
-                            </tr>
-                          </thead>
-                          <tbody>`;
-          
+               
+                    </div>
+                  <div class="card-body">
+                    <div class="table-responsive">
+                      <table class="table table-striped" id="table-1">
+                        <thead>
+                          <tr>
+                            <th>#</th>
+                            <th class="text-center">Codeno</th>
+                            <th>Student Name</th>
+                            <th>Phone Number</th>
+                            <th>TimeTable</th>
+                            <th>Day/Time</th>
+                            <th>Level</th>
+                            <th>Action</th>
+                          </tr>
+                        </thead>
+                        <tbody>`;
+        
           $.each(res.timetables,function(i,v){
             $.each(v.students,function(a,b){
               if(b.pivot.status == 'Active'){
@@ -198,9 +232,92 @@
           </div>`;
           $('.table').html(html);
         }
+
+
+      //   var url = '/getstudentlist';
+      //   $('#onwaytable').dataTable({
+
+      //     "lengthMenu": [[10, 25, 50, 100, 200 , 300 , 400 , 500], [10, 25, 50, 100, 200 , 300 , 400 , 500]],
+      //     "pageLength": 500,
+      //     "bPaginate": true,
+      //     "bLengthChange": true,
+      //     "bFilter": true,
+      //     "bSort": true,
+      //     "bInfo": true,
+      //     "bAutoWidth": true,
+      //     "bStateSave": true,
+
+      //     "aoColumnDefs": [
+      //     { 'bSortable': false, 'aTargets': [ -1,0] },
+         
+      //     ],
+      //     "bserverSide": true,
+      //     "bprocessing":true,
+      //     "ajax": {
+      //       data : {
+              
+      //         'level_id':level_id,
+      //         'start_date':start_date,
+      //         'end_date':end_date
+
+      //       },
+      //       url: url,
+      //       type: "POST",
+      //       dataType:'json',
+      //     },
+         
+      //     "columns": [
+      //     {"data":'DT_RowIndex'},
+      //     {"data": null,
+      //       render:function(data, type, full, meta){
+              
+      //         return `<span class="d-block">Hello</span>`
+      //       }
+      //     },
+      //     {
+      //       "data":null,
+      //       render:function(data){
+      //         return `<a href="${wayediturl}" class="btn btn-sm btn-warning">{{ __("Edit")}}</a>`
+      //       }
+      //     },
+      //     {
+      //       "data":null,
+      //       render:function(data){
+      //         return `<a href="${wayediturl}" class="btn btn-sm btn-warning">{{ __("Edit")}}</a>`
+      //       }
+      //     },
+      //     {
+      //       "data":null,
+      //       render:function(data){
+      //         return `<a href="${wayediturl}" class="btn btn-sm btn-warning">{{ __("Edit")}}</a>`
+      //       }
+      //     },
+
+      //     {
+      //      "data":null,
+      //       render:function(data){
+      //         return `<a href="${wayediturl}" class="btn btn-sm btn-warning">{{ __("Edit")}}</a>`
+      //       }
+      //     },
+          
+      //    ],
+
+
+      //    "info":false
+      //   });
         
       })
     })
+
+
+
+
+
+
+
+
+
+
 
     $(".table").on('click','.btn_installment',function(){
       // alert('message?: DOMString');

@@ -30,7 +30,7 @@
                     </div>
                   </div>
 
-                  <div class="row">
+                  {{-- <div class="row">
                     <div class="form-group col-6">
                       <label for="password" class="d-block">Password</label>
                       <input id="password" type="password" class="form-control pwstrength" data-indicator="pwindicator" name="password" placeholder="Enter Password" value="{{old('password')}}">
@@ -49,7 +49,7 @@
                       <div class="form-control-feedback text-danger"> {{$errors->first('password_confirmation') }} </div>
 
                     </div>
-                  </div>
+                  </div> --}}
 
 
                   <div class="row">
