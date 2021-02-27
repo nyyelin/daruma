@@ -29,7 +29,10 @@
   <!-- Template Main CSS File -->
   <link href="{{asset('frontend/assets/css/style.css')}}" rel="stylesheet">
   <link href="http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css" rel="stylesheet" />
-<link href="http://mynameismatthieu.com/WOW/css/libs/animate.css" rel="stylesheet" />
+  <link href="http://mynameismatthieu.com/WOW/css/libs/animate.css" rel="stylesheet" />
+  <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-bs4.min.css" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-bs4.min.js"></script>
+
 
 
   
@@ -49,7 +52,24 @@
  
 
   <a href="#" class="back-to-top"><i class="icofont-simple-up"></i></a>
-  <script type="text/javascript">
+  
+  <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+
+  <!-- Vendor JS Files -->
+  <script src="{{asset('frontend/assets/vendor/jquery/jquery.min.js')}}"></script>
+  <script src="{{asset('frontend/assets/vendor/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
+  <script src="{{asset('frontend/assets/vendor/jquery.easing/jquery.easing.min.js')}}"></script>
+  <script src="{{asset('frontend/assets/vendor/php-email-form/validate.js')}}"></script>
+  <script src="{{asset('frontend/assets/vendor/jquery-sticky/jquery.sticky.js')}}"></script>
+  <script src="{{asset('frontend/assets/vendor/owl.carousel/owl.carousel.min.js')}}"></script>
+  <script src="{{asset('frontend/assets/vendor/waypoints/jquery.waypoints.min.js')}}"></script>
+  <script src="{{asset('frontend/assets/vendor/counterup/counterup.min.js')}}"></script>
+  <script src="{{asset('frontend/assets/vendor/isotope-layout/isotope.pkgd.min.js')}}"></script>
+  <script src="{{asset('frontend/assets/vendor/venobox/venobox.min.js')}}"></script>
+  <!-- Template Main JS File -->
+  <script src="{{asset('frontend/assets/js/main.js')}}"></script>
+
+<script type="text/javascript">
     (function() {
   var Util,
     __bind = function(fn, me){ return function(){ return fn.apply(me, arguments); }; };
@@ -245,27 +265,6 @@ wow = new WOW(
 wow.init();
 
 </script>
-
-
-
-
-
-<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
-
-  <!-- Vendor JS Files -->
-  <script src="{{asset('frontend/assets/vendor/jquery/jquery.min.js')}}"></script>
-  <script src="{{asset('frontend/assets/vendor/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
-  <script src="{{asset('frontend/assets/vendor/jquery.easing/jquery.easing.min.js')}}"></script>
-  <script src="{{asset('frontend/assets/vendor/php-email-form/validate.js')}}"></script>
-  <script src="{{asset('frontend/assets/vendor/jquery-sticky/jquery.sticky.js')}}"></script>
-  <script src="{{asset('frontend/assets/vendor/owl.carousel/owl.carousel.min.js')}}"></script>
-  <script src="{{asset('frontend/assets/vendor/waypoints/jquery.waypoints.min.js')}}"></script>
-  <script src="{{asset('frontend/assets/vendor/counterup/counterup.min.js')}}"></script>
-  <script src="{{asset('frontend/assets/vendor/isotope-layout/isotope.pkgd.min.js')}}"></script>
-  <script src="{{asset('frontend/assets/vendor/venobox/venobox.min.js')}}"></script>
-
-  <!-- Template Main JS File -->
-  <script src="{{asset('frontend/assets/js/main.js')}}"></script>
 
 </body>
 

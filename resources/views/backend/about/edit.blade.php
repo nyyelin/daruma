@@ -63,7 +63,7 @@
                      <div class="row">
            <div class="form-group col-12">
                       <label for="frist_name">Subject</label>
-                      <textarea class="form-control s" name="subject" placeholder="Enter Subject" >{{$about->subject}}</textarea>
+                      <textarea class="form-control s" name="subject" id="summernote" placeholder="Enter Subject" >{{$about->subject}}</textarea>
                       <div class="form-control-feedback text-danger"> {{$errors->first('subject') }} </div>
                     </div>
                     </div>

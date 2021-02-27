@@ -47,7 +47,7 @@
                     <div class="row">
                     <div class="form-group col-12">
                       <label for="frist_name">Subject</label>
-                      <textarea class="form-control" name="subject" placeholder="Enter Subject" >{{$slider->subject}}</textarea>
+                      <textarea class="form-control" name="subject" id="summernote" placeholder="Enter Subject" >{!!$slider->subject!!}</textarea>
                       <div class="form-control-feedback text-danger"> {{$errors->first('subject') }} </div>
                     </div>
                   </div>

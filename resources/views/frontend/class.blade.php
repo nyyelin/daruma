@@ -31,19 +31,19 @@
         <div class="row">
           <div class="col-12 d-flex justify-content-center">
             <ul id="portfolio-flters">
-              <li data-filter="*" class="filter-active">All</li>
+              <li data-filter=".filter-all" class="filter-active">All</li>
               <li data-filter=".filter-app">N-5</li>
               <li data-filter=".filter-card">N-4</li>
               <li data-filter=".filter-web">N-3</li>
-              <li data-filter=".filter-card">N-2</li>
-              <li data-filter=".filter-web">N-1</li>
+              <li data-filter=".filter-cardd">N-2</li>
+              <li data-filter=".filter-webb">N-1</li>
             </ul>
           </div>
         </div>
 
         <div class="row portfolio-container table-responsive">
 
-          <div class="col-lg-12 col-md-12 portfolio-item filter-app">
+          <div class="col-lg-12 col-md-12 portfolio-item filter-all">
             <!-- <div class="portfolio-wrap"> -->
               <div class="row content" data-aos="fade-up">
           <div class="container">
@@ -60,74 +60,30 @@
                 </tr>
               </thead>
               <tbody>
+                @foreach($timetables as $timetable)
                 <tr>
-                  <th scope="row">1</th>
-                  <td>Mark</td>
-                  <td>Otto</td>
-                  <td>@mdo</td>
-                  <td>Otto</td>
-                  <td>@mdo</td>
+                  <th scope="row">{{$timetable->name}}</th>
+                  <td>{{$timetable->start_date}}</td>
+                  <td>
+                    @foreach($timetable->days as $day)
+                    {{ $loop->first ? '' : ', ' }}
+                      {{$day->name}}
+
+                    @endforeach
+                  </td>
+                  <td>{{$timetable->start_time}} ~ {{$timetable->end_time}}</td>
+                  <td >
+                    {{$timetable->duration}}
+                  </td>
+                 <td>{{$timetable->fees}}</td>
                 </tr>
-                <tr>
-                  <th scope="row">2</th>
-                  <td>Jacob</td>
-                  <td>Thornton</td>
-                  <td>@fat</td>
-                  <td>Otto</td>
-                  <td>@mdo</td>
-                </tr>
-                <tr>
-                  <th scope="row">1</th>
-                  <td>Mark</td>
-                  <td>Otto</td>
-                  <td>@mdo</td>
-                  <td>Otto</td>
-                  <td>@mdo</td>
-                </tr>
-                <tr>
-                  <th scope="row">2</th>
-                  <td>Jacob</td>
-                  <td>Thornton</td>
-                  <td>@fat</td>
-                  <td>Otto</td>
-                  <td>@mdo</td>
-                </tr>
-                <tr>
-                  <th scope="row">2</th>
-                  <td>Jacob</td>
-                  <td>Thornton</td>
-                  <td>@fat</td>
-                  <td>Otto</td>
-                  <td>@mdo</td>
-                </tr>
-                <tr>
-                  <th scope="row">2</th>
-                  <td>Jacob</td>
-                  <td>Thornton</td>
-                  <td>@fat</td>
-                  <td>Otto</td>
-                  <td>@mdo</td>
-                </tr>
-                <tr>
-                  <th scope="row">3</th>
-                  <td>@mdo</td>
-                  <td colspan="2">Larry the Bird</td>
-                  <td>@twitter</td>
-                  <td>@twitter</td>
-                </tr>
-                <tr>
-                  <th scope="row">3</th>
-                  <td>@mdo</td>
-                  <td colspan="2">Larry the Bird</td>
-                  <td>@twitter</td>
-                  <td>@twitter</td>
-                </tr>
+                @endforeach
               </tbody>
 
               </table>
             </div>
           </div>
-          <div class="col-lg-12">
+         <!--  <div class="col-lg-12">
             <p>
               Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
               magna aliqua.
@@ -137,18 +93,46 @@
               <li><i class="ri-check-double-line"></i> Duis aute irure dolor in reprehenderit in voluptate velit</li>
               <li><i class="ri-check-double-line"></i> Ullamco laboris nisi ut aliquip ex ea commodo consequat</li>
             </ul>
-          </div>
+          </div> -->
           
         </div>
             <!-- </div> -->
           </div>
 
-          <div class="col-lg-12 col-md-12 portfolio-item filter-web">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <div class="col-lg-12 col-md-12 portfolio-item filter-app">
             <!-- <div class="portfolio-wrap"> -->
               <div class="row content" data-aos="fade-up">
           <div class="container">
             <div class="bd-example">
-              <table class="table table-bordered">
+              <table class="table table-bordered table-hove">
                   <thead>
                 <tr>
                   <th scope="col">CLASS</th>
@@ -160,74 +144,32 @@
                 </tr>
               </thead>
               <tbody>
+                @foreach($timetables as $timetable)
+                 @if($timetable->level_id ==5)
                 <tr>
-                  <th scope="row">1</th>
-                  <td>Mark</td>
-                  <td>Otto</td>
-                  <td>@mdo</td>
-                  <td>Otto</td>
-                  <td>@mdo</td>
+                  <th scope="row">{{$timetable->name}}</th>
+                  <td>{{$timetable->start_date}}</td>
+                  <td>
+                    @foreach($timetable->days as $day)
+                    {{ $loop->first ? '' : ', ' }}
+                      {{$day->name}}
+
+                    @endforeach
+                  </td>
+                  <td>{{$timetable->start_time}} ~ {{$timetable->end_time}}</td>
+                  <td >
+                    {{$timetable->duration}}
+                  </td>
+                 <td>{{$timetable->fees}}</td>
                 </tr>
-                <tr>
-                  <th scope="row">2</th>
-                  <td>Jacob</td>
-                  <td>Thornton</td>
-                  <td>@fat</td>
-                  <td>Otto</td>
-                  <td>@mdo</td>
-                </tr>
-                <tr>
-                  <th scope="row">1</th>
-                  <td>Mark</td>
-                  <td>Otto</td>
-                  <td>@mdo</td>
-                  <td>Otto</td>
-                  <td>@mdo</td>
-                </tr>
-                <tr>
-                  <th scope="row">2</th>
-                  <td>Jacob</td>
-                  <td>Thornton</td>
-                  <td>@fat</td>
-                  <td>Otto</td>
-                  <td>@mdo</td>
-                </tr>
-                <tr>
-                  <th scope="row">2</th>
-                  <td>Jacob</td>
-                  <td>Thornton</td>
-                  <td>@fat</td>
-                  <td>Otto</td>
-                  <td>@mdo</td>
-                </tr>
-                <tr>
-                  <th scope="row">2</th>
-                  <td>Jacob</td>
-                  <td>Thornton</td>
-                  <td>@fat</td>
-                  <td>Otto</td>
-                  <td>@mdo</td>
-                </tr>
-                <tr>
-                  <th scope="row">3</th>
-                  <td>@mdo</td>
-                  <td colspan="2">Larry the Bird</td>
-                  <td>@twitter</td>
-                  <td>@twitter</td>
-                </tr>
-                <tr>
-                  <th scope="row">3</th>
-                  <td>@mdo</td>
-                  <td colspan="2">Larry the Bird</td>
-                  <td>@twitter</td>
-                  <td>@twitter</td>
-                </tr>
+                @endif
+                @endforeach
               </tbody>
 
               </table>
             </div>
           </div>
-          <div class="col-lg-12">
+         <!--  <div class="col-lg-12">
             <p>
               Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
               magna aliqua.
@@ -237,18 +179,20 @@
               <li><i class="ri-check-double-line"></i> Duis aute irure dolor in reprehenderit in voluptate velit</li>
               <li><i class="ri-check-double-line"></i> Ullamco laboris nisi ut aliquip ex ea commodo consequat</li>
             </ul>
-          </div>
+          </div> -->
           
         </div>
             <!-- </div> -->
           </div>
 
-          <div class="col-lg-12 col-md-12 portfolio-item filter-app">
+
+
+<div class="col-lg-12 col-md-12 portfolio-item filter-card">
             <!-- <div class="portfolio-wrap"> -->
               <div class="row content" data-aos="fade-up">
           <div class="container">
             <div class="bd-example">
-              <table class="table table-bordered">
+              <table class="table table-bordered table-hove">
                   <thead>
                 <tr>
                   <th scope="col">CLASS</th>
@@ -260,74 +204,32 @@
                 </tr>
               </thead>
               <tbody>
+                @foreach($timetables as $timetable)
+                 @if($timetable->level_id ==4)
                 <tr>
-                  <th scope="row">1</th>
-                  <td>Mark</td>
-                  <td>Otto</td>
-                  <td>@mdo</td>
-                  <td>Otto</td>
-                  <td>@mdo</td>
+                  <th scope="row">{{$timetable->name}}</th>
+                  <td>{{$timetable->start_date}}</td>
+                  <td>
+                    @foreach($timetable->days as $day)
+                    {{ $loop->first ? '' : ', ' }}
+                      {{$day->name}}
+
+                    @endforeach
+                  </td>
+                  <td>{{$timetable->start_time}} ~ {{$timetable->end_time}}</td>
+                  <td >
+                    {{$timetable->duration}}
+                  </td>
+                 <td>{{$timetable->fees}}</td>
                 </tr>
-                <tr>
-                  <th scope="row">2</th>
-                  <td>Jacob</td>
-                  <td>Thornton</td>
-                  <td>@fat</td>
-                  <td>Otto</td>
-                  <td>@mdo</td>
-                </tr>
-                <tr>
-                  <th scope="row">1</th>
-                  <td>Mark</td>
-                  <td>Otto</td>
-                  <td>@mdo</td>
-                  <td>Otto</td>
-                  <td>@mdo</td>
-                </tr>
-                <tr>
-                  <th scope="row">2</th>
-                  <td>Jacob</td>
-                  <td>Thornton</td>
-                  <td>@fat</td>
-                  <td>Otto</td>
-                  <td>@mdo</td>
-                </tr>
-                <tr>
-                  <th scope="row">2</th>
-                  <td>Jacob</td>
-                  <td>Thornton</td>
-                  <td>@fat</td>
-                  <td>Otto</td>
-                  <td>@mdo</td>
-                </tr>
-                <tr>
-                  <th scope="row">2</th>
-                  <td>Jacob</td>
-                  <td>Thornton</td>
-                  <td>@fat</td>
-                  <td>Otto</td>
-                  <td>@mdo</td>
-                </tr>
-                <tr>
-                  <th scope="row">3</th>
-                  <td>@mdo</td>
-                  <td colspan="2">Larry the Bird</td>
-                  <td>@twitter</td>
-                  <td>@twitter</td>
-                </tr>
-                <tr>
-                  <th scope="row">3</th>
-                  <td>@mdo</td>
-                  <td colspan="2">Larry the Bird</td>
-                  <td>@twitter</td>
-                  <td>@twitter</td>
-                </tr>
+                @endif
+                @endforeach
               </tbody>
 
               </table>
             </div>
           </div>
-          <div class="col-lg-12">
+         <!--  <div class="col-lg-12">
             <p>
               Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
               magna aliqua.
@@ -337,18 +239,28 @@
               <li><i class="ri-check-double-line"></i> Duis aute irure dolor in reprehenderit in voluptate velit</li>
               <li><i class="ri-check-double-line"></i> Ullamco laboris nisi ut aliquip ex ea commodo consequat</li>
             </ul>
-          </div>
+          </div> -->
           
         </div>
             <!-- </div> -->
           </div>
 
-          <div class="col-lg-12 col-md-12 portfolio-item filter-card">
+
+
+
+
+
+
+
+
+
+
+<div class="col-lg-12 col-md-12 portfolio-item filter-web">
             <!-- <div class="portfolio-wrap"> -->
               <div class="row content" data-aos="fade-up">
           <div class="container">
             <div class="bd-example">
-              <table class="table table-bordered">
+              <table class="table table-bordered table-hove">
                   <thead>
                 <tr>
                   <th scope="col">CLASS</th>
@@ -360,74 +272,32 @@
                 </tr>
               </thead>
               <tbody>
+                @foreach($timetables as $timetable)
+                 @if($timetable->level_id ==3)
                 <tr>
-                  <th scope="row">1</th>
-                  <td>Mark</td>
-                  <td>Otto</td>
-                  <td>@mdo</td>
-                  <td>Otto</td>
-                  <td>@mdo</td>
+                  <th scope="row">{{$timetable->name}}</th>
+                  <td>{{$timetable->start_date}}</td>
+                  <td>
+                    @foreach($timetable->days as $day)
+                    {{ $loop->first ? '' : ', ' }}
+                      {{$day->name}}
+
+                    @endforeach
+                  </td>
+                  <td>{{$timetable->start_time}} ~ {{$timetable->end_time}}</td>
+                  <td >
+                    {{$timetable->duration}}
+                  </td>
+                 <td>{{$timetable->fees}}</td>
                 </tr>
-                <tr>
-                  <th scope="row">2</th>
-                  <td>Jacob</td>
-                  <td>Thornton</td>
-                  <td>@fat</td>
-                  <td>Otto</td>
-                  <td>@mdo</td>
-                </tr>
-                <tr>
-                  <th scope="row">1</th>
-                  <td>Mark</td>
-                  <td>Otto</td>
-                  <td>@mdo</td>
-                  <td>Otto</td>
-                  <td>@mdo</td>
-                </tr>
-                <tr>
-                  <th scope="row">2</th>
-                  <td>Jacob</td>
-                  <td>Thornton</td>
-                  <td>@fat</td>
-                  <td>Otto</td>
-                  <td>@mdo</td>
-                </tr>
-                <tr>
-                  <th scope="row">2</th>
-                  <td>Jacob</td>
-                  <td>Thornton</td>
-                  <td>@fat</td>
-                  <td>Otto</td>
-                  <td>@mdo</td>
-                </tr>
-                <tr>
-                  <th scope="row">2</th>
-                  <td>Jacob</td>
-                  <td>Thornton</td>
-                  <td>@fat</td>
-                  <td>Otto</td>
-                  <td>@mdo</td>
-                </tr>
-                <tr>
-                  <th scope="row">3</th>
-                  <td>@mdo</td>
-                  <td colspan="2">Larry the Bird</td>
-                  <td>@twitter</td>
-                  <td>@twitter</td>
-                </tr>
-                <tr>
-                  <th scope="row">3</th>
-                  <td>@mdo</td>
-                  <td colspan="2">Larry the Bird</td>
-                  <td>@twitter</td>
-                  <td>@twitter</td>
-                </tr>
+                @endif
+                @endforeach
               </tbody>
 
               </table>
             </div>
           </div>
-          <div class="col-lg-12">
+         <!--  <div class="col-lg-12">
             <p>
               Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
               magna aliqua.
@@ -437,18 +307,21 @@
               <li><i class="ri-check-double-line"></i> Duis aute irure dolor in reprehenderit in voluptate velit</li>
               <li><i class="ri-check-double-line"></i> Ullamco laboris nisi ut aliquip ex ea commodo consequat</li>
             </ul>
-          </div>
+          </div> -->
           
         </div>
             <!-- </div> -->
           </div>
 
-          <div class="col-lg-12 col-md-12 portfolio-item filter-web">
+
+
+
+<div class="col-lg-12 col-md-12 portfolio-item filter-cardd">
             <!-- <div class="portfolio-wrap"> -->
               <div class="row content" data-aos="fade-up">
           <div class="container">
             <div class="bd-example">
-              <table class="table table-bordered">
+              <table class="table table-bordered table-hove">
                   <thead>
                 <tr>
                   <th scope="col">CLASS</th>
@@ -460,74 +333,32 @@
                 </tr>
               </thead>
               <tbody>
+                @foreach($timetables as $timetable)
+                 @if($timetable->level_id ==2)
                 <tr>
-                  <th scope="row">1</th>
-                  <td>Mark</td>
-                  <td>Otto</td>
-                  <td>@mdo</td>
-                  <td>Otto</td>
-                  <td>@mdo</td>
+                  <th scope="row">{{$timetable->name}}</th>
+                  <td>{{$timetable->start_date}}</td>
+                  <td>
+                    @foreach($timetable->days as $day)
+                    {{ $loop->first ? '' : ', ' }}
+                      {{$day->name}}
+
+                    @endforeach
+                  </td>
+                  <td>{{$timetable->start_time}} ~ {{$timetable->end_time}}</td>
+                  <td >
+                    {{$timetable->duration}}
+                  </td>
+                 <td>{{$timetable->fees}}</td>
                 </tr>
-                <tr>
-                  <th scope="row">2</th>
-                  <td>Jacob</td>
-                  <td>Thornton</td>
-                  <td>@fat</td>
-                  <td>Otto</td>
-                  <td>@mdo</td>
-                </tr>
-                <tr>
-                  <th scope="row">1</th>
-                  <td>Mark</td>
-                  <td>Otto</td>
-                  <td>@mdo</td>
-                  <td>Otto</td>
-                  <td>@mdo</td>
-                </tr>
-                <tr>
-                  <th scope="row">2</th>
-                  <td>Jacob</td>
-                  <td>Thornton</td>
-                  <td>@fat</td>
-                  <td>Otto</td>
-                  <td>@mdo</td>
-                </tr>
-                <tr>
-                  <th scope="row">2</th>
-                  <td>Jacob</td>
-                  <td>Thornton</td>
-                  <td>@fat</td>
-                  <td>Otto</td>
-                  <td>@mdo</td>
-                </tr>
-                <tr>
-                  <th scope="row">2</th>
-                  <td>Jacob</td>
-                  <td>Thornton</td>
-                  <td>@fat</td>
-                  <td>Otto</td>
-                  <td>@mdo</td>
-                </tr>
-                <tr>
-                  <th scope="row">3</th>
-                  <td>@mdo</td>
-                  <td colspan="2">Larry the Bird</td>
-                  <td>@twitter</td>
-                  <td>@twitter</td>
-                </tr>
-                <tr>
-                  <th scope="row">3</th>
-                  <td>@mdo</td>
-                  <td colspan="2">Larry the Bird</td>
-                  <td>@twitter</td>
-                  <td>@twitter</td>
-                </tr>
+                @endif
+                @endforeach
               </tbody>
 
               </table>
             </div>
           </div>
-          <div class="col-lg-12">
+         <!--  <div class="col-lg-12">
             <p>
               Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
               magna aliqua.
@@ -537,18 +368,26 @@
               <li><i class="ri-check-double-line"></i> Duis aute irure dolor in reprehenderit in voluptate velit</li>
               <li><i class="ri-check-double-line"></i> Ullamco laboris nisi ut aliquip ex ea commodo consequat</li>
             </ul>
-          </div>
+          </div> -->
           
         </div>
             <!-- </div> -->
           </div>
 
-          <div class="col-lg-12 col-md-12 portfolio-item filter-app">
+
+
+
+
+
+
+
+
+<div class="col-lg-12 col-md-12 portfolio-item filter-webb">
             <!-- <div class="portfolio-wrap"> -->
               <div class="row content" data-aos="fade-up">
           <div class="container">
             <div class="bd-example">
-              <table class="table table-bordered">
+              <table class="table table-bordered table-hove">
                   <thead>
                 <tr>
                   <th scope="col">CLASS</th>
@@ -560,74 +399,32 @@
                 </tr>
               </thead>
               <tbody>
+                @foreach($timetables as $timetable)
+                 @if($timetable->level_id ==1)
                 <tr>
-                  <th scope="row">1</th>
-                  <td>Mark</td>
-                  <td>Otto</td>
-                  <td>@mdo</td>
-                  <td>Otto</td>
-                  <td>@mdo</td>
+                  <th scope="row">{{$timetable->name}}</th>
+                  <td>{{$timetable->start_date}}</td>
+                  <td>
+                    @foreach($timetable->days as $day)
+                    {{ $loop->first ? '' : ', ' }}
+                      {{$day->name}}
+
+                    @endforeach
+                  </td>
+                  <td>{{$timetable->start_time}} ~ {{$timetable->end_time}}</td>
+                  <td >
+                    {{$timetable->duration}}
+                  </td>
+                 <td>{{$timetable->fees}}</td>
                 </tr>
-                <tr>
-                  <th scope="row">2</th>
-                  <td>Jacob</td>
-                  <td>Thornton</td>
-                  <td>@fat</td>
-                  <td>Otto</td>
-                  <td>@mdo</td>
-                </tr>
-                <tr>
-                  <th scope="row">1</th>
-                  <td>Mark</td>
-                  <td>Otto</td>
-                  <td>@mdo</td>
-                  <td>Otto</td>
-                  <td>@mdo</td>
-                </tr>
-                <tr>
-                  <th scope="row">2</th>
-                  <td>Jacob</td>
-                  <td>Thornton</td>
-                  <td>@fat</td>
-                  <td>Otto</td>
-                  <td>@mdo</td>
-                </tr>
-                <tr>
-                  <th scope="row">2</th>
-                  <td>Jacob</td>
-                  <td>Thornton</td>
-                  <td>@fat</td>
-                  <td>Otto</td>
-                  <td>@mdo</td>
-                </tr>
-                <tr>
-                  <th scope="row">2</th>
-                  <td>Jacob</td>
-                  <td>Thornton</td>
-                  <td>@fat</td>
-                  <td>Otto</td>
-                  <td>@mdo</td>
-                </tr>
-                <tr>
-                  <th scope="row">3</th>
-                  <td>@mdo</td>
-                  <td colspan="2">Larry the Bird</td>
-                  <td>@twitter</td>
-                  <td>@twitter</td>
-                </tr>
-                <tr>
-                  <th scope="row">3</th>
-                  <td>@mdo</td>
-                  <td colspan="2">Larry the Bird</td>
-                  <td>@twitter</td>
-                  <td>@twitter</td>
-                </tr>
+                @endif
+                @endforeach
               </tbody>
 
               </table>
             </div>
           </div>
-          <div class="col-lg-12">
+         <!--  <div class="col-lg-12">
             <p>
               Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
               magna aliqua.
@@ -637,316 +434,30 @@
               <li><i class="ri-check-double-line"></i> Duis aute irure dolor in reprehenderit in voluptate velit</li>
               <li><i class="ri-check-double-line"></i> Ullamco laboris nisi ut aliquip ex ea commodo consequat</li>
             </ul>
-          </div>
+          </div> -->
           
         </div>
             <!-- </div> -->
           </div>
 
-          <div class="col-lg-12 col-md-12 portfolio-item filter-card">
-            <!-- <div class="portfolio-wrap"> -->
-              <div class="row content" data-aos="fade-up">
-          <div class="container">
-            <div class="bd-example">
-              <table class="table table-bordered">
-                  <thead>
-                <tr>
-                  <th scope="col">CLASS</th>
-                  <th scope="col">STARTING</th>
-                  <th scope="col">DAYS</th>
-                  <th scope="col">TIME</th>
-                  <th scope="col">DURATION</th>
-                  <th scope="col">FEE</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <th scope="row">1</th>
-                  <td>Mark</td>
-                  <td>Otto</td>
-                  <td>@mdo</td>
-                  <td>Otto</td>
-                  <td>@mdo</td>
-                </tr>
-                <tr>
-                  <th scope="row">2</th>
-                  <td>Jacob</td>
-                  <td>Thornton</td>
-                  <td>@fat</td>
-                  <td>Otto</td>
-                  <td>@mdo</td>
-                </tr>
-                <tr>
-                  <th scope="row">1</th>
-                  <td>Mark</td>
-                  <td>Otto</td>
-                  <td>@mdo</td>
-                  <td>Otto</td>
-                  <td>@mdo</td>
-                </tr>
-                <tr>
-                  <th scope="row">2</th>
-                  <td>Jacob</td>
-                  <td>Thornton</td>
-                  <td>@fat</td>
-                  <td>Otto</td>
-                  <td>@mdo</td>
-                </tr>
-                <tr>
-                  <th scope="row">2</th>
-                  <td>Jacob</td>
-                  <td>Thornton</td>
-                  <td>@fat</td>
-                  <td>Otto</td>
-                  <td>@mdo</td>
-                </tr>
-                <tr>
-                  <th scope="row">2</th>
-                  <td>Jacob</td>
-                  <td>Thornton</td>
-                  <td>@fat</td>
-                  <td>Otto</td>
-                  <td>@mdo</td>
-                </tr>
-                <tr>
-                  <th scope="row">3</th>
-                  <td>@mdo</td>
-                  <td colspan="2">Larry the Bird</td>
-                  <td>@twitter</td>
-                  <td>@twitter</td>
-                </tr>
-                <tr>
-                  <th scope="row">3</th>
-                  <td>@mdo</td>
-                  <td colspan="2">Larry the Bird</td>
-                  <td>@twitter</td>
-                  <td>@twitter</td>
-                </tr>
-              </tbody>
 
-              </table>
-            </div>
-          </div>
-          <div class="col-lg-12">
-            <p>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
-              magna aliqua.
-            </p>
-            <ul>
-              <li><i class="ri-check-double-line"></i> Ullamco laboris nisi ut aliquip ex ea commodo consequat</li>
-              <li><i class="ri-check-double-line"></i> Duis aute irure dolor in reprehenderit in voluptate velit</li>
-              <li><i class="ri-check-double-line"></i> Ullamco laboris nisi ut aliquip ex ea commodo consequat</li>
-            </ul>
-          </div>
+
+
+
+
+
+
+
+
+
           
         </div>
             <!-- </div> -->
           </div>
 
-          <div class="col-lg-12 col-md-12 portfolio-item filter-card">
-            <!-- <div class="portfolio-wrap"> -->
-              <div class="row content" data-aos="fade-up">
-          <div class="container">
-            <div class="bd-example">
-              <table class="table table-bordered">
-                  <thead>
-                <tr>
-                  <th scope="col">CLASS</th>
-                  <th scope="col">STARTING</th>
-                  <th scope="col">DAYS</th>
-                  <th scope="col">TIME</th>
-                  <th scope="col">DURATION</th>
-                  <th scope="col">FEE</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <th scope="row">1</th>
-                  <td>Mark</td>
-                  <td>Otto</td>
-                  <td>@mdo</td>
-                  <td>Otto</td>
-                  <td>@mdo</td>
-                </tr>
-                <tr>
-                  <th scope="row">2</th>
-                  <td>Jacob</td>
-                  <td>Thornton</td>
-                  <td>@fat</td>
-                  <td>Otto</td>
-                  <td>@mdo</td>
-                </tr>
-                <tr>
-                  <th scope="row">1</th>
-                  <td>Mark</td>
-                  <td>Otto</td>
-                  <td>@mdo</td>
-                  <td>Otto</td>
-                  <td>@mdo</td>
-                </tr>
-                <tr>
-                  <th scope="row">2</th>
-                  <td>Jacob</td>
-                  <td>Thornton</td>
-                  <td>@fat</td>
-                  <td>Otto</td>
-                  <td>@mdo</td>
-                </tr>
-                <tr>
-                  <th scope="row">2</th>
-                  <td>Jacob</td>
-                  <td>Thornton</td>
-                  <td>@fat</td>
-                  <td>Otto</td>
-                  <td>@mdo</td>
-                </tr>
-                <tr>
-                  <th scope="row">2</th>
-                  <td>Jacob</td>
-                  <td>Thornton</td>
-                  <td>@fat</td>
-                  <td>Otto</td>
-                  <td>@mdo</td>
-                </tr>
-                <tr>
-                  <th scope="row">3</th>
-                  <td>@mdo</td>
-                  <td colspan="2">Larry the Bird</td>
-                  <td>@twitter</td>
-                  <td>@twitter</td>
-                </tr>
-                <tr>
-                  <th scope="row">3</th>
-                  <td>@mdo</td>
-                  <td colspan="2">Larry the Bird</td>
-                  <td>@twitter</td>
-                  <td>@twitter</td>
-                </tr>
-              </tbody>
+        
 
-              </table>
-            </div>
-          </div>
-          <div class="col-lg-12">
-            <p>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
-              magna aliqua.
-            </p>
-            <ul>
-              <li><i class="ri-check-double-line"></i> Ullamco laboris nisi ut aliquip ex ea commodo consequat</li>
-              <li><i class="ri-check-double-line"></i> Duis aute irure dolor in reprehenderit in voluptate velit</li>
-              <li><i class="ri-check-double-line"></i> Ullamco laboris nisi ut aliquip ex ea commodo consequat</li>
-            </ul>
-          </div>
-          
-        </div>
-            <!-- </div> -->
-          </div>
-
-          <div class="col-lg-12 col-md-12 portfolio-item filter-web">
-            <!-- <div class="portfolio-wrap"> -->
-              <div class="row content" data-aos="fade-up">
-          <div class="container">
-            <div class="bd-example">
-              <table class="table table-bordered">
-                  <thead>
-                <tr>
-                  <th scope="col">CLASS</th>
-                  <th scope="col">STARTING</th>
-                  <th scope="col">DAYS</th>
-                  <th scope="col">TIME</th>
-                  <th scope="col">DURATION</th>
-                  <th scope="col">FEE</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <th scope="row">1</th>
-                  <td>Mark</td>
-                  <td>Otto</td>
-                  <td>@mdo</td>
-                  <td>Otto</td>
-                  <td>@mdo</td>
-                </tr>
-                <tr>
-                  <th scope="row">2</th>
-                  <td>Jacob</td>
-                  <td>Thornton</td>
-                  <td>@fat</td>
-                  <td>Otto</td>
-                  <td>@mdo</td>
-                </tr>
-                <tr>
-                  <th scope="row">1</th>
-                  <td>Mark</td>
-                  <td>Otto</td>
-                  <td>@mdo</td>
-                  <td>Otto</td>
-                  <td>@mdo</td>
-                </tr>
-                <tr>
-                  <th scope="row">2</th>
-                  <td>Jacob</td>
-                  <td>Thornton</td>
-                  <td>@fat</td>
-                  <td>Otto</td>
-                  <td>@mdo</td>
-                </tr>
-                <tr>
-                  <th scope="row">2</th>
-                  <td>Jacob</td>
-                  <td>Thornton</td>
-                  <td>@fat</td>
-                  <td>Otto</td>
-                  <td>@mdo</td>
-                </tr>
-                <tr>
-                  <th scope="row">2</th>
-                  <td>Jacob</td>
-                  <td>Thornton</td>
-                  <td>@fat</td>
-                  <td>Otto</td>
-                  <td>@mdo</td>
-                </tr>
-                <tr>
-                  <th scope="row">3</th>
-                  <td>@mdo</td>
-                  <td colspan="2">Larry the Bird</td>
-                  <td>@twitter</td>
-                  <td>@twitter</td>
-                </tr>
-                <tr>
-                  <th scope="row">3</th>
-                  <td>@mdo</td>
-                  <td colspan="2">Larry the Bird</td>
-                  <td>@twitter</td>
-                  <td>@twitter</td>
-                </tr>
-              </tbody>
-
-              </table>
-            </div>
-          </div>
-          <div class="col-lg-12">
-            <p>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
-              magna aliqua.
-            </p>
-            <ul>
-              <li><i class="ri-check-double-line"></i> Ullamco laboris nisi ut aliquip ex ea commodo consequat</li>
-              <li><i class="ri-check-double-line"></i> Duis aute irure dolor in reprehenderit in voluptate velit</li>
-              <li><i class="ri-check-double-line"></i> Ullamco laboris nisi ut aliquip ex ea commodo consequat</li>
-            </ul>
-          </div>
-          
-        </div>
-            <!-- </div> -->
-          </div>
-
-        </div>
-
-      </div>
-    </section><!-- End Portfolio Section -->
+     
 
 
   </main><!-- End #main -->

@@ -49,7 +49,7 @@
                          
                               <td>{{$contact->email}}</td>
                         
-                              <td>{{$contact->address}}</td>
+                              <td>{!!$contact->address!!}</td>
                               <td>{{$contact->phone}}</td>
                               <td>
                                 

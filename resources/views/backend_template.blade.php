@@ -35,6 +35,7 @@
 
   <link rel="stylesheet" type="text/css" href="{{ asset('plugin/select2/css/select2.min.css') }}">
 
+
 </head>
 
 <body>
@@ -215,6 +216,13 @@
   {{-- <script src="{{asset('plugin/demo/datatables-demo.js')}}"></script> --}}
 
   @yield('script')
+   <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-bs4.min.css" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-bs4.min.js"></script>
+<script type="text/javascript">
+    $('#summernote').summernote({
+        height: 200
+    });
+</script>
 
 </body>
 

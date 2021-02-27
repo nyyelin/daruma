@@ -164,7 +164,7 @@
               <div class="col-lg-12">
                 <div class="form-group">
                   <label>Description</label>
-                  <textarea class="form-control" placeholder="Detail for this class" name="description">
+                  <textarea class="form-control"  name="description">
                     {{$timetable->description}}
                   </textarea>
                 </div>
@@ -173,10 +173,10 @@
           </div>
              
 
-          <div class="card-footer text-center">
-            <button class="btn btn-primary mr-1" type="submit">U P D A T E</button>
+          <div class="card-footer text-center ">
+            <button class="btn btn-primary mr-1" type="submit">UPDATE</button>
             <a href="{{route('timetables.index')}}">
-              <button class="btn btn-danger mr-1" type="button">Back</button>
+              <button class="btn btn-danger mr-1" type="button">B A C K</button>
             </a>
 
           </div>

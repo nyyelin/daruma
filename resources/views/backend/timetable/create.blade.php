@@ -38,7 +38,8 @@
             </div>
 
             <div class="row">
-                <div class="col-lg-4"> <div class="form-group">
+                <div class="col-lg-4"> 
+                  <div class="form-group">
                     <label>Day</label>
                     <select class="form-control selectric" multiple="" name="day[]">
                       <optgroup>
@@ -48,9 +49,10 @@
                       </optgroup>
                     </select>
                     <div class="form-control-feedback text-danger"> {{$errors->first('day') }} </div>
-
-                    </div>
                 </div>
+              </div>
+
+      
 
                 <div class="col-lg-4">
                   <div class="form-group">
@@ -126,6 +128,8 @@
             </div>
 
             <div class="row">
+
+
               <div class="col-lg-6">
                 <div class="form-group">
                   <label>Fee</label>
@@ -141,6 +145,7 @@
 
                 </div>
               </div>
+        
 
 
               <div class="col-lg-6">
@@ -160,7 +165,7 @@
               <div class="col-lg-12">
                 <div class="form-group">
                   <label>Description</label>
-                  <textarea class="form-control" placeholder="Detail for this class" name="description">
+                  <textarea class="form-control"  name="description">
                     @if(old('description'))
                       {{old('description')}}
                     @endif

@@ -38,68 +38,28 @@
                 </tr>
               </thead>
               <tbody>
+                 @foreach($timetables as $timetable)
+                 @if($timetable->status ==1)
                 <tr>
-                  <th scope="row">1</th>
-                  <td>Mark</td>
-                  <td>Otto</td>
-                  <td>@mdo</td>
-                  <td>Otto</td>
-                  <td>@mdo</td>
+                  <th scope="row">{{$timetable->name}}</th>
+                  <td>{{$timetable->start_date}}</td>
+                  <td>
+                    @foreach($timetable->days as $day)
+                    {{ $loop->first ? '' : ', ' }}
+                      {{$day->name}}
+
+                    @endforeach
+                  </td>
+                  <td>{{$timetable->start_time}} ~ {{$timetable->end_time}}</td>
+                  <td >
+                    {{$timetable->duration}}
+                  </td>
+                 <td>{{$timetable->fees}}</td>
                 </tr>
-                <tr>
-                  <th scope="row">2</th>
-                  <td>Jacob</td>
-                  <td>Thornton</td>
-                  <td>@fat</td>
-                  <td>Otto</td>
-                  <td>@mdo</td>
-                </tr>
-                <tr>
-                  <th scope="row">1</th>
-                  <td>Mark</td>
-                  <td>Otto</td>
-                  <td>@mdo</td>
-                  <td>Otto</td>
-                  <td>@mdo</td>
-                </tr>
-                <tr>
-                  <th scope="row">2</th>
-                  <td>Jacob</td>
-                  <td>Thornton</td>
-                  <td>@fat</td>
-                  <td>Otto</td>
-                  <td>@mdo</td>
-                </tr>
-                <tr>
-                  <th scope="row">2</th>
-                  <td>Jacob</td>
-                  <td>Thornton</td>
-                  <td>@fat</td>
-                  <td>Otto</td>
-                  <td>@mdo</td>
-                </tr>
-                <tr>
-                  <th scope="row">2</th>
-                  <td>Jacob</td>
-                  <td>Thornton</td>
-                  <td>@fat</td>
-                  <td>Otto</td>
-                  <td>@mdo</td>
-                </tr>
-                <tr>
-                  <th scope="row">3</th>
-                  <td>@mdo</td>
-                  <td colspan="2">Larry the Bird</td>
-                  <td>@twitter</td>
-                  <td>@twitter</td>
-                </tr>
-                <tr>
-                  <th scope="row">3</th>
-                  <td>@mdo</td>
-                  <td colspan="2">Larry the Bird</td>
-                  <td>@twitter</td>
-                  <td>@twitter</td>
-                </tr>
+                @elseif($timetable->status ==2)
+                <h2>No Online Class</h2>
+                @endif
+                @endforeach
               </tbody>
 
               </table>

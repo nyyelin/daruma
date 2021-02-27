@@ -49,7 +49,7 @@
                           
                               <td ><img src="{{asset($about->photo)}} " title="About Photo" alt="user"  data-toggle="tooltip" width="55"></td>
                           
-                              <td style="width: 600px;">{{$about->subject}}</td>
+                              <td style="width: 600px;">{!!$about->subject!!}</td>
                         
                               <td>
                                    <a href="{{route('backendabout.edit',$about->id)}}" class="btn btn-warning my-3">E d i t</a>
