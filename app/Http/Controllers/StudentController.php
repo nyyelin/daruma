@@ -13,7 +13,7 @@ use Illuminate\Support\Facades\Validator;
 use App\Payment;
 use App\User;
 use Yajra\DataTables\Facades\DataTables;
-
+use Auth;
 
 class StudentController extends Controller
 {
@@ -101,7 +101,7 @@ class StudentController extends Controller
         $payment->timetable_id = $request->timetable;
         $payment->amount = $request->installment;
         $payment->status = $request->paymenttype;
-        $payment->staff_id = 1; //Auth::user()->staff->id
+        $payment->user_id = Auth::id(); //Auth::user()->staff->id
         $payment->save();
 
         return redirect()->route('students.index')->with('success','New Student added');

@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 class Timetable extends Model
 {
     use SoftDeletes;
-    protected $fillable=[ 'name','start_time','end_time','level_id','start_date','duration','fees','description', 'status'];
+    protected $fillable=[ 'name','start_time','end_time','level_id','start_date','end_date','duration','fees','description', 'status'];
 
 
     public function days($value='')

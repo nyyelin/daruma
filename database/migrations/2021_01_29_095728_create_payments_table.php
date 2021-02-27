@@ -21,7 +21,7 @@ class CreatePaymentsTable extends Migration
             $table->string('discount')->default(0);
             $table->integer('status')->default(0);//ငွေပေးပုံ ယန်း = 0 ကျပ် = 1
             $table->unsignedBigInteger('paymenttype_id')->nullable();
-            $table->unsignedBigInteger('staff_id');
+            $table->unsignedBigInteger('user_id');
             $table->text('note')->nullable();
             $table->softDeletes();
             $table->timestamps();
@@ -35,8 +35,8 @@ class CreatePaymentsTable extends Migration
                     ->references('id')->on('paymenttypes')
                     ->onDelete('cascade');
 
-            $table->foreign('staff_id')
-                    ->references('id')->on('staffs')
+            $table->foreign('user_id')
+                    ->references('id')->on('users')
                     ->onDelete('cascade');
         });
     }

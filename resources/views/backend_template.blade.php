@@ -67,6 +67,64 @@
   </div>
 
 
+  {{-- admin passwordchange --}}
+
+<div class="modal fade" id="adminchangepasswordmodal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content ">
+      <div class="modal-header">
+        <h5 class="modal-title rcode" id="exampleModalLabel">Change Password</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+
+      <div class="modal-body">
+        <form action="{{route('admin_change_password')}}" method="post">
+          @csrf
+          <div class="row form-group">
+            <div class="row">
+              <div class="col-md-12">
+                <h6 class="text-warning">Password must be at least 8 numbers</h6>
+              </div>
+              
+            </div>
+            <div class="col-md-12 ">
+              <label for="password">Passowrd</label>
+              <div class="col-sm-12 input-group">
+                    <input type="password" class="form-control" id="password" name="password" aria-describedby="basic-addon1" placeholder="Enter New Password">
+                    <div class="input-group-prepend">
+                        <button type="button" class="btn btn-light circle" onclick="showpassword()"><i class="fas fa-eye"></i></button>
+                    </div>
+                </div>
+            </div>
+          </div>
+          <div class="row form-group">
+            <div class="col-md-12 ">
+              <label for="password_confirmation">Confirm Passowrd</label>
+              <div class="col-sm-12 input-group">
+                  <input type="password" class="form-control" id="password_confirmation" name="password_confirmation" aria-describedby="basic-addon1"  placeholder="Retype Password">
+                  <div class="input-group-prepend">
+                      <button type="button" class="btn btn-light circle" onclick="showconfirmpassword()"><i class="fas fa-eye"></i></button>
+                  </div>
+              </div>
+              
+            </div>
+          </div>
+
+          <div class="row form-group">
+            <div class="col-md-12">
+              <button type="submit" class="btn btn-primary">Save</button>
+            </div>
+          </div>
+
+        </form>
+      </div>
+
+      
+    </div>
+  </div>
+</div>
 
   <!-- General JS Scripts -->
   <script src="  {{ asset('backend/assets/js/app.min.js') }}"></script>
@@ -111,6 +169,46 @@
     $(document).ready(function() {
       $('.js-example-basic-multiple').select2();
     })
+  </script>
+
+  <script type="text/javascript">
+    $(document).ready(function(){
+      $('.btn_change_password').click(function(){
+        $('#adminchangepasswordmodal').modal('show');
+      })
+    })
+
+    function showpassword()
+      {
+         var password = document.getElementById('password');
+          if(password.type=="password"){
+             password.type="text";
+          }
+          else{
+              password.type="password";
+          }
+
+      }
+
+      $(document).ready(function(){
+          $('.msg').hide(10000);
+      })
+
+      function showconfirmpassword()
+      {
+         var password = document.getElementById('password_confirmation');
+          if(password.type=="password"){
+             password.type="text";
+          }
+          else{
+              password.type="password";
+          }
+
+      }
+
+      $(document).ready(function(){
+          $('.msg').hide(10000);
+      })
   </script>
 
   <!-- Page level custom scripts -->
