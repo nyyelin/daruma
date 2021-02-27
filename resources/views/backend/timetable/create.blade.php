@@ -38,19 +38,21 @@
             </div>
 
             <div class="row">
-                <div class="col-lg-6"> <div class="form-group">
-                      <label>Day</label>
-                      <select class="form-control selectric" multiple="" name="day[]">
-                        <optgroup>
-                          @foreach($days as $day)
-                            <option value="{{$day->id}}">{{$day->name}}</option>
-                          @endforeach
-                        </optgroup>
-                      </select>
-                      <div class="form-control-feedback text-danger"> {{$errors->first('day') }} </div>
-
+      <div class="col-lg-6">
+                <div class="form-group">
+                  <label>Fee</label>
+                  <div class="input-group">
+                    <div class="input-group-prepend">
+                      <div class="input-group-text">
+                        $
+                      </div>
                     </div>
+                    <input type="text" class="form-control currency" name="fee" value="0" value="{{old('fee')}}">
+                  </div>
+                  <div class="form-control-feedback text-danger"> {{$errors->first('fee') }} </div>
+
                 </div>
+              </div>
 
                 <div class="col-lg-3">
                   <div class="form-group">
@@ -118,29 +120,31 @@
             </div>
 
             <div class="row">
-              <div class="col-lg-6">
-                <div class="form-group">
-                  <label>Fee</label>
-                  <div class="input-group">
-                    <div class="input-group-prepend">
-                      <div class="input-group-text">
-                        $
-                      </div>
-                    </div>
-                    <input type="text" class="form-control currency" name="fee" value="0" value="{{old('fee')}}">
-                  </div>
-                  <div class="form-control-feedback text-danger"> {{$errors->first('fee') }} </div>
 
+
+                <div class="col-lg-6"> <div class="form-group">
+                      <label>Day</label>
+                      <select class="form-control selectric" multiple="" name="day[]">
+                        <optgroup>
+                          @foreach($days as $day)
+                            <option value="{{$day->id}}">{{$day->name}}</option>
+                          @endforeach
+                        </optgroup>
+                      </select>
+                      <div class="form-control-feedback text-danger"> {{$errors->first('day') }} </div>
+
+                    </div>
                 </div>
-              </div>
+
+        
 
 
               <div class="col-lg-6">
                 <div class="form-group">
                   <label>Type</label>
                   <select class="form-control" name="class_type">
-                    <option value="1">Offline</option>
-                    <option value="2">Online</option>
+                    <option value="1">Online</option>
+                    <option value="2">Offline</option>
                     <option value="3">Online/Offline</option>
                   </select>
                 </div>
@@ -152,7 +156,7 @@
               <div class="col-lg-12">
                 <div class="form-group">
                   <label>Description</label>
-                  <textarea class="form-control" placeholder="Detail for this class" name="description">
+                  <textarea class="form-control"  name="description">
                     @if(old('description'))
                       {{old('description')}}
                     @endif

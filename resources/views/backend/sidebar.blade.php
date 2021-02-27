@@ -26,7 +26,7 @@
               </ul>
             </li>
             
-           
+          <!--  
             <li class="dropdown ">
               <a href="#" class="menu-toggle nav-link has-dropdown"><i data-feather="user-check"></i><span>Accounts   </span></a>
               <ul class="dropdown-menu">
@@ -34,13 +34,13 @@
 
                 
               </ul>
-            </li>
+            </li> -->
 
             <li class="dropdown {{ Request::is('staffs*') ? 'active' : '' }}">
               <a href="#" class="menu-toggle nav-link has-dropdown"><i data-feather="user-check"></i><span>Staff   </span></a>
 
               <ul class="dropdown-menu">
-                   <li class="{{ Request::is('staffs') ? 'active' : '' }}"><a class="nav-link" href="{{route('staffs.index')}}">Staff List</a></li>
+                   <li class="{{ Request::is('staffs') ? 'active' : '' }}"><a class="nav-link" href="{{route('staffs.index')}}">New Staff </a></li>
                    
               </ul>
             </li>
@@ -50,7 +50,7 @@
               <a href="#" class="menu-toggle nav-link has-dropdown "><i
                   data-feather="calendar"></i><span>Class Timetables</span></a>
               <ul class="dropdown-menu">
-                <li class="{{ Request::is('timetables*') ? 'active' : '' }}"><a class="nav-link " href="{{route('timetables.index')}}">Class</a></li>
+                <li class="{{ Request::is('timetables*') ? 'active' : '' }}"><a class="nav-link " href="{{route('timetables.index')}}">New Class</a></li>
                 
               </ul>
             </li>

@@ -46,7 +46,7 @@
                           
                               <td ><img src="{{asset($slider->photo)}} " title="Slider Photo" alt="user"  data-toggle="tooltip" width="55"></td>
                           
-                              <td style="width: 500px;">{{$slider->subject}}</td>
+                              <td style="width: 500px;">{!!$slider->subject!!}</td>
                         
                               <td>
                                 <a href="{{route('slider.edit',$slider->id)}}" class="btn btn-warning">E d i t</a>

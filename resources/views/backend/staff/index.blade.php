@@ -7,7 +7,7 @@
                 <div class="card">
                   <div class="card-header">
                    
-                      <div class="col-lg-10 "> <h4>Staff List</h4></div>
+                      <div class="col-lg-10 "> <h4>New Staff</h4></div>
                        <div class="col-lg-2 "> 
                         <a href="{{route('staffs.create')}}"> <button class="btn btn-primary " type="button">+ Add </button></a>
                       

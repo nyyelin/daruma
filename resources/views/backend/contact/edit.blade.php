@@ -46,7 +46,7 @@
              <div class="row">
                     <div class="form-group col-12">
                       <label for="frist_name">Address</label>
-                      <textarea class="form-control" name="address" placeholder="Enter Address" >{{$contact->address}}</textarea>
+                      <textarea class="form-control" name="address" id="summernote" placeholder="Enter Address" >{{$contact->address}}</textarea>
                       <div class="form-control-feedback text-danger"> {{$errors->first('address') }} </div>
                     </div>
                   </div>

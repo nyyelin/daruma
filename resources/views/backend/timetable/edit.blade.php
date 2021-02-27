@@ -140,8 +140,8 @@
                 <div class="form-group">
                   <label>Type</label>
                   <select class="form-control" name="class_type">
-                    <option value="1" @if($timetable->status ==1 ) selected="selected" @endif>Offline</option>
-                    <option value="2" @if($timetable->status ==2 ) selected="selected" @endif>Online</option>
+                    <option value="1" @if($timetable->status ==1 ) selected="selected" @endif>Online</option>
+                    <option value="2" @if($timetable->status ==2 ) selected="selected" @endif>Offline</option>
                     <option value="3" @if($timetable->status ==3 ) selected="selected" @endif>Online/Offline</option>
                   </select>
                 </div>
@@ -153,7 +153,7 @@
               <div class="col-lg-12">
                 <div class="form-group">
                   <label>Description</label>
-                  <textarea class="form-control" placeholder="Detail for this class" name="description">
+                  <textarea class="form-control"  name="description">
                     {{$timetable->description}}
                   </textarea>
                 </div>
@@ -162,10 +162,10 @@
           </div>
              
 
-          <div class="card-footer text-center">
-            <button class="btn btn-primary mr-1" type="submit">U P D A T E</button>
+          <div class="card-footer text-center ">
+            <button class="btn btn-primary mr-1" type="submit">UPDATE</button>
             <a href="{{route('timetables.index')}}">
-              <button class="btn btn-danger mr-1" type="button">Back</button>
+              <button class="btn btn-danger mr-1" type="button">B A C K</button>
             </a>
 
           </div>

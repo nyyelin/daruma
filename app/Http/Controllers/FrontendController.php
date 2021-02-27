@@ -3,53 +3,78 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Slider;
+use App\Book;
+use App\About;
+use App\Gallery;
+use App\Video;
+use App\Subject;
+use App\Review;
+use App\Contact;
+use App\Addjournalvideo;
+use App\Journalvideo;
+use App\Timetable;
+use App\Level;
+use App\Day;
+use Carbon;
 
 class FrontendController extends Controller
 {
-    public function home(){
-
-    	return view('frontend.index');
+    public function home()
+    {
+       $sliders = Slider::orderBy('id','DESC')->limit(3)->get();
+       $books = Book::all();
+       $journalvideos = Journalvideo::all();
+       $timetables = Timetable::where('start_date','>=',Carbon\Carbon::today())->get();
+    	return view('frontend.index',compact('sliders','books','journalvideos','timetables'));
     }
 
       public function about(){
 
-    	return view('frontend.about');
+       $abouts = About::all();
+    	 return view('frontend.about',compact('abouts'));
+
     }
       public function photo(){
 
-    	return view('frontend.gallery');
+     /* $levels = Level::orderBy('categories')*/
+      $gallerys = Gallery::all();
+    	return view('frontend.gallery',compact('gallerys'));
     }
      public function class(){
-
-    	return view('frontend.class');
+      $timetables = Timetable::where('start_date','>=',Carbon\Carbon::today())->get();
+    	return view('frontend.class',compact('timetables'));
     }
     public function video(){
-
-    	return view('frontend.video');
+      $videos = Video::all();
+    	return view('frontend.video',compact('videos'));
     }
      public function review(){
-
-    	return view('frontend.review');
+        $reviews = Review::all();
+       $subjects = Subject::all();
+    	return view('frontend.review',compact('reviews','subjects'));
     }
      public function contact(){
 
-    	return view('frontend.contact');
+     $contacts = Contact::all();
+    	return view('frontend.contact',compact('contacts'));
     }
     public function regular_class(){
-
-    	return view('frontend.regularclass');
+      $timetables = Timetable::where('start_date','>=',Carbon\Carbon::today())->get();
+    	return view('frontend.regularclass',compact('timetables'));
     }
     public function online_class(){
-
-    	return view('frontend.onlineclass');
+      $timetables = Timetable::where('start_date','>=',Carbon\Carbon::today())->get();
+    	return view('frontend.onlineclass',compact('timetables'));
     }
-     public function latestnew(){
+     public function latestnew($id){
 
-    	return view('frontend.latestnew');
+        $books = Book::Find($id);
+    	return view('frontend.latestnew',compact('books'));
     }
      public function books(){
-
-    	return view('frontend.books');
+      $addjournalvideos = Addjournalvideo::all();
+    	return view('frontend.books',compact('addjournalvideos'));
     }
      public function japanmyanmarday(){
 

@@ -45,7 +45,7 @@
                               <td>{{$subject->name}}</td>
                           
                              
-                             <td style="width: 600px;">{{$subject->subject}}</td>
+                             <td style="width: 600px;">{!!$subject->subject!!}</td>
                               
                               <td>
                                 <a href="{{route('backendsubject.edit',$subject->id)}}" class="btn btn-warning">E d i t</a>

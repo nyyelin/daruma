@@ -2,45 +2,34 @@
 @section('content')
 <!-- ======= Hero Section ======= -->
   <section id="hero">
+
+
     <div class="hero-container">
+     
       <div id="heroCarousel" class="carousel slide carousel-fade" data-ride="carousel">
 
         <ol class="carousel-indicators" id="hero-carousel-indicators"></ol>
 
         <div class="carousel-inner" role="listbox">
+          
+ @foreach($sliders as $slider)
+
 
           <!-- Slide 1 -->
-          <div class="carousel-item active" style="background: url({{asset('frontend/assets/img/slide/slide-1.jpg')}})">
+          <div class="carousel-item @if ($loop->first) active @endif
+" style="background: url({{$slider->photo}})">
             <div class="carousel-container">
               <div class="carousel-content">
-                <h2 class="animate__animated animate__fadeInDown">Welcome to <span>Durma</span></h2>
-                <p class="animate__animated animate__fadeInUp">Ut velit est quam dolor ad a aliquid qui aliquid. Sequi ea ut et est quaerat sequi nihil ut aliquam. Occaecati alias dolorem mollitia ut. Similique ea voluptatem. Esse doloremque accusamus repellendus deleniti vel. Minus et tempore modi architecto.</p>
+                <h2 class="animate__animated animate__fadeInDown"><!-- Welcome to <span>Durma</span> -->{{$slider->name}}</h2>
+                <p class="animate__animated animate__fadeInUp">{{$slider->subject}}</p>
                 
               </div>
             </div>
           </div>
 
-          <!-- Slide 2 -->
-          <div class="carousel-item" style="background: url({{asset('frontend/assets/img/slide/slide-2.jpg')}})">
-            <div class="carousel-container">
-              <div class="carousel-content">
-                <h2 class="animate__animated fanimate__adeInDown">Lorem <span>Su Myanmar</span></h2>
-                <p class="" ass="animate__animated animate__fadeInUp">Ut velit est quam dolor ad a aliquid qui aliquid. Sequi ea ut et est quaerat sequi nihil ut aliquam. Occaecati alias dolorem mollitia ut. Similique ea voluptatem. Esse doloremque accusamus repellendus deleniti vel. Minus et tempore modi architecto.</p>
-                
-              </div>
-            </div>
-          </div>
 
-          <!-- Slide 3 -->
-          <div class="carousel-item" style="background: url({{asset('frontend/assets/img/slide/slide-3.jpg')}})">
-            <div class="carousel-container">
-              <div class="carousel-content">
-                <h2 class="animate__animated animate__fadeInDown">Sequi ea <span>Durma</span></h2>
-                <p class="animate__animated animate__fadeInUp">Ut velit est quam dolor ad a aliquid qui aliquid. Sequi ea ut et est quaerat sequi nihil ut aliquam. Occaecati alias dolorem mollitia ut. Similique ea voluptatem. Esse doloremque accusamus repellendus deleniti vel. Minus et tempore modi architecto.</p>
-                
-              </div>
-            </div>
-          </div>
+
+    @endforeach
 
         </div>
 
@@ -55,7 +44,10 @@
         </a>
 
       </div>
+
     </div>
+
+         
   </section><!-- End Hero -->
 
 
@@ -111,7 +103,7 @@
 
                 
 
-  
+
             <div class="bd-example">
               <table class="table table-bordered table-hover ">
                   <thead>
@@ -125,68 +117,24 @@
                 </tr>
               </thead>
               <tbody>
+                   @foreach($timetables as $timetable)
                 <tr>
-                  <th scope="row">Basic I (N5)</th>
-                  <td>24.3.2020</td>
-                  <td>Mon, Tue, Wed</td>
-                  <td>13:00~15:00</td>
-                  <td>3 Months</td>
-                  <td>120,000Ks</td>
+                  <th scope="row">{{$timetable->name}}</th>
+                  <td>{{$timetable->start_date}}</td>
+                  <td>
+                    @foreach($timetable->days as $day)
+                    {{ $loop->first ? '' : ', ' }}
+                      {{$day->name}}
+
+                    @endforeach
+                  </td>
+                  <td>{{$timetable->start_time}} ~ {{$timetable->end_time}}</td>
+                  <td >
+                    {{$timetable->duration}}
+                  </td>
+                 <td>{{$timetable->fees}}</td>
                 </tr>
-                <tr>
-                  <th scope="row">Basic I (N5)</th>
-                  <td>24.3.2020</td>
-                  <td>Sunday Only</td>
-                  <td>13:00~15:00</td>
-                  <td>4 Months</td>
-                  <td>120,000Ks</td>
-                </tr>
-                <tr>
-                  <th scope="row">Basic I (N5)</th>
-                  <td>24.3.2020</td>
-                  <td>Sat, Sun</td>
-                  <td>13:00~15:00</td>
-                  <td>4 Months</td>
-                  <td>120,000Ks</td>
-                </tr>
-                <tr>
-                  <th scope="row">Basic II (N4)</th>
-                  <td>24.3.2020</td>
-                  <td>Mon, Tue, Web</td>
-                  <td>13:00~15:00</td>
-                  <td>3 Months</td>
-                  <td>150,000Ks</td>
-                </tr>
-                <tr>
-                  <th scope="row">Basic II (N4)</th>
-                  <td>24.3.2020</td>
-                  <td>Sat, Sun</td>
-                  <td>13:00~15:00</td>
-                  <td> 3 Months</td>
-                  <td>150,000Ks</td>
-                </tr>
-                <tr>
-                  <th scope="row">Intermediate I (N3)</th>
-                  <td>24.3.2020</td>
-                  <td>Sinday Only</td>
-                  <td>13:00~15:00</td>
-                  <td>4 Months</td>
-                  <td>200,000Ks</td>
-                </tr>
-                <tr>
-                  <th scope="row">Intermediate I (N3)</th>
-                  <td>@4.3.2020</td>
-                  <td colspan="2">Special Only Class</td>
-                  <td>3 Months</td>
-                  <td>200,000Ks</td>
-                </tr>
-                <tr>
-                  <th scope="row">Intermediate II (N3)</th>
-                  <td>24.3.2020</td>
-                  <td colspan="2">Special Only Class</td>
-                  <td>4 Months</td>
-                  <td>200,000Ks</td>
-                </tr>
+                @endforeach
               </tbody>
 
               </table>
@@ -217,7 +165,7 @@
 
             <div class="row">
 
-
+ @foreach($books as $book)
               <div class="col-lg-4 col-md-12 col-12 "> 
         <section class=" wow fadeInLeft" data-wow-delay="0.1s" style="visibility: visible; -webkit-animation-delay: 0.1s; -moz-animation-delay: 0.1s; animation-delay: 0.1s;">
           <div class="col">
@@ -227,18 +175,18 @@
 
            <div class="hover14 ">
             <figure>
-            <img src="{{asset('frontend/assets/img/book3.png')}}" class=" img-responsive img-fluid" alt="..." >
+            <img src="{{$book->photo}}" class=" img-responsive img-fluid" alt="..." >
             </figure>
           </div>
         </div>
         <div class="product-details">
             <span class="product-catagory">Latest New</span>
-            <h5>N1 Grammer</h5>
+            <h5>{{$book->name}}</h5>
           
             <div class="product-bottom-details">
-                <div class="product-price">5,000 MMK</div>
+                <div class="product-price">{{$book->fee}}</div>
                 <div class="product-links">
-                     <a href="{{route('latestnew')}}">  Read More</a>
+                     <a href="{{route('latestnew',$book->id)}}">  Read More</a>
                 </div>
             </div>
         </div>
@@ -247,67 +195,14 @@
         </section>
     </div>
 
+
+@endforeach
+
+
                   
-
-<div class="col-lg-4 col-md-12 col-12  end"> 
-        <section class=" wow fadeInLeft" data-wow-delay="0.2s" style="visibility: visible; -webkit-animation-delay: 0.2s; -moz-animation-delay: 0.2s; animation-delay: 0.2s;"> <div class="col ">
-                      <div class="product-card">
-        <div class="badge"></div>
-        <div class="product-tumb">
-           <div class="hover14 ">
-            <figure>
-            <img src="{{asset('frontend/assets/img/book3.png')}}" class=" img-responsive img-fluid" alt="..." >
-            </figure>
-          </div>
-        </div>
-        <div class="product-details">
-            <span class="product-catagory">Latest New</span>
-          <h5>N1 Grammer</h5>
-          
-            <div class="product-bottom-details">
-                <div class="product-price">5,000 MMK</div>
-                <div class="product-links">
-                   <a href="{{route('latestnew')}}">  Read More</a>
-                </div>
-            </div>
-        </div>
-    </div>
-                  </div>
-                </section>     
-    </div>
-
-                 
+    
 
 
-<div class="col-lg-4 col-md-12 col-12 "> 
-        <section class=" wow fadeInLeft" data-wow-delay="0.3s" style="visibility: visible; -webkit-animation-delay: 0.3s; -moz-animation-delay: 0.3s; animation-delay: 0.3s;"><div class="col ">
-                       <div class="product-card">
-        <div class="badge"></div>
-        <div class="product-tumb">
-            <div class="hover14 ">
-            <figure>
-            <img src="{{asset('frontend/assets/img/book3.png')}}" class=" img-responsive img-fluid" alt="..." >
-            </figure>
-          </div>
-        </div>
-        <div class="product-details">
-            <span class="product-catagory">Latest New</span>
-             <h5>N1 Grammer</h5>
-          
-            <div class="product-bottom-details">
-                <div class="product-price">5,000 MMK</div>
-                <div class="product-links">
-                    
-                  <a href="{{route('latestnew')}}">  Read More</a>
-                </div>
-            </div>
-        </div>
-    </div>
-                  </div>
-
-</section>     
-    </div>
-                  
 
 
 
@@ -333,7 +228,7 @@
                 <div class="row row-cols-1 row-cols-md-3 g-4">
 
                  
-         
+          @foreach($journalvideos as $journalvideo)
 
 
                     <section class="wow fadeInDown" data-wow-duration="2s">
@@ -342,12 +237,12 @@
 
 
                    <div class="carde">
-    <div class="img-cover"><img src="{{asset('frontend/assets/img/testimonials/testimonials-2.jpg')}}"></div>
+    <div class="img-cover"><img src="{{$journalvideo->photo}}"></div>
     
     <div class="desc">
-      <h5>ထုတ်ဝေပြီးသော စာအုပ်များ</h5>
+      <h5>{{$journalvideo->name}}</h5>
       <p></p>
-      <a href ="{{route('books')}}">Read More </a>
+      <a href ="{{route('books',$journalvideo->id)}}">Read More </a>
       <br>
       <br>
     </div>
@@ -360,86 +255,16 @@
                 </section>
 
 
-
-
-                <section class="wow fadeInDown" data-wow-duration="2s">
-                    <div class="col my-3">
-
-                                       <div class="carde">
-    <div class="img-cover"><img src="{{asset('frontend/assets/img/testimonials/testimonials-5.jpg')}}"></div>
-    
-    <div class="desc">
-      <h5>Japan_Myanmar Days</h5>
-      <p></p>
-      <a href ="{{route('japanmyanmarday')}}">Read More </a>
-      <br>
-      <br>
-    </div>
-  </div>
-                    </div>
-                 
-                </section>
+@endforeach
 
 
 
-                                <section class="wow fadeInDown" data-wow-duration="2s">
-                    <div class="col my-3">
-                                         <div class="carde">
-    <div class="img-cover"><img src="{{asset('frontend/assets/img/testimonials/testimonials-1.jpg')}}"></div>
-    
-    <div class="desc">
-      <h5>ဗဟုသုတဆောင်းပါးများ</h5>
-      <p></p>
-      <a href ="{{route('generaljournal')}}">Read More </a>
-      <br>
-      <br>
-    </div>
-  </div>
-                </div>
-              </section>
+
    
               </div>
                     
       
-                <div class="row row-cols-1 row-cols-md-3 g-4" >
-
-                   <section class="wow fadeInDown" data-wow-duration="2s">
-                    <div class="col my-3">
-                                                                <div class="carde">
-    <div class="img-cover"><img src="{{asset('frontend/assets/img/testimonials/testimonials-3.jpg')}}"></div>
-    
-    <div class="desc">
-      <h5>Knowledge Video</h5>
-      <p></p>
-      <a href ="{{route('knowledgevideo')}}">Read More </a>
-      <br>
-      <br>
-    </div>
-  </div>
-                    </div>
-                  </section>
-
-
-                   <section class="wow fadeInDown" data-wow-duration="2s">
-                    <div class="col my-3">
-                                           <div class="carde">
-    <div class="img-cover"><img src="{{asset('frontend/assets/img/testimonials/testimonials-4.jpg')}}"></div>
-    
-    <div class="desc">
-      <h5>Reading Story</h5>
-      <p></p>
-      <a href ="{{route('readingstory')}}">Read More </a>
-      <br>
-      <br>
-    </div>
-  </div>
-                    </div>
-                  </section>
-
-
-     
-                </div>
-                
+           
 
    <div class="clear"></div>
 
@@ -449,4 +274,200 @@
   </main><!-- End #main -->
  <div class="clear"></div>
   <!-- ======= Footer ======= -->
+  <script type="text/javascript">
+    (function() {
+  var Util,
+    __bind = function(fn, me){ return function(){ return fn.apply(me, arguments); }; };
+
+  Util = (function() {
+    function Util() {}
+
+    Util.prototype.extend = function(custom, defaults) {
+      var key, value;
+      for (key in custom) {
+        value = custom[key];
+        if (value != null) {
+          defaults[key] = value;
+        }
+      }
+      return defaults;
+    };
+
+    Util.prototype.isMobile = function(agent) {
+      return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(agent);
+    };
+
+    return Util;
+
+  })();
+
+  this.WOW = (function() {
+    WOW.prototype.defaults = {
+      boxClass: 'wow',
+      animateClass: 'animated',
+      offset: 0,
+      mobile: true
+    };
+
+    function WOW(options) {
+      if (options == null) {
+        options = {};
+      }
+      this.scrollCallback = __bind(this.scrollCallback, this);
+      this.scrollHandler = __bind(this.scrollHandler, this);
+      this.start = __bind(this.start, this);
+      this.scrolled = true;
+      this.config = this.util().extend(options, this.defaults);
+    }
+
+    WOW.prototype.init = function() {
+      var _ref;
+      this.element = window.document.documentElement;
+      if ((_ref = document.readyState) === "interactive" || _ref === "complete") {
+        return this.start();
+      } else {
+        return document.addEventListener('DOMContentLoaded', this.start);
+      }
+    };
+
+    WOW.prototype.start = function() {
+      var box, _i, _len, _ref;
+      this.boxes = this.element.getElementsByClassName(this.config.boxClass);
+      if (this.boxes.length) {
+        if (this.disabled()) {
+          return this.resetStyle();
+        } else {
+          _ref = this.boxes;
+          for (_i = 0, _len = _ref.length; _i < _len; _i++) {
+            box = _ref[_i];
+            this.applyStyle(box, true);
+          }
+          window.addEventListener('scroll', this.scrollHandler, false);
+          window.addEventListener('resize', this.scrollHandler, false);
+          return this.interval = setInterval(this.scrollCallback, 50);
+        }
+      }
+    };
+
+    WOW.prototype.stop = function() {
+      window.removeEventListener('scroll', this.scrollHandler, false);
+      window.removeEventListener('resize', this.scrollHandler, false);
+      if (this.interval != null) {
+        return clearInterval(this.interval);
+      }
+    };
+
+    WOW.prototype.show = function(box) {
+      this.applyStyle(box);
+      return box.className = "" + box.className + " " + this.config.animateClass;
+    };
+
+    WOW.prototype.applyStyle = function(box, hidden) {
+      var delay, duration, iteration;
+      duration = box.getAttribute('data-wow-duration');
+      delay = box.getAttribute('data-wow-delay');
+      iteration = box.getAttribute('data-wow-iteration');
+      return box.setAttribute('style', this.customStyle(hidden, duration, delay, iteration));
+    };
+
+    WOW.prototype.resetStyle = function() {
+      var box, _i, _len, _ref, _results;
+      _ref = this.boxes;
+      _results = [];
+      for (_i = 0, _len = _ref.length; _i < _len; _i++) {
+        box = _ref[_i];
+        _results.push(box.setAttribute('style', 'visibility: visible;'));
+      }
+      return _results;
+    };
+
+    WOW.prototype.customStyle = function(hidden, duration, delay, iteration) {
+      var style;
+      style = hidden ? "visibility: hidden; -webkit-animation-name: none; -moz-animation-name: none; animation-name: none;" : "visibility: visible;";
+      if (duration) {
+        style += "-webkit-animation-duration: " + duration + "; -moz-animation-duration: " + duration + "; animation-duration: " + duration + ";";
+      }
+      if (delay) {
+        style += "-webkit-animation-delay: " + delay + "; -moz-animation-delay: " + delay + "; animation-delay: " + delay + ";";
+      }
+      if (iteration) {
+        style += "-webkit-animation-iteration-count: " + iteration + "; -moz-animation-iteration-count: " + iteration + "; animation-iteration-count: " + iteration + ";";
+      }
+      return style;
+    };
+
+    WOW.prototype.scrollHandler = function() {
+      return this.scrolled = true;
+    };
+
+    WOW.prototype.scrollCallback = function() {
+      var box;
+      if (this.scrolled) {
+        this.scrolled = false;
+        this.boxes = (function() {
+          var _i, _len, _ref, _results;
+          _ref = this.boxes;
+          _results = [];
+          for (_i = 0, _len = _ref.length; _i < _len; _i++) {
+            box = _ref[_i];
+            if (!(box)) {
+              continue;
+            }
+            if (this.isVisible(box)) {
+              this.show(box);
+              continue;
+            }
+            _results.push(box);
+          }
+          return _results;
+        }).call(this);
+        if (!this.boxes.length) {
+          return this.stop();
+        }
+      }
+    };
+
+    WOW.prototype.offsetTop = function(element) {
+      var top;
+      top = element.offsetTop;
+      while (element = element.offsetParent) {
+        top += element.offsetTop;
+      }
+      return top;
+    };
+
+    WOW.prototype.isVisible = function(box) {
+      var bottom, offset, top, viewBottom, viewTop;
+      offset = box.getAttribute('data-wow-offset') || this.config.offset;
+      viewTop = window.pageYOffset;
+      viewBottom = viewTop + this.element.clientHeight - offset;
+      top = this.offsetTop(box);
+      bottom = top + box.clientHeight;
+      return top <= viewBottom && bottom >= viewTop;
+    };
+
+    WOW.prototype.util = function() {
+      return this._util || (this._util = new Util());
+    };
+
+    WOW.prototype.disabled = function() {
+      return !this.config.mobile && this.util().isMobile(navigator.userAgent);
+    };
+
+    return WOW;
+
+  })();
+
+}).call(this);
+
+
+wow = new WOW(
+  {
+    animateClass: 'animated',
+    offset: 100
+  }
+);
+wow.init();
+
+</script>
 @endsection

@@ -41,7 +41,7 @@
                   <th>#</th>
                   
                   <th>Class</th>
-                  <th>Level</th>
+              <!--     <th>Level</th> -->
                   <th>Starting Date</th>
                   <th>Days</th>
                   <th>Time</th>
@@ -70,7 +70,7 @@
                     @elseif($timetable->status ==3)
                       <span class="badge badge-dark">Online/Offline</span>
                     @endif</td>
-                  <td>{{$timetable->level->name}}</td>
+                 <!--  <td>{{$timetable->level->name}}</td> -->
                   <td class="text-truncate">
                     {{$start_date}}
                   </td>
@@ -82,7 +82,7 @@
                     @endforeach
                   </td>
                   <td>{{$timetable->start_time}} ~ {{$timetable->end_time}}</td>
-                  <td class="align-middle">
+                  <td >
                     {{$timetable->duration}}
                   </td>
                  <td>{{$timetable->fees}}</td>

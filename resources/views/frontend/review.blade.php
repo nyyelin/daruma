@@ -18,22 +18,19 @@
     <section id="testimonials" class="testimonials">
       <div class="container">
 
+ @foreach($subjects as $subject)
         <div class="section-title">
-          <h2>Review</h2>
-          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-          tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-          quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-          consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-          cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-          proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+          <h2>{{$subject->name}}</h2>
+          <p>{!!$subject->subject!!}</p>
         </div>
+@endforeach
 
         <div class="row">
 
-
+ @foreach($reviews as $review)
           <div class="col-lg-6 my-3">
             <section class="rating__card">
-  <blockquote class="rating__card__quote">“Lorem ipsum dolor sit amet, cu pertinax nominati sea, id iriure utamur interpretaris sea, vix ne latine aliquam complectitur. Enim quas his no, mea ferri audire rationibus ei.”</blockquote>
+  <blockquote class="rating__card__quote">{!!$review->subject!!}</blockquote>
   
   <div class="rating__card__stars">
     <span class="fa fa-star checked"></span>
@@ -41,138 +38,24 @@
     <span class="fa fa-star checked"></span>
     <span class="fa fa-star checked"></span>
     <span class="fa fa-star"></span>
-    <span class="rating__card__stars__name">Name</span>
+    <span class="rating__card__stars__name">{{$review->name}}</span>
   </div>
-  <p class="rating__card__bottomText">Customer Since 2001</p>
-</section>
-          </div>
-          <div class="col-lg-6 my-3">
-            <section class="rating__card">
-  <blockquote class="rating__card__quote">“Lorem ipsum dolor sit amet, cu pertinax nominati sea, id iriure utamur interpretaris sea, vix ne latine aliquam complectitur. Enim quas his no, mea ferri audire rationibus ei.”</blockquote>
-  
-  <div class="rating__card__stars">
-    <span class="fa fa-star checked"></span>
-    <span class="fa fa-star checked"></span>
-    <span class="fa fa-star checked"></span>
-    <span class="fa fa-star checked"></span>
-    <span class="fa fa-star"></span>
-    <span class="rating__card__stars__name">Name</span>
-  </div>
-  <p class="rating__card__bottomText">Customer Since 2001</p>
+  <p class="rating__card__bottomText">{{$review->class}}</p>
 </section>
           </div>
 
-          <div class="col-lg-6 my-3">
-                 <section class="rating__card">
-  <blockquote class="rating__card__quote">“Lorem ipsum dolor sit amet, cu pertinax nominati sea, id iriure utamur interpretaris sea, vix ne latine aliquam complectitur. Enim quas his no, mea ferri audire rationibus ei.”</blockquote>
-  
-  <div class="rating__card__stars">
-    <span class="fa fa-star checked"></span>
-    <span class="fa fa-star checked"></span>
-    <span class="fa fa-star checked"></span>
-    <span class="fa fa-star checked"></span>
-    <span class="fa fa-star"></span>
-    <span class="rating__card__stars__name">Name</span>
-  </div>
-  <p class="rating__card__bottomText">Customer Since 2001</p>
-</section>
-          </div>
 
-          <div class="col-lg-6 my-3">
-               <section class="rating__card">
-  <blockquote class="rating__card__quote">“Lorem ipsum dolor sit amet, cu pertinax nominati sea, id iriure utamur interpretaris sea, vix ne latine aliquam complectitur. Enim quas his no, mea ferri audire rationibus ei.”</blockquote>
-  
-  <div class="rating__card__stars">
-    <span class="fa fa-star checked"></span>
-    <span class="fa fa-star checked"></span>
-    <span class="fa fa-star checked"></span>
-    <span class="fa fa-star checked"></span>
-    <span class="fa fa-star"></span>
-    <span class="rating__card__stars__name">Name</span>
-  </div>
-  <p class="rating__card__bottomText">Customer Since 2001</p>
-</section>
-          </div>
+    @endforeach
 
-          <div class="col-lg-6 my-3">
-               <section class="rating__card">
-  <blockquote class="rating__card__quote">“Lorem ipsum dolor sit amet, cu pertinax nominati sea, id iriure utamur interpretaris sea, vix ne latine aliquam complectitur. Enim quas his no, mea ferri audire rationibus ei.”</blockquote>
   
-  <div class="rating__card__stars">
-    <span class="fa fa-star checked"></span>
-    <span class="fa fa-star checked"></span>
-    <span class="fa fa-star checked"></span>
-    <span class="fa fa-star checked"></span>
-    <span class="fa fa-star"></span>
-    <span class="rating__card__stars__name">Name</span>
-  </div>
-  <p class="rating__card__bottomText">Customer Since 2001</p>
-</section>
-          </div>
 
-          <div class="col-lg-6 my-3">
-             <section class="rating__card">
-  <blockquote class="rating__card__quote">“Lorem ipsum dolor sit amet, cu pertinax nominati sea, id iriure utamur interpretaris sea, vix ne latine aliquam complectitur. Enim quas his no, mea ferri audire rationibus ei.”</blockquote>
-  
-  <div class="rating__card__stars">
-    <span class="fa fa-star checked"></span>
-    <span class="fa fa-star checked"></span>
-    <span class="fa fa-star checked"></span>
-    <span class="fa fa-star checked"></span>
-    <span class="fa fa-star"></span>
-    <span class="rating__card__stars__name">Name</span>
-  </div>
-  <p class="rating__card__bottomText">Customer Since 2001</p>
-</section>
-          </div>
 
-          <div class="col-lg-6 my-3">
-               <section class="rating__card">
-  <blockquote class="rating__card__quote">“Lorem ipsum dolor sit amet, cu pertinax nominati sea, id iriure utamur interpretaris sea, vix ne latine aliquam complectitur. Enim quas his no, mea ferri audire rationibus ei.”</blockquote>
-  
-  <div class="rating__card__stars">
-    <span class="fa fa-star checked"></span>
-    <span class="fa fa-star checked"></span>
-    <span class="fa fa-star checked"></span>
-    <span class="fa fa-star checked"></span>
-    <span class="fa fa-star"></span>
-    <span class="rating__card__stars__name">Name</span>
-  </div>
-  <p class="rating__card__bottomText">Customer Since 2001</p>
-</section>
-          </div>
 
-          <div class="col-lg-6 my-3">
-               <section class="rating__card">
-  <blockquote class="rating__card__quote">“Lorem ipsum dolor sit amet, cu pertinax nominati sea, id iriure utamur interpretaris sea, vix ne latine aliquam complectitur. Enim quas his no, mea ferri audire rationibus ei.”</blockquote>
-  
-  <div class="rating__card__stars">
-    <span class="fa fa-star checked"></span>
-    <span class="fa fa-star checked"></span>
-    <span class="fa fa-star checked"></span>
-    <span class="fa fa-star checked"></span>
-    <span class="fa fa-star"></span>
-    <span class="rating__card__stars__name">Name</span>
-  </div>
-  <p class="rating__card__bottomText">Customer Since 2001</p>
-</section>
-          </div>
 
-          <div class="col-lg-6 my-3">
-                <section class="rating__card">
-  <blockquote class="rating__card__quote">“Lorem ipsum dolor sit amet, cu pertinax nominati sea, id iriure utamur interpretaris sea, vix ne latine aliquam complectitur. Enim quas his no, mea ferri audire rationibus ei.”</blockquote>
-  
-  <div class="rating__card__stars">
-    <span class="fa fa-star checked"></span>
-    <span class="fa fa-star checked"></span>
-    <span class="fa fa-star checked"></span>
-    <span class="fa fa-star checked"></span>
-    <span class="fa fa-star"></span>
-    <span class="rating__card__stars__name">Name</span>
-  </div>
-  <p class="rating__card__bottomText">Customer Since 2001</p>
-</section>
-          </div>
+
+
+
+
 
 
 

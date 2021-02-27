@@ -133,12 +133,6 @@ class BackendaddjournalvideoController extends Controller
 
 
 
-
-                
-
-
-
-
             
         $addjournalvideo->detail_id = $request->detail_id;
         $addjournalvideo->auth_name = $request->auth_name;

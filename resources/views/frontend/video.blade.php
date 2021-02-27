@@ -24,33 +24,34 @@
         <div class="row">
 
           <div class="col-lg-8 entries">
-
+ @foreach($videos as $video)
             <article class="entry">
 
               <div class="entry-img">
-                <img src="{{asset('frontend/assets/img/blog-1.jpg')}}" alt="" class="img-fluid">
+                <video src="" controls autoplay="ture" muted ><source src="{{asset($video->photo)}}" type="video/mp4" />
+ </video>
+               
               </div>
 
               <h2 class="entry-title">
-                <a href="blog-single.html">Dolorum optio tempore voluptas dignissimos cumque fuga qui quibusdam quia</a>
+              {{$video->name}}
               </h2>
 
               <div class="entry-meta">
                 <ul>
-                  <li class="d-flex align-items-center"><i class="icofont-user"></i> <a href="blog-single.html">John Doe</a></li>
-                  <li class="d-flex align-items-center"><i class="icofont-wall-clock"></i> <a href="blog-single.html"><time datetime="2020-01-01">Jan 1, 2020</time></a></li>
+                  <li class="d-flex align-items-center" style="color: black;"><i class="icofont-user"></i> {{$video->auth_name}}</li>
+                  <li class="d-flex align-items-center" style="color: black;"><i class="icofont-wall-clock"></i> <time datetime="">{{$video->dob}}</time></li>
                 </ul>
               </div>
 
               <div class="entry-content">
                 <p>
-                  Similique neque nam consequuntur ad non maxime aliquam quas. Quibusdam animi praesentium. Aliquam et laboriosam eius aut nostrum quidem aliquid dicta.
-                  Et eveniet enim. Qui velit est ea dolorem doloremque deleniti aperiam unde soluta. Est cum et quod quos aut ut et sit sunt. Voluptate porro consequatur assumenda perferendis dolore.
+                 {!!$video->subject!!}
                 </p>
               </div>
 
             </article><!-- End blog entry -->
-
+@endforeach
             <!-- <div class="blog-pagination">
               <ul class="justify-content-center">
                 <li class="disabled"><i class="icofont-rounded-left"></i></li>

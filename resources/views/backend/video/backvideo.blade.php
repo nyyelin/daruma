@@ -48,11 +48,11 @@
                             <td>{{$video->auth_name}}</td>
                            
                               <td>{{$video->dob}}</td>
-                              <td>{{$video->subject}}</td>
+                              <td style="width: 600px;">{!!$video->subject!!}</td>
                              
                               <td>
-                                 <a href="{{route('backendvideo.edit',$video->id)}}" class="btn btn-warning">Edit</a>
-                                <form action="{{route('backendvideo.destroy', $video->id)}}" method="post" class="d-inline" onclick="return confirm('Are you sure to delete?')">
+                                 <a href="{{route('backendvideo.edit',$video->id)}}" class="btn btn-warning my-3">E d i t</a>
+                                <form action="{{route('backendvideo.destroy', $video->id)}}" method="post" class="d-inline my-3" onclick="return confirm('Are you sure to delete?')">
                                   @csrf
                                   @method('DELETE')
                                   <button class="btn btn-danger">Delete</button>
