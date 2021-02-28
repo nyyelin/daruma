@@ -34,6 +34,8 @@ Route::middleware('auth')->group(function () {
 Route::get('/Admin_Profile','BackendController@profile')->name('profile');
 Route::get('/Dashboard','BackendController@dashboard')->name('dashboard');
 Route::post('admin_change_password','BackendController@admin_change_password')->name('admin_change_password');
+Route::get('/getstudents','BackendController@getstudents')->name('getstudents');
+
 
 // Route::get('/Student_Detail','BackendController@detail')->name('detail');
 

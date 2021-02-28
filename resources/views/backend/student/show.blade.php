@@ -60,6 +60,9 @@
                       <div class="progress" data-height="6">
                         @if($timetable->pivot->status == "Active")
                         <div class="progress-bar bg-primary" data-width="100%"></div>
+                        @elseif($timetable->pivot->status == "Finished")
+                        <div class="progress-bar bg-success" data-width="100%"></div>
+
                         @else
                         <div class="progress-bar bg-danger" data-width="100%"></div>
                         @endif

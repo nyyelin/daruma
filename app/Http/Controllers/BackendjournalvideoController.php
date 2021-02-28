@@ -45,9 +45,6 @@ class BackendjournalvideoController extends Controller
         $validator = $request->validate([
             'name'  => ['required', 'string', 'max:255'],
 
-           
-
-           
         ]);
      
         

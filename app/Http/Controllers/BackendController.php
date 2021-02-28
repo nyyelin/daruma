@@ -8,7 +8,10 @@ use Illuminate\Support\Facades\Hash;
 use Auth;
 use App\Student;
 use App\Timetable;
-
+use Carbon;
+use App\Payment;
+use Response;
+use App\Staff;
 
 class BackendController extends Controller
 {
@@ -16,7 +19,9 @@ class BackendController extends Controller
 
       $students = Student::all();
       $timetables = Timetable::all();
-    	return view('backend.dashboard',compact('students','timetables'));
+      $payments = Payment::all();
+      $staffs = Staff::all();
+    	return view('backend.dashboard',compact('students','timetables','payments','staffs'));
     }
 
 
@@ -181,5 +186,35 @@ class BackendController extends Controller
         $user->password = Hash::make($request->password);
         $user->save();
         return redirect()->back();
+    }
+
+    public function getstudents($value='')
+    {
+      $data = Student::selectRaw('COUNT(*) as count, YEAR(created_at) year, MONTH(created_at) month')
+              ->groupBy('year', 'month')
+              ->get();
+
+      $month = [];
+      foreach ($data as $row) {
+        if($row->year == Carbon\Carbon::now()->year){
+          $month[$row->month] = $row->count;
+        }
+      }
+
+      $students = [];
+      for ($i=0; $i < 12; $i++) { 
+        if(array_key_exists($i+1, $month)){
+          array_push($students, $month[$i+1]);
+        }else{
+          array_push($students, 0);
+        }
+      }
+
+      $payments = Payment::whereMonth('created_at',Carbon\Carbon::now()->month)->get();
+      
+      
+      return Response::json(array(
+          'students' => $students,
+        ));
     }
 }

@@ -148,15 +148,14 @@
   </div>
 </div>
 
-
-
-
-
-
-
 <div class="modal fade" id="edititemmodal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
     <div class="modal-content">
+
+
+
+
+
      <form method="POST" enctype="multipart/form-data" action="{{route('backendjournalvideo.update',$journalvideo->id)}}">
       @csrf
     @method('PUT')     
@@ -170,9 +169,7 @@
 
 
         <div class="container-fluid">
-         
-      
-
+        
           <div class="form-group row">
             <label for="name" class="col-sm-2 col-form-label">Name</label>
             <div class="col-sm-10">

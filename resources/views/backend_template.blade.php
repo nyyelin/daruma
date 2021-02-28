@@ -130,7 +130,7 @@
   <!-- General JS Scripts -->
   <script src="  {{ asset('backend/assets/js/app.min.js') }}"></script>
   <!-- JS Libraies -->
-  <script src="  {{ asset('backend/assets/bundles/apexcharts/apexcharts.min.js') }}"></script>
+  {{-- <script src="  {{ asset('backend/assets/bundles/apexcharts/apexcharts.min.js') }}"></script> --}}
   <!-- Page Specific JS File -->
   <script src="  {{ asset('backend/assets/js/page/index.js') }}"></script>
   <!-- Template JS File -->
@@ -162,6 +162,8 @@
   {{-- datatable --}}
   <script src="{{asset('plugin/datatables/jquery.dataTables.min.js')}}"></script>
   <script src="{{asset('plugin/datatables/dataTables.bootstrap4.min.js')}}"></script>
+
+  
 
 
   <script type="text/javascript" src="{{ asset('plugin/select2/js/select2.min.js') }}"></script>
@@ -215,7 +217,7 @@
   <!-- Page level custom scripts -->
   {{-- <script src="{{asset('plugin/demo/datatables-demo.js')}}"></script> --}}
 
-  @yield('script')
+ 
    <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-bs4.min.css" rel="stylesheet">
 <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-bs4.min.js"></script>
 <script type="text/javascript">
@@ -223,7 +225,7 @@
         height: 200
     });
 </script>
-
+ @yield('script')
 </body>
 
 
