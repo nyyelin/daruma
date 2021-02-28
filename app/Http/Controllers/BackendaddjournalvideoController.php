@@ -144,7 +144,7 @@ class BackendaddjournalvideoController extends Controller
         $addjournalvideo->save();
 
        
-        return redirect()->route('backendaddjournalvideo.index')->with('msg','Successfully Update Journal Or Video');
+       return redirect()->route('backendjournalvideo.show',$request->detail_id);
     }
 
     /**
@@ -153,9 +153,10 @@ class BackendaddjournalvideoController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Addjournalvideo $addjournalvideo)
+    public function destroy($id,Request $request,Addjournalvideo $addjournalvideo)
     {
+          $addjournalvideo = Addjournalvideo::Find($id);
           $addjournalvideo->delete();
-        return redirect()->route('backendaddjournalvideo.index')->with('msg','Successfully deleted Journal Or Video');
+          return redirect()->route('backendjournalvideo.show',$request->detail_id);
     }
 }

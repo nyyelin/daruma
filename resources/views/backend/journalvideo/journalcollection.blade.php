@@ -64,6 +64,7 @@
                                 <form action="{{route('backendaddjournalvideo.destroy',$addjournalvideo->id)}}" method="post" class="d-inline" onclick="return confirm('Are you sure to delete?')">
                                   @csrf
                                   @method('DELETE')
+                                  <input type="hidden" name="detail_id" value="{{$addjournalvideo->detail_id}}">
                                   <button class="btn btn-danger">Delete</button>
                                   
                                 </form>

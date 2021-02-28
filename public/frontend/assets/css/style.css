@@ -869,6 +869,9 @@ section {
 /*--------------------------------------------------------------
 # Testimonials
 --------------------------------------------------------------*/
+#testimonials {
+  margin-top: -70px;
+}
 .testimonials .testimonial-item {
   box-sizing: content-box;
   padding: 40px;

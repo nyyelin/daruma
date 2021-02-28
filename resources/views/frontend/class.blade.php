@@ -41,9 +41,9 @@
           </div>
         </div>
 
-        <div class="row portfolio-container table-responsive">
+        <div class="row portfolio-container table-responsive ">
 
-          <div class="col-lg-12 col-md-12 portfolio-item filter-all">
+          <div class="col-lg-12 col-md-12 portfolio-item filter-active">
             <!-- <div class="portfolio-wrap"> -->
               <div class="row content" data-aos="fade-up">
           <div class="container">
