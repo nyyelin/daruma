@@ -28,10 +28,12 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/Admin/login', 'BackendController@adminlogin')->name('adminlogin');
 
+Route::middleware('auth')->group(function () {
 
 // backend
 Route::get('/Admin_Profile','BackendController@profile')->name('profile');
 Route::get('/Dashboard','BackendController@dashboard')->name('dashboard');
+Route::post('admin_change_password','BackendController@admin_change_password')->name('admin_change_password');
 
 // Route::get('/Student_Detail','BackendController@detail')->name('detail');
 
@@ -75,6 +77,8 @@ Route::get('/Video_Collection_Add','BackendController@video_collection_add')->na
 
 // staff
 Route::resource('staffs','StaffController');
+Route::post('staff_update','StaffController@staff_update')->name('staff_update');
+
 //slider
 Route::resource('slider','SliderController');
 //Book
@@ -97,6 +101,7 @@ Route::post('/editstore','BackendjournalvideoController@editstore')->name('edits
 //Add Journal_Video
 Route::resource('backendaddjournalvideo','BackendaddjournalvideoController');
 
+});
 // dynamic
 /*Route::get('/Slider','BackendController@slider')->name('slider');*/
 /*Route::get('/Slider_Add','BackendController@slider_add')->name('slideradd');*/
@@ -120,7 +125,7 @@ Route::get('/Class_Review_Add','BackendController@review_add')->name('reviewadd'
 
 
 // frontend
-Route::get('/', 'FrontendController@home')->name('home');
+Route::get('/', 'FrontendController@home')->name('main');
 Route::get('/About_Us', 'FrontendController@about')->name('about');
 Route::get('/Gallery_Class', 'FrontendController@photo')->name('gallery');
 Route::get('/Our_Class', 'FrontendController@class')->name('class');

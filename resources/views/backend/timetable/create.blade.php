@@ -38,23 +38,23 @@
             </div>
 
             <div class="row">
-      <div class="col-lg-6">
-                <div class="form-group">
-                  <label>Fee</label>
-                  <div class="input-group">
-                    <div class="input-group-prepend">
-                      <div class="input-group-text">
-                        $
-                      </div>
-                    </div>
-                    <input type="text" class="form-control currency" name="fee" value="0" value="{{old('fee')}}">
-                  </div>
-                  <div class="form-control-feedback text-danger"> {{$errors->first('fee') }} </div>
-
+                <div class="col-lg-4"> 
+                  <div class="form-group">
+                    <label>Day</label>
+                    <select class="form-control selectric" multiple="" name="day[]">
+                      <optgroup>
+                        @foreach($days as $day)
+                          <option value="{{$day->id}}">{{$day->name}}</option>
+                        @endforeach
+                      </optgroup>
+                    </select>
+                    <div class="form-control-feedback text-danger"> {{$errors->first('day') }} </div>
                 </div>
               </div>
 
-                <div class="col-lg-3">
+      
+
+                <div class="col-lg-4">
                   <div class="form-group">
                     <label>Start Date</label>
                     <input type="date" name="startdate" class="form-control" value="{{old('startdate')}}">
@@ -63,19 +63,12 @@
                   </div>
                 </div>
 
+                <div class="col-lg-4">
+                  <div class="form-group">
+                    <label>End Date</label>
+                    <input type="date" name="enddate" class="form-control" value="{{old('enddate')}}">
+                    <div class="form-control-feedback text-danger"> {{$errors->first('enddate') }} </div>
 
-                <div class="col-lg-3">
-                  
-                   <div class="form-group">
-                    <label>Duration</label>
-                    <select class="form-control selectric" name="duration">
-                      <option>1 Month</option>
-                      <option>2 Months</option>
-                      <option>3 Months</option>
-                      <option>4 Months</option>
-                      <option>5 Months</option>
-                      <option>6 Months</option>
-                    </select>
                   </div>
                 </div>
 
@@ -83,7 +76,7 @@
 
 
             <div class="row">
-              <div class="col-lg-6">
+              <div class="col-lg-4">
                 <div class="form-group">
                   <label>From</label>
                   <div class="input-group">
@@ -100,7 +93,7 @@
               </div>
            
 
-              <div class="col-lg-6">
+              <div class="col-lg-4">
                  <div class="form-group">
                   <label>To</label>
                   <div class="input-group">
@@ -116,26 +109,42 @@
                   </div>
                 </div>
               </div>
+
+              <div class="col-lg-4">
+                  
+                   <div class="form-group">
+                    <label>Duration</label>
+                    <select class="form-control selectric" name="duration">
+                      <option>1 Month</option>
+                      <option>2 Months</option>
+                      <option>3 Months</option>
+                      <option>4 Months</option>
+                      <option>5 Months</option>
+                      <option>6 Months</option>
+                    </select>
+                  </div>
+                </div>
                    
             </div>
 
             <div class="row">
 
 
-                <div class="col-lg-6"> <div class="form-group">
-                      <label>Day</label>
-                      <select class="form-control selectric" multiple="" name="day[]">
-                        <optgroup>
-                          @foreach($days as $day)
-                            <option value="{{$day->id}}">{{$day->name}}</option>
-                          @endforeach
-                        </optgroup>
-                      </select>
-                      <div class="form-control-feedback text-danger"> {{$errors->first('day') }} </div>
-
+              <div class="col-lg-6">
+                <div class="form-group">
+                  <label>Fee</label>
+                  <div class="input-group">
+                    <div class="input-group-prepend">
+                      <div class="input-group-text">
+                        $
+                      </div>
                     </div>
-                </div>
+                    <input type="text" class="form-control currency" name="fee" value="0" value="{{old('fee')}}">
+                  </div>
+                  <div class="form-control-feedback text-danger"> {{$errors->first('fee') }} </div>
 
+                </div>
+              </div>
         
 
 

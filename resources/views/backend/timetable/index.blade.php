@@ -58,6 +58,8 @@
                 @foreach($timetables as $timetable)
                 @php
                   $start_date = date('d / m / Y',strtotime($timetable->start_date));
+                  $end_date = date('d / m / Y',strtotime($timetable->end_date));
+
                 @endphp
                 <tr>
                   
@@ -87,7 +89,7 @@
                   </td>
                  <td>{{$timetable->fees}}</td>
                   <td>
-                    <a href="javascript:void(0)" class="btn btn-info btn_detail" data-name="{{$timetable->name}}" data-level = "{{$timetable->level->name}}" data-start_date = "{{$start_date}}" data-start_time = "{{$timetable->start_time}}" data-end_time = "{{$timetable->end_time}}" data-duration="{{$timetable->duration}}" data-fee = "{{$timetable->fees}}" data-description = "{{$timetable->description}}" data-day="{{$timetable->days}}" data-status="{{$timetable->status}}">Detail</a>
+                    <a href="javascript:void(0)" class="btn btn-info btn_detail" data-name="{{$timetable->name}}" data-level = "{{$timetable->level->name}}" data-start_date = "{{$start_date}}" data-start_time = "{{$timetable->start_time}}" data-end_time = "{{$timetable->end_time}}" data-duration="{{$timetable->duration}}" data-fee = "{{$timetable->fees}}" data-description = "{{$timetable->description}}" data-day="{{$timetable->days}}" data-status="{{$timetable->status}}" data-end_date = "{{$end_date}}">Detail</a>
 
                     <a href="{{route('timetables.edit',$timetable->id)}}" class="btn btn-warning">Edit</a>
 
@@ -125,6 +127,8 @@
       <div class="modal-body">
         <h6 class="d-inline-block">Level : </h6> <p class="detail_level d-inline-block mr-2"></p>( <span class="type ">d</span> )<br>
         <h6 class="d-inline-block">Start_date : </h6> <p class="detail_start_date d-inline-block"></p><br>
+        <h6 class="d-inline-block">End_date : </h6> <p class="detail_end_date d-inline-block"></p><br>
+
         <h6 class="d-inline-block">Time : </h6> <p class="detail_time d-inline-block"></p><br>
         <h6 class="d-inline-block">Days : </h6> <p class="detail_days d-inline-block"></p><br>
         <h6 class="d-inline-block">Duration : </h6> <p class="detail_duration d-inline-block"></p><br>
@@ -158,6 +162,8 @@
       var name = $(this).data('name');
       var level = $(this).data('level');
       var start_date = $(this).data('start_date');
+      var end_date = $(this).data('end_date');
+
       var start_time = $(this).data('start_time');
       var end_time = $(this).data('end_time');
       var duration = $(this).data('duration');
@@ -169,6 +175,8 @@
       $('.detail_name').text(name);
       $('.detail_level').text(level);
       $('.detail_start_date').text(start_date);
+      $('.detail_end_date').text(end_date);
+
       $('.detail_time').text(start_time+' ~ '+end_time);
       $('.detail_duration').text(duration);
       $('.detail_fee').text(fee);

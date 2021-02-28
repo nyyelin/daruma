@@ -20,6 +20,7 @@ class CreateTimetablesTable extends Migration
             $table->string('end_time');
             $table->unsignedBigInteger('level_id');
             $table->date('start_date');
+            $table->date('end_date');
             $table->string('duration');
             $table->string('fees');
             $table->text('description')->nullable();

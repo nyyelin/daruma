@@ -3,12 +3,20 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\User;
+use Illuminate\Support\Facades\Hash;
+use Auth;
+use App\Student;
+use App\Timetable;
+
 
 class BackendController extends Controller
 {
     public function dashboard(){
 
-    	return view('backend.dashboard');
+      $students = Student::all();
+      $timetables = Timetable::all();
+    	return view('backend.dashboard',compact('students','timetables'));
     }
 
 
@@ -30,10 +38,6 @@ class BackendController extends Controller
 
     	return view('backend.accountlist');
     }
-
-
-
-
 
 
      public function class_timetables(){
@@ -161,11 +165,21 @@ class BackendController extends Controller
     	return view('backend.videocollectionadd');
     }
 
-
-
-
-       public function adminlogin(){
+    public function adminlogin(){
 
         return view('auth.login2');
+    }
+
+
+    public function admin_change_password(Request $request)
+    {
+        $request->validate([
+                'password' => 'required|min:8|confirmed',
+        ]);
+
+        $user = User::find(Auth::id());
+        $user->password = Hash::make($request->password);
+        $user->save();
+        return redirect()->back();
     }
 }

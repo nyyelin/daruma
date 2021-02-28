@@ -39,7 +39,7 @@
             </div>
 
             <div class="row">
-                <div class="col-lg-6"> <div class="form-group">
+                <div class="col-lg-4"> <div class="form-group">
                       <label>Day</label>
                       <select class="form-control selectric" multiple="" name="day[]">
                         <optgroup>
@@ -53,7 +53,7 @@
                     </div>
                 </div>
 
-                <div class="col-lg-3">
+                <div class="col-lg-4">
                   <div class="form-group">
                     <label>Start Date</label>
                     <input type="date" name="startdate" class="form-control" value="{{$timetable->start_date}}">
@@ -62,27 +62,23 @@
                   </div>
                 </div>
 
+                <div class="col-lg-4">
+                  <div class="form-group">
+                    <label>End Date</label>
+                    <input type="date" name="enddate" class="form-control" value="{{$timetable->end_date}}">
+                    <div class="form-control-feedback text-danger"> {{$errors->first('enddate') }} </div>
 
-                <div class="col-lg-3">
-                  
-                   <div class="form-group">
-                    <label>Duration</label>
-                    <select class="form-control selectric" name="duration">
-                      <option @if($timetable->duration == '1 Month') selected="selected" @endif>1 Month</option>
-                      <option @if($timetable->duration == '2 Months') selected="selected" @endif>2 Months</option>
-                      <option @if($timetable->duration == '3 Months') selected="selected" @endif>3 Months</option>
-                      <option @if($timetable->duration == '4 Months') selected="selected" @endif>4 Months</option>
-                      <option @if($timetable->duration == '5 Months') selected="selected" @endif>5 Months</option>
-                      <option @if($timetable->duration == '6 Months') selected="selected" @endif>6 Months</option>
-                    </select>
                   </div>
                 </div>
+
+
+                
 
             </div>
 
 
             <div class="row">
-              <div class="col-lg-6">
+              <div class="col-lg-4">
                 <div class="form-group">
                   <label>From</label>
                   <div class="input-group">
@@ -99,7 +95,7 @@
               </div>
            
 
-              <div class="col-lg-6">
+              <div class="col-lg-4">
                  <div class="form-group">
                   <label>To</label>
                   <div class="input-group">
@@ -115,6 +111,21 @@
                   </div>
                 </div>
               </div>
+
+              <div class="col-lg-3">
+                  
+                   <div class="form-group">
+                    <label>Duration</label>
+                    <select class="form-control selectric" name="duration">
+                      <option @if($timetable->duration == '1 Month') selected="selected" @endif>1 Month</option>
+                      <option @if($timetable->duration == '2 Months') selected="selected" @endif>2 Months</option>
+                      <option @if($timetable->duration == '3 Months') selected="selected" @endif>3 Months</option>
+                      <option @if($timetable->duration == '4 Months') selected="selected" @endif>4 Months</option>
+                      <option @if($timetable->duration == '5 Months') selected="selected" @endif>5 Months</option>
+                      <option @if($timetable->duration == '6 Months') selected="selected" @endif>6 Months</option>
+                    </select>
+                  </div>
+                </div>
                    
             </div>
 

@@ -12,6 +12,8 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use App\Payment;
 use App\User;
+use Yajra\DataTables\Facades\DataTables;
+use Auth;
 
 class StudentController extends Controller
 {
@@ -51,20 +53,41 @@ class StudentController extends Controller
         $request->validate([
             'name' => 'required',
             'phone' => 'required|unique:users',
+            'email' => 'unique:users',
             'password' => 'confirmed|min:8',
             ]);
-        $codeno = date('Y').rand(1000000,100);;
+        $timetable_student = 0;
+        $student_codeno = 0;
+
+        $timetable = Timetable::find($request->timetable);
+        if($timetable->students){
+            foreach ($timetable->students as $student) {
+                $timetable_student = $student->codeno;
+            }
+
+            $num = substr($timetable_student, 8,10 );
+            $student_codeno = date('Ymd',strtotime($timetable->start_date)).$num+1;
+
+
+        }else{
+            $student_codeno = date('Ymd',strtotime($timetable->start_date))."001";
+        }
+
+        // dd($student_codeno);
+        // dd('hi');
+
+        // $codeno = date('Ymd',strtotime($timetable->start_date))."001";
         // dd($request);
         $user = new User;
         $user->name = $request->name;
         $user->phone = $request->phone;
-        $user->password = Hash::make($request->password);
+        $user->password = Hash::make('123456789');
         $user->email = $request->email;
         $user->save();
         $user->assignRole('student');
 
         $student = new Student;
-        $student->codeno = $codeno;
+        $student->codeno = $student_codeno;
         $student->user_id = $user->id;
         $student->photo = 'profile/profile_1.png';
         $student->address = $request->address;
@@ -78,7 +101,7 @@ class StudentController extends Controller
         $payment->timetable_id = $request->timetable;
         $payment->amount = $request->installment;
         $payment->status = $request->paymenttype;
-        $payment->staff_id = 1; //Auth::user()->staff->id
+        $payment->user_id = Auth::id(); //Auth::user()->staff->id
         $payment->save();
 
         return redirect()->route('students.index')->with('success','New Student added');
@@ -237,6 +260,7 @@ class StudentController extends Controller
 
     public function getstudentlist(Request $request)
     {
+        // dd($request);
         $level_id = $request->level_id;
         $start_date = $request->start_date;
         $end_date = $request->end_date;

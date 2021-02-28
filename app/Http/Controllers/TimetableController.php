@@ -48,12 +48,16 @@ class TimetableController extends Controller
             'start_time' => 'required',
             'end_time' => 'required',
             'fee' => 'required',
-            'duration' => 'required'
+            'duration' => 'required',
+            'startdate' => 'required',
+            
         ]);
 
         $timetable = new Timetable;
         $timetable->name = $request->name;
         $timetable->start_date = $request->startdate;
+        $timetable->end_date = $request->enddate;
+
         $timetable->start_time = $request->start_time;
         $timetable->end_time = $request->end_time;
         $timetable->fees = $request->fee;
@@ -104,6 +108,8 @@ class TimetableController extends Controller
         $request->validate([
             'name'=>'required',
             'startdate' => 'required',
+            'enddate' => 'required',
+
             'start_time' => 'required',
             'end_time' => 'required',
             'fee' => 'required',
@@ -114,6 +120,8 @@ class TimetableController extends Controller
         $timetable->name = $request->name;
         $timetable->start_date = $request->startdate;
         $timetable->start_time = $request->start_time;
+        $timetable->end_date = $request->enddate;
+
         $timetable->end_time = $request->end_time;
         $timetable->fees = $request->fee;
         $timetable->duration = $request->duration;

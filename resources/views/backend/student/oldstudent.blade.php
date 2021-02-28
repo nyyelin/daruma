@@ -170,7 +170,7 @@
                   </div>
 
                   <input type="checkbox" name="discount" id="inputdiscount" class="discount">
-                  <label class="ml-3" for="inputdiscount">Discount</label>
+                  <label class="ml-3 text-dark" for="inputdiscount">Discount</label>
 
                   <div class="row">
                     <div class="col-md-6">

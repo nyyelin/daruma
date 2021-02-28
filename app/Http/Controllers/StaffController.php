@@ -6,7 +6,7 @@ use App\Staff;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use App\User;
-
+use Auth;
 
 class StaffController extends Controller
 {
@@ -42,7 +42,7 @@ class StaffController extends Controller
         $validator = $request->validate([
             'name'  => ['required', 'string', 'max:255'],
             'email'  => ['required','string','email','max:255','unique:users'],
-            'password'  => ['required','min:6','confirmed'],
+            'password'  => ['required','min:8','confirmed'],
             'phoneno'  => ['required'],
             'address'  => ['required','string'],
             'dob'=>['required','date'],
@@ -156,4 +156,42 @@ class StaffController extends Controller
         return redirect()->route('staffs.index');
 
     }
+
+    public function staff_update(Request $request)
+    {
+       $validator = $request->validate([
+            'name'  => ['required', 'string', 'max:255'],
+            'phone'  => ['required'],
+            'address'  => ['required','string'],
+            'dob'=>['required','date'],
+            'password'  => ['confirmed'],
+        ]);
+
+        $staff = Staff::find(Auth::user()->staff->id);
+        
+       
+        $staff->user->name = $request->name;
+        $staff->user->email = $request->email;
+        // $user->password = Hash::make($request->password);
+        $staff->user->phone = $request->phone;
+        $staff->user->save();
+        $staff->user->assignRole('staff');
+
+        if($request->hasfile('new_photo')){
+            $name = time().'_'.$request->new_photo->getClientOriginalName();
+            $filepath = $request->file('new_photo')->storeAs('profile',$name,'public');
+            $photo = "/storage/".$filepath;
+        }else{
+            $photo = $request->old_photo;
+        }
+
+        $staff->user_id = $staff->user->id;
+        $staff->address = $request->address;
+        $staff->dob = $request->dob;
+        $staff->photo = $photo;
+        $staff->save();
+        return redirect()->back()->with('msg','Successfully update');
+    }
+
+   
 }
