@@ -8,9 +8,9 @@
 
         <ol>
           <li><a href="{{route('home')}}">Home</a></li>
-          <li>{{$journalvideo->name}}</li>
+          <li>{{$addjournalvideo->detail->name}}</li>
         </ol>
-        <h2>{{$journalvideo->name}}</h2>
+        <h2>{{$addjournalvideo->detail->name}}</h2>
 
       </div>
     </section><!-- End Breadcrumbs -->
@@ -22,7 +22,6 @@
         <div class="row">
             <div class="col-lg-4">
 
-          @foreach($addjournalvideos as $addjournalvideo)
           <div class="col-lg-8 entries">
 
             <article class="entry">
@@ -54,11 +53,9 @@
 
 
           </div><!-- End blog entries list -->
-          @endforeach
-
           
 
-        </div>
+</div>
 
       </div>
     </section><!-- End Blog Section -->

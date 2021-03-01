@@ -25,12 +25,12 @@
       <nav class="nav-menu d-none d-lg-block">
         <ul>
           <li class="active"><a href="{{route('main')}}">Home</a></li>
-          <li class=""><a href="{{route('about')}}">About Us</a></li>
+          <li class="{{ Request::is('/About_Us') ? 'active' : '' }}"><a href="{{route('about')}}">About Us</a></li>
           <li class=""><a href="{{route('gallery')}}">Gallery</a></li>
           <li class="drop-down"><a href="">More</a>
             <ul>
               <li><a href="{{route('class')}}">Our Class</a></li>
-              <li><a href="{{route('video')}}">Our Video</a></li>
+              <li><a href="{{route('testingpage')}}">Our Video</a></li>
               <li><a href="{{route('review')}}">Review</a></li>
             </ul>
           </li>

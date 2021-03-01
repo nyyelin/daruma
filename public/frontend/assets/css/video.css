@@ -1,0 +1,71 @@
+#ytvideo,
+#ytvideo2 {
+    width: 100%;
+    height:100%;
+    background-color:;
+
+
+}
+
+
+
+.yt_holder {
+    padding: 10px;
+    float: left;
+    border: 1px solid #e3e3e3;
+    margin-bottom:15px;
+    width:100%; height:auto;
+     padding: 2em 2em 1.6em;
+    background: #fff;
+    margin-bottom: 1em;
+    font-weight: 700;
+}
+
+
+.video ul {
+    float: left;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+}
+
+.video ul li {
+    list-style-type: none;
+    display:block;
+    background: #fff;
+    float: left;
+    width: 100%;
+    margin-bottom: 5px;
+    padding:2px;
+
+}
+
+.video ul li img {
+    width: 120px;
+    float: left;
+    margin-right: 5px;
+    border: 1px solid #999;
+}
+
+.video ul li a {
+    font-family: georgia;
+    text-decoration: none;
+    display: block;
+    color: #000;
+}
+
+.currentvideo {
+  background: #e6e6e6;
+}
+.video li{
+  height: 99px;
+}
+.video a{
+  padding-left:10px;
+  padding-top: 2px;
+}
+.video a:hover{
+  text-decoration: none;
+  color: #000;
+}
+

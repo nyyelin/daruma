@@ -32,7 +32,7 @@
           <h2 class="cardb_title">{{$addjournalvideo->header}}</h2>
           <br>
         <!--   <p class="cardb_text">Demo of pixel perfect pure CSS simple responsive card grid layout</p> -->
-          <button class="btnn card_btn"><a href ="{{route('detailbooks',$journalvideo->id)}}">Read More </a></button>
+          <button class="btnn card_btn"><a href ="{{route('detailbooks',$addjournalvideo->id)}}">Read More </a></button>
 
 
         </div>

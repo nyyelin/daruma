@@ -43,12 +43,17 @@
 
         <div class="row portfolio-container table-responsive ">
 
-          <div class="col-lg-12 col-md-12 portfolio-item filter-active">
+
+
+
+
+
+          <div class="col-lg-12 col-md-12 portfolio-item filter-all ">
             <!-- <div class="portfolio-wrap"> -->
-              <div class="row content" data-aos="fade-up">
+              <div class="row content" >
           <div class="container">
             <div class="bd-example">
-              <table class="table table-bordered table-hove">
+              <table class="table table-bordered table-hover ">
                   <thead>
                 <tr>
                   <th scope="col">CLASS</th>
@@ -129,10 +134,10 @@
 
   <div class="col-lg-12 col-md-12 portfolio-item filter-app">
             <!-- <div class="portfolio-wrap"> -->
-              <div class="row content" data-aos="fade-up">
+              <div class="row content" >
           <div class="container">
             <div class="bd-example">
-              <table class="table table-bordered table-hove">
+              <table class="table table-bordered table-hover">
                   <thead>
                 <tr>
                   <th scope="col">CLASS</th>
@@ -187,12 +192,23 @@
 
 
 
+
+
+
+
+
+
+
+
+
+
+
 <div class="col-lg-12 col-md-12 portfolio-item filter-card">
             <!-- <div class="portfolio-wrap"> -->
-              <div class="row content" data-aos="fade-up">
+              <div class="row content" >
           <div class="container">
             <div class="bd-example">
-              <table class="table table-bordered table-hove">
+              <table class="table table-bordered table-hover">
                   <thead>
                 <tr>
                   <th scope="col">CLASS</th>
@@ -257,10 +273,10 @@
 
 <div class="col-lg-12 col-md-12 portfolio-item filter-web">
             <!-- <div class="portfolio-wrap"> -->
-              <div class="row content" data-aos="fade-up">
+              <div class="row content" >
           <div class="container">
             <div class="bd-example">
-              <table class="table table-bordered table-hove">
+              <table class="table table-bordered table-hover">
                   <thead>
                 <tr>
                   <th scope="col">CLASS</th>
@@ -318,10 +334,10 @@
 
 <div class="col-lg-12 col-md-12 portfolio-item filter-cardd">
             <!-- <div class="portfolio-wrap"> -->
-              <div class="row content" data-aos="fade-up">
+              <div class="row content" >
           <div class="container">
             <div class="bd-example">
-              <table class="table table-bordered table-hove">
+              <table class="table table-bordered table-hover">
                   <thead>
                 <tr>
                   <th scope="col">CLASS</th>
@@ -384,10 +400,10 @@
 
 <div class="col-lg-12 col-md-12 portfolio-item filter-webb">
             <!-- <div class="portfolio-wrap"> -->
-              <div class="row content" data-aos="fade-up">
+              <div class="row content" >
           <div class="container">
             <div class="bd-example">
-              <table class="table table-bordered table-hove">
+              <table class="table table-bordered table-hover">
                   <thead>
                 <tr>
                   <th scope="col">CLASS</th>
