@@ -64,7 +64,7 @@
             <div class="icon-box">
                 <i class="icofont-book"></i>
                 <h5>Special Only Class</h5>
-                <a href="booklatestnew.html">Read More</a>
+                <a href="">Read More</a>
             </div>
           </div>
           <div class="col-lg-4 mt-4 mt-lg-0">
@@ -167,7 +167,8 @@
 
  @foreach($books as $book)
               <div class="col-lg-4 col-md-12 col-12 "> 
-        <section class=" wow fadeInLeft" data-wow-delay="0.1s" style="visibility: visible; -webkit-animation-delay: 0.1s; -moz-animation-delay: 0.1s; animation-delay: 0.1s;">
+        <section class=""   data-aos="fade-down"  data-aos-easing="linear"
+     data-aos-duration="500" >
           <div class="col">
                    <div class="product-card">
         <div class="badge">New</div>
@@ -216,22 +217,23 @@
 
 
 
-    <section id="testimonials" class="testimonials home-other ">
+    <section id="testimonials" class="testimonials home-other " >
       <div class="container">
-            <div class="section-title" data-aos="fade-up">
+            <div class="section-title" >
           <h2><i>Other</i></h2>
           
 
         </div>
 
 
-                <div class="row row-cols-1 row-cols-md-3 g-4">
+                <div class="row row-cols-1 row-cols-md-3 g-4" data-aos="fade-right"  data-aos-offset="200"
+     data-aos-easing="ease-in-sine" >
 
                  
           @foreach($journalvideos as $journalvideo)
 
 
-                    <section class="wow fadeInDown" data-wow-duration="2s">
+                    <section class="" data-aos="flip-left">
                     <div class="col my-3">
 
 

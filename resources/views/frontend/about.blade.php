@@ -23,7 +23,7 @@
  @foreach($abouts as $about)
         <div class="row">
           <div class="col-lg-6">
-            <img src="{{$about->photo}}" class="img-fluid" alt="">
+            <img src="{{$about->photo}}" class="img-fluid" alt="" data-aos="zoom-out">
           </div>
           <div class="col-lg-6 pt-4 pt-lg-0 content">
             <h3>{{$about->name}}</h3>

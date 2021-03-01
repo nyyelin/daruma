@@ -129,7 +129,7 @@ Route::get('/', 'FrontendController@home')->name('main');
 Route::get('/About_Us', 'FrontendController@about')->name('about');
 Route::get('/Gallery_Class', 'FrontendController@photo')->name('gallery');
 Route::get('/Our_Class', 'FrontendController@class')->name('class');
-Route::get('/Our_Video', 'FrontendController@video')->name('video');
+Route::get('/Our_Video', 'FrontendController@testingpage')->name('testingpage');
 Route::get('/Review', 'FrontendController@review')->name('review');
 Route::get('/Our_Contact', 'FrontendController@contact')->name('contact');
 Route::get('/Regular_Class', 'FrontendController@regular_class')->name('regularclass');
@@ -144,5 +144,5 @@ Route::get('/Reading_Story', 'FrontendController@readingstory')->name('readingst
 Route::get('/Student_Information', 'FrontendController@information')->name('information');
 Route::post('/Send-Message','ContactController@sendEmail')->name('contact.send');
 Route::get('/Our_Contact_Test', 'FrontendController@contacttest')->name('contacttest');
-
+/*Route::get('/Our_Testing_Page', 'FrontendController@testingpage')->name('testingpage');*/
 

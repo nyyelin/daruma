@@ -35,6 +35,19 @@
 
 
 
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+  <!--link youtube -->
+  <script type="text/javascript" src="http://code.jquery.com/jquery-latest.min.js"></script>
+  <script type="text/javascript" src="{{asset('frontend/assets/js/jquery.youtubeplaylist.js')}}"></script>
+  <link rel="stylesheet" type="text/css" href="{{asset('frontend/assets/css/video.css')}}">
+
+
+    <script src="https://cdn.rawgit.com/michalsnik/aos/2.1.1/dist/aos.js"></script>
+  <link href="https://cdn.rawgit.com/michalsnik/aos/2.1.1/dist/aos.css" rel="stylesheet">
+  <link rel="stylesheet" href="bower_components/aos/dist/aos.css">
+  <script src="bower_components/aos/dist/aos.js"></script>
   
 
  
@@ -69,7 +82,7 @@
   <!-- Template Main JS File -->
   <script src="{{asset('frontend/assets/js/main.js')}}"></script>
 
-<script type="text/javascript">
+<!-- <script type="text/javascript">
     (function() {
   var Util,
     __bind = function(fn, me){ return function(){ return fn.apply(me, arguments); }; };
@@ -264,6 +277,14 @@ wow = new WOW(
 );
 wow.init();
 
+
+
+
+
+</script> -->
+
+  <script type="text/javascript">
+  AOS.init();
 </script>
 
 </body>

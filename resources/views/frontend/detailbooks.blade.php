@@ -8,9 +8,9 @@
 
         <ol>
           <li><a href="{{route('home')}}">Home</a></li>
-          <li>{{$journalvideo->name}}</li>
+          <li>{{$addjournalvideo->detail->name}}</li>
         </ol>
-        <h2>{{$journalvideo->name}}</h2>
+        <h2>{{$addjournalvideo->detail->name}}</h2>
 
       </div>
     </section><!-- End Breadcrumbs -->
@@ -20,44 +20,25 @@
       <div class="container">
 
         <div class="row">
-            <div class="col-lg-4">
-
-
-          <div class="col-lg-8 entries">
-
-            <article class="entry">
-         
-        
-              <div class="entry-img">
-                <img src="{{$addjournalvideo->photo}}" alt="" class="img-fluid">
-              </div>
-
-              <h2 class="entry-title">
-               {{$addjournalvideo->header}}
-              </h2>
-
-              <div class="entry-meta">
-                <ul>
-                  <li class="d-flex align-items-center" style="color: black;"><i class="icofont-user"></i> {{$addjournalvideo->auth_name}}</li>
-                  <li class="d-flex align-items-center" style="color: black;"><i class="icofont-wall-clock"></i> <time datetime="">{{$addjournalvideo->dob}}</time></li>
-                </ul>
-              </div>
-
-              <div class="entry-content">
-                <p>
+           <div class="col-12" >
+              <h4> {{$addjournalvideo->header}}</h4>          </div>
+              <br>
+           
+           <div class="col-12 mt-3">
+              <img src="{{$addjournalvideo->photo}}" alt="" class="img-fluid img-responsive" width="700px;" height="600px;">
+           </div>
+           <br>
+  
+            <div class="col-12 mt-3">
+             <i class="icofont-user"></i> {{$addjournalvideo->auth_name}} <i class="icofont-wall-clock"></i> {{$addjournalvideo->dob}}
+           </div>
+           <div class="col-12">
+          
+           <p>
                  {!!$addjournalvideo->subject!!}
                 </p>
-              </div>
-      
 
-            </article><!-- End blog entry -->
-
-
-          </div><!-- End blog entries list -->
-
-          
-
-        </div>
+</div>
 
       </div>
     </section><!-- End Blog Section -->

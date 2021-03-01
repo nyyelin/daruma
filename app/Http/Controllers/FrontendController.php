@@ -46,8 +46,7 @@ class FrontendController extends Controller
     	return view('frontend.class',compact('timetables'));
     }
     public function video(){
-      $videos = Video::all();
-    	return view('frontend.video',compact('videos'));
+   
     }
      public function review(){
         $reviews = Review::all();
@@ -76,19 +75,18 @@ class FrontendController extends Controller
      public function books($id,Request $request){
 
       $journalvideo = Journalvideo::Find($id);
-         
+      $addjournalvideos = Addjournalvideo::orderBy('id','DESC')->get();
       $addjournalvideos = Addjournalvideo::where('detail_id',$id)->get(); 
 
     	return view('frontend.books',compact('addjournalvideos','journalvideo'));
     }
 
-    public function detailbooks($id,Request $request){
+    public function detailbooks($id,Request $request,Addjournalvideo $addjournalvideo){
 
-      $journalvideo = Journalvideo::Find($id);
-  
-      $addjournalvideos = Addjournalvideo::where('detail_id',$id)->get(); 
+      $addjournalvideo = Addjournalvideo::Find($id);
 
-      return view('frontend.detailbooks',compact('addjournalvideos','journalvideo'));
+
+      return view('frontend.detailbooks',compact('addjournalvideo'));
     }
 
      public function japanmyanmarday(){
@@ -114,5 +112,10 @@ class FrontendController extends Controller
     public function contacttest(){
 
       return view('frontend.contacttest');
+    }
+     public function testingpage(){
+
+        $videos = Video::all();
+      return view('frontend.testing',compact('videos'));
     }
 }

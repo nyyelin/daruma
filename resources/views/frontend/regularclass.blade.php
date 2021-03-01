@@ -57,8 +57,7 @@
                   </td>
                  <td>{{$timetable->fees}}</td>
                 </tr>
-                @elseif($timetable->status ==1)
-                <h2>No Regular Class</h2>
+              
                 @endif
                 @endforeach
               </tbody>
