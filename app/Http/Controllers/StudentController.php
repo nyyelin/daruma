@@ -14,6 +14,7 @@ use App\Payment;
 use App\User;
 use Yajra\DataTables\Facades\DataTables;
 use Auth;
+use App\Http\Resources\StudentResource;
 
 class StudentController extends Controller
 {
@@ -265,10 +266,23 @@ class StudentController extends Controller
         $start_date = $request->start_date;
         $end_date = $request->end_date;
         $level = Level::find($level_id);
+
+        $students = Student::with(array('timetables'=>function($q) use ($level_id,$start_date,$end_date){
+            $q->where('level_id',$level_id)->where('start_date','>=',$start_date)->where('start_date','<=',$end_date)->with('days')->with('level')->get();
+        }))->with('user')->get();
+
+
+
         $timetables = Timetable::where('level_id',$level_id)->where('start_date','>=',$start_date)->where('start_date','<=',$end_date)->with('students.user')->with('days')->with('level')->get();
+
         $data = ['timetables' => $timetables,
                  'level' => $level];
-        return response()->json($data);
+
+
+        $mystudent =  StudentResource::collection($students);
+        // dd($mystudent);
+        return Datatables::of($mystudent)->addIndexColumn()->toJson();
+        // return response()->json($data);
     }
 
     public function getstudentinstallment(Request $request)
@@ -281,3 +295,4 @@ class StudentController extends Controller
         return response()->json($student);
     }
 }
+

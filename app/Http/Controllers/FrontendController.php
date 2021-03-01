@@ -72,10 +72,25 @@ class FrontendController extends Controller
         $books = Book::Find($id);
     	return view('frontend.latestnew',compact('books'));
     }
-     public function books(){
-      $addjournalvideos = Addjournalvideo::all();
-    	return view('frontend.books',compact('addjournalvideos'));
+
+     public function books($id,Request $request){
+
+      $journalvideo = Journalvideo::Find($id);
+         
+      $addjournalvideos = Addjournalvideo::where('detail_id',$id)->get(); 
+
+    	return view('frontend.books',compact('addjournalvideos','journalvideo'));
     }
+
+    public function detailbooks($id,Request $request){
+
+      $journalvideo = Journalvideo::Find($id);
+  
+      $addjournalvideos = Addjournalvideo::where('detail_id',$id)->get(); 
+
+      return view('frontend.detailbooks',compact('addjournalvideos','journalvideo'));
+    }
+
      public function japanmyanmarday(){
 
     	return view('frontend.japanmyanmarday');
@@ -100,4 +115,6 @@ class FrontendController extends Controller
 
       return view('frontend.contacttest');
     }
+
+    
 }

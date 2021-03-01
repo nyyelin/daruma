@@ -6,9 +6,10 @@
             <div class="row">
                 <div class="col-lg-4 col-md-6 footer-links">
                    Designed by <a href="https://www.facebook.com/SUMyanmarDARUMA" target="_blank">Damura</a>
+                     <br>
                   <i class="bx bxl-facebook">
 
-                    
+                  
                     <a href="https://www.facebook.com/DARUMAJapaneseLanguageSchool" target="_blank">Damura Japanese Language School facebook</a></i>
                    
                     

@@ -76,7 +76,7 @@ class BackendjournalvideoController extends Controller
     {
          $journalvideo = Journalvideo::Find($id);
          
-         $addjournalvideos = Addjournalvideo::all();
+         $addjournalvideos = Addjournalvideo::where('detail_id',$id)->get(); 
 
         return view('backend.journalvideo.journalcollection',compact('journalvideo','addjournalvideos'));
 
@@ -147,4 +147,38 @@ class BackendjournalvideoController extends Controller
         $journalvideo->delete();
          return redirect()->route('backendjournalvideo.index')->with('msg','Successfully deleted Journal Or Video');
     }
+
+
+
+    public function editstore(Request $request, journalvideo $journalvideo)
+    {
+        $journalvideo = Journalvideo::Find($request->edit_id);
+
+         $request->validate([
+            'name'=>'required',
+             'oldimage'=>'required'
+           
+            
+        ]);
+
+         if($request->hasfile('profile')){
+            $name = time().'_'.$request->profile->getClientOriginalName();
+            $filepath = $request->file('profile')->storeAs('profile',$name,'public');
+            $photo = "/storage/".$filepath;
+        }else{
+             $photo = request('oldimage');
+        }
+
+            
+
+        $journalvideo->name = $request->name;
+        $journalvideo->categories = $request->categories;
+        $journalvideo->photo = $photo;
+      
+        $journalvideo->save();
+
+       
+        return redirect()->route('backendjournalvideo.index')->with('msg','Successfully Update Journal Or Video');
+    }
+
 }

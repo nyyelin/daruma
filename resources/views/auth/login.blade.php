@@ -11,20 +11,21 @@
       <div class="user signinBx">
         <div class="imgBx"><img src="{{asset('frontend/assets/img/logo2.jpg')}}" alt="" class="img-fluid img-responsive"></div>
         <div class="formBx">
+
          <form method="POST" action="{{ route('login') }}">
                         @csrf
             <h2>    <a href="{{route('adminlogin')}}" class="
                          ">
                                 <img src="{{asset('frontend/assets/img/admin.png')}}" width="40">
-                                </a>  Sign In</h2>
+                                </a>Student Sign In</h2>
 
              <div class="form-group row">
                             <!-- <label for="email" class="col-md-6 col-form-label text-md-right">{{ __('E-Mail Address') }}</label>
  -->
                       
-                                <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus placeholder="Your Email Address">
+                                <input id="phone" type="number" class="form-control @error('phone') is-invalid @enderror" name="phone" value="{{ old('phone') }}"  autocomplete="phone" autofocus placeholder="Your Phone no">
 
-                                @error('email')
+                                @error('phone')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
@@ -37,7 +38,7 @@
                         <!--     <label for="password" class="col-md-6 col-form-label text-md-right">{{ __('Password') }}</label>
  -->
                             
-                                <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="current-password" placeholder="Password">
+                                <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password"  autocomplete="current-password" placeholder="Password">
 
                                 @error('password')
                                     <span class="invalid-feedback" role="alert">

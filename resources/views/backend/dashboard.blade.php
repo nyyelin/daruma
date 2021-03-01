@@ -334,18 +334,6 @@
   })
 
 
-
-  var html = ''
-  html += `<option`;
-                 if(category == 'journal'){ seleceted }
-  html += `value="journal">Journal</option>
-           <option`; if(category == 'video'){ html+= `seleceted` }
-  html += ` value="video">video</option>`
-    
-
-  html+= `<option>Journal</option>
-  <option>Video</option>`
-    
 </script>
 @endsection
 

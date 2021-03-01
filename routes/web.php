@@ -99,6 +99,7 @@ Route::resource('backendcontact','BackendcontactController');
 Route::resource('backendvideo','BackendvideoController');
 //Journal_Video
 Route::resource('backendjournalvideo','BackendjournalvideoController');
+Route::post('/editstore','BackendjournalvideoController@editstore')->name('editstore');
 //Add Journal_Video
 Route::resource('backendaddjournalvideo','BackendaddjournalvideoController');
 
@@ -136,7 +137,8 @@ Route::get('/Our_Contact', 'FrontendController@contact')->name('contact');
 Route::get('/Regular_Class', 'FrontendController@regular_class')->name('regularclass');
 Route::get('/Online_Class', 'FrontendController@online_class')->name('onlineclass');
 Route::get('/Latest_New/{id}', 'FrontendController@latestnew')->name('latestnew');
-Route::get('/Journal&Videos', 'FrontendController@books')->name('books');
+Route::get('/Journal&Videos/{id}', 'FrontendController@books')->name('books');
+Route::get('/DetailJournal&Videos/{id}', 'FrontendController@detailbooks')->name('detailbooks');
 Route::get('/Japan-Myanmar_Day', 'FrontendController@japanmyanmarday')->name('japanmyanmarday');
 Route::get('/General_Journal', 'FrontendController@generaljournal')->name('generaljournal');
 Route::get('/Knowledge_Video', 'FrontendController@knowledgevideo')->name('knowledgevideo');
@@ -144,5 +146,7 @@ Route::get('/Reading_Story', 'FrontendController@readingstory')->name('readingst
 Route::get('/Student_Information', 'FrontendController@information')->name('information');
 Route::post('/Send-Message','ContactController@sendEmail')->name('contact.send');
 Route::get('/Our_Contact_Test', 'FrontendController@contacttest')->name('contacttest');
+
+Route::post('/student_login', 'FrontendController@studnet_login')->name('studnet_login');
 
 

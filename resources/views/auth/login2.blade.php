@@ -13,9 +13,9 @@
         <div class="formBx">
          <form method="POST" action="{{ route('login') }}">
                         @csrf
-            <h2>    <a href="{{route('adminlogin')}}" class="
+            <h2>    <a href="{{route('login')}}" class="
                          ">
-                                <img src="{{asset('frontend/assets/img/admin.png')}}" width="40">
+                                <img src="{{asset('frontend/assets/img/avatar.jpg')}}" width="40">
                                 </a> Admin Sign In</h2>
 
              <div class="form-group row">

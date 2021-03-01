@@ -18,6 +18,7 @@
 
 
                     <div class="row">
+                      <input type="hidden" name="detail_id" value="{{$addjournalvideo->detail_id}}">
 
 
                       <div class="form-group col-6">

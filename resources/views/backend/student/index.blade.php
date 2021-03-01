@@ -41,7 +41,7 @@
     </div>
 
     <div class="row table">
-      {{-- <div class="col-12">
+      <div class="col-12">
         <div class="card">
           <div class="card-header">
            
@@ -52,10 +52,10 @@
                 </div>
               </div>
        
-            </div>
+          </div>
           <div class="card-body">
             <div class="table-responsive">
-              <table class="table table-striped" id="onwaytable">
+              <table class="table table-striped" id="student_list">
                 <thead>
                   <tr>
                     <th>#</th>
@@ -75,7 +75,7 @@
           </div>
         </div>
       
-    </div> --}}
+    </div>
 
   </div>
 </section>
@@ -139,193 +139,213 @@
       var j =1;
       
       
-      $.post('/getstudentlist',{level_id:level_id,start_date:start_date,end_date:end_date},function(res) {
+    //   $.post('/getstudentlist',{level_id:level_id,start_date:start_date,end_date:end_date},function(res) {
 
-        if(res){
-        html+=`<div class="col-12">
-                <div class="card">
-                  <div class="card-header">
+    //     if(res){
+    //     html+=`<div class="col-12">
+    //             <div class="card">
+    //               <div class="card-header">
                    
-                    <div class="col-lg-10 "> <h4>${res.level.name} Student List</h4></div>
-                     <div class="col-lg-2 ">   
-                        <div class="form-group mt-2">
+    //                 <div class="col-lg-10 "> <h4>${res.level.name} Student List</h4></div>
+    //                  <div class="col-lg-2 ">   
+    //                     <div class="form-group mt-2">
                    
-                        </div>
-                      </div>
+    //                     </div>
+    //                   </div>
                
-                    </div>
-                  <div class="card-body">
-                    <div class="table-responsive">
-                      <table class="table table-striped" id="table-1">
-                        <thead>
-                          <tr>
-                            <th>#</th>
-                            <th class="text-center">Codeno</th>
-                            <th>Student Name</th>
-                            <th>Phone Number</th>
-                            <th>TimeTable</th>
-                            <th>Day/Time</th>
-                            <th>Level</th>
-                            <th>Action</th>
-                          </tr>
-                        </thead>
-                        <tbody>`;
+    //                 </div>
+    //               <div class="card-body">
+    //                 <div class="table-responsive">
+    //                   <table class="table table-striped" id="table-1">
+    //                     <thead>
+    //                       <tr>
+    //                         <th>#</th>
+    //                         <th class="text-center">Codeno</th>
+    //                         <th>Student Name</th>
+    //                         <th>Phone Number</th>
+    //                         <th>TimeTable</th>
+    //                         <th>Day/Time</th>
+    //                         <th>Level</th>
+    //                         <th>Action</th>
+    //                       </tr>
+    //                     </thead>
+    //                     <tbody>`;
         
-          $.each(res.timetables,function(i,v){
-            $.each(v.students,function(a,b){
-              if(b.pivot.status == 'Active'){
-                html+=`<tr>
-                        <td>
-                          ${j++}
-                        </td>
-                        <td>
-                          ${b.codeno}
-                        <td class="align-middle">
-                          ${b.user.name}
-                        </td>
+    //       $.each(res.timetables,function(i,v){
+    //         $.each(v.students,function(a,b){
+    //           if(b.pivot.status == 'Active'){
+    //             html+=`<tr>
+    //                     <td>
+    //                       ${j++}
+    //                     </td>
+    //                     <td>
+    //                       ${b.codeno}
+    //                     <td class="align-middle">
+    //                       ${b.user.name}
+    //                     </td>
 
-                        <td class="align-middle">
-                          ${b.user.name}
-                        </td>
-                        <td class="align-middle">
-                          ${v.name}<br>
-                          <p class="badge badge-dark text-white">${v.start_date}</p> 
-                        </td>
+    //                     <td class="align-middle">
+    //                       ${b.user.name}
+    //                     </td>
+    //                     <td class="align-middle">
+    //                       ${v.name}<br>
+    //                       <p class="badge badge-dark text-white">${v.start_date}</p> 
+    //                     </td>
                           
-                        <td class="align-middle">`;
+    //                     <td class="align-middle">`;
 
-            $.each(v.days,function(c,d){
-              html+=`${d.name}`;
-              if(v.days.length - 1 == c){
-                html+=` `;
-              }else{
-                html+=` , `
-              }
+    //         $.each(v.days,function(c,d){
+    //           html+=`${d.name}`;
+    //           if(v.days.length - 1 == c){
+    //             html+=` `;
+    //           }else{
+    //             html+=` , `
+    //           }
               
-            })
-                  var route = "{{route('students.show',':id')}}";
-                  route= route.replace(':id',b.id);
-                  html+=`<br>
-                          <p class="badge badge-dark text-white">
-                          ${v.start_time} - ${v.end_time}
-                          </p>
-                        </td>
+    //         })
+    //               var route = "{{route('students.show',':id')}}";
+    //               route= route.replace(':id',b.id);
+    //               html+=`<br>
+    //                       <p class="badge badge-dark text-white">
+    //                       ${v.start_time} - ${v.end_time}
+    //                       </p>
+    //                     </td>
 
-                        <td>
-                          ${v.level.name}
-                        </td>
+    //                     <td>
+    //                       ${v.level.name}
+    //                     </td>
                         
-                        <td><a href="${route}" class="btn btn-primary">Detail</a>
-                            <a href="javascript:void(0)" class="btn btn-info btn_installment" data-student_id="${b.id}" data-timetable_id = "${v.id}">Installment</a></td>
+    //                     <td><a href="${route}" class="btn btn-primary">Detail</a>
+    //                         <a href="javascript:void(0)" class="btn btn-info btn_installment" data-student_id="${b.id}" data-timetable_id = "${v.id}">Installment</a></td>
 
-                      </tr>`
-              }
-            })
-          })
-          html+=`   </tbody>
-                  </table>
-                </div>
-              </div>
-
-
-            </div>
-          </div>`;
-          $('.table').html(html);
-        }
+    //                   </tr>`
+    //           }
+    //         })
+    //       })
+    //       html+=`   </tbody>
+    //               </table>
+    //             </div>
+    //           </div>
 
 
-      //   var url = '/getstudentlist';
-      //   $('#onwaytable').dataTable({
+    //         </div>
+    //       </div>`;
+    //       $('.table').html(html);
+    //   }
+    // })
 
-      //     "lengthMenu": [[10, 25, 50, 100, 200 , 300 , 400 , 500], [10, 25, 50, 100, 200 , 300 , 400 , 500]],
-      //     "pageLength": 500,
-      //     "bPaginate": true,
-      //     "bLengthChange": true,
-      //     "bFilter": true,
-      //     "bSort": true,
-      //     "bInfo": true,
-      //     "bAutoWidth": true,
-      //     "bStateSave": true,
 
-      //     "aoColumnDefs": [
-      //     { 'bSortable': false, 'aTargets': [ -1,0] },
+        var url = '/getstudentlist';
+        $('#student_list').dataTable({
+
+          "lengthMenu": [[10, 25, 50, 100, 200 , 300 , 400 , 500], [10, 25, 50, 100, 200 , 300 , 400 , 500]],
+          "pageLength": 500,
+          "bPaginate": true,
+          "bLengthChange": true,
+          "bFilter": true,
+          "bSort": true,
+          "bInfo": true,
+          "bAutoWidth": true,
+          "bStateSave": true,
+
+          "aoColumnDefs": [
+          { 'bSortable': false, 'aTargets': [ -1,0] },
          
-      //     ],
-      //     "bserverSide": true,
-      //     "bprocessing":true,
-      //     "ajax": {
-      //       data : {
+          ],
+          "bserverSide": true,
+          "bprocessing":true,
+          "ajax": {
+            data : {
               
-      //         'level_id':level_id,
-      //         'start_date':start_date,
-      //         'end_date':end_date
+              'level_id':level_id,
+              'start_date':start_date,
+              'end_date':end_date
 
-      //       },
-      //       url: url,
-      //       type: "POST",
-      //       dataType:'json',
-      //     },
+            },
+            url: url,
+            type: "POST",
+            dataType:'json',
+          },
          
-      //     "columns": [
-      //     {"data":'DT_RowIndex'},
-      //     {"data": null,
-      //       render:function(data, type, full, meta){
-              
-      //         return `<span class="d-block">Hello</span>`
-      //       }
-      //     },
-      //     {
-      //       "data":null,
-      //       render:function(data){
-      //         return `<a href="${wayediturl}" class="btn btn-sm btn-warning">{{ __("Edit")}}</a>`
-      //       }
-      //     },
-      //     {
-      //       "data":null,
-      //       render:function(data){
-      //         return `<a href="${wayediturl}" class="btn btn-sm btn-warning">{{ __("Edit")}}</a>`
-      //       }
-      //     },
-      //     {
-      //       "data":null,
-      //       render:function(data){
-      //         return `<a href="${wayediturl}" class="btn btn-sm btn-warning">{{ __("Edit")}}</a>`
-      //       }
-      //     },
-
-      //     {
-      //      "data":null,
-      //       render:function(data){
-      //         return `<a href="${wayediturl}" class="btn btn-sm btn-warning">{{ __("Edit")}}</a>`
-      //       }
-      //     },
+          "columns": [
+          {"data":'DT_RowIndex'},
           
-      //    ],
+          {
+            "data":null,
+            render:function(data){
+              return data.student_codeno
+              
+            }
+          },
+
+          {
+            "data":null,
+            render:function(data){
+              return data.student_name
+              
+            }
+          },
+          {
+            "data":null,
+            render:function(data){
+              return data.student_phone
+              
+            }
+          },
+          {
+            "data":null,
+            render:function(data){
+              return `<span class="mt-2">${data.timetable_name}</span><br><p class="badge badge-dark text-white">${formatDate(data.timetable_start_date)}</p> `
+              
+            }
+          },
+
+          {
+           "data":null,
+            render:function(data){
+              return `<span class="mt-2">${data.timetable_days}</span><br><p class="badge badge-dark text-white">${data.timetable_start_time} ~ ${data.timetable_end_time}</p> `
+              
+            }
+          },
+
+          {
+           "data":null,
+            render:function(data){
+              return data.timetable_level
+              
+            }
+          },
+
+          {
+           "data":null,
+            render:function(data){
+              var route = "{{route('students.show',':id')}}";
+                  route= route.replace(':id',data.id);
+              return `<a href="${route}" class="btn btn-primary">Detail</a>
+                      <a href="javascript:void(0)" class="btn btn-info btn_installment" data-student_id="${data.id}" data-timetable_id = "${data.timetable_id}">Installment</a>`
+              
+            }
+          },
+          
+         ],
 
 
-      //    "info":false
-      //   });
+         "info":false
+        });
         
       })
-    })
+    
 
 
 
 
-
-
-
-
-
-
-
-    $(".table").on('click','.btn_installment',function(){
+    $("#student_list").on('click','.btn_installment',function(){
       // alert('message?: DOMString');
       var student_id = $(this).data('student_id');
       var timetable_id = $(this).data('timetable_id');
       var html = '';
       $.post('getstudentinstallment',{student_id:student_id,timetable_id:timetable_id},function(data){
-        // console.log(data);
+        console.log(data);
         if(data){
           console.log(data.payments);
           $.each(data.payments,function(i,v){
@@ -347,6 +367,19 @@
         }
       })
     })
+
+    function formatDate (input) {
+        var datePart = input.match(/\d+/g),
+        year = datePart[0].substring(0,4), // get only two digits
+        month = datePart[1], day = datePart[2];
+        return day+'-'+month+'-'+year;
+      }
+
+    function thousands_separators(num){
+      var num_parts = num.toString().split(".");
+      num_parts[0] = num_parts[0].replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+      return num_parts.join(".");
+    }
   })
 </script>
 @endsection
