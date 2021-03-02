@@ -19,7 +19,8 @@ class CreateVideosTable extends Migration
             $table->text('auth_name');
             $table->date('dob');
             $table->text('subject');
-            $table->text('photo')->nullable();
+            $table->text('videourl');
+           /* $table->text('photo')->nullable();*/
             $table->softDeletes();
             $table->timestamps();
         });

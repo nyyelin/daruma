@@ -7,15 +7,15 @@
       <div class="container">
 
         <ol>
-          <li><a href="{{route('home')}}">Home</a></li>
+          <li><a href="{{route('main')}}">Home</a></li>
           <li>Review</li>
         </ol>
         <h2>Review</h2>
 
       </div>
     </section><!-- End Breadcrumbs -->
-
-    <section id="testimonials" class="testimonials">
+<br>
+    <section id="testimonials" class="testimonials mt-1 ">
       <div class="container">
 
  @foreach($subjects as $subject)

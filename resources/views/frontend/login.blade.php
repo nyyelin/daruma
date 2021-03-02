@@ -1,6 +1,7 @@
     @extends('frontend_template')
 @section('content')
 
+
   <section>
     <div class="container">
       <div class="row">
@@ -15,13 +16,14 @@
             <input type="text" name="" placeholder="Phone Number" />
             <input type="password" name="" placeholder="Password" />
             <input type="submit" name="" value="Login" />
-            <p class="signup">
+            <p class="signup" >
               Don't have an account ?
-              <a href="https://www.facebook.com/SUMyanmarDARUMA" target="_blank" >Contact Me.</a>
+              <a href="https://www.facebook.com/SUMyanmarDARUMA" target="_blank">Contact Me.</a>
             </p>
           </form>
         </div>
       </div>
+
    
     </div></div>
      <div class="col-lg-2"></div>

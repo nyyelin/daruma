@@ -21,7 +21,7 @@
             <div class="carousel-container">
               <div class="carousel-content">
                 <h2 class="animate__animated animate__fadeInDown"><!-- Welcome to <span>Durma</span> -->{{$slider->name}}</h2>
-                <p class="animate__animated animate__fadeInUp">{{$slider->subject}}</p>
+                <p class="animate__animated animate__fadeInUp">{!!$slider->subject!!}</p>
                 
               </div>
             </div>

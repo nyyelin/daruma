@@ -21,6 +21,7 @@ class CreateAddjournalvideosTable extends Migration
             $table->date('dob');
             $table->text('photo')->nullable();
             $table->text('subject');
+            $table->text('videourl');
             $table->softDeletes();
             $table->timestamps();
         });

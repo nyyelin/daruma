@@ -38,6 +38,20 @@
                        
                     </div>
 
+                             <div class="row">
+
+
+
+
+               <div class="form-group col-12">
+                      <label for="videourl">Video URL</label>
+                      <input id="videourl" type="text" class="form-control" name="videourl" autofocus placeholder="Enter a Video URL"  value="{{$addjournalvideo->videourl}}">
+                      <div class="form-control-feedback text-danger"> {{$errors->first('videourl') }} </div>
+                    </div>
+
+                   
+                       
+                    </div>
 
 
                    <div class="row">

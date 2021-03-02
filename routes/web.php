@@ -143,9 +143,9 @@ Route::get('/Japan-Myanmar_Day', 'FrontendController@japanmyanmarday')->name('ja
 Route::get('/General_Journal', 'FrontendController@generaljournal')->name('generaljournal');
 Route::get('/Knowledge_Video', 'FrontendController@knowledgevideo')->name('knowledgevideo');
 Route::get('/Reading_Story', 'FrontendController@readingstory')->name('readingstory');
-Route::get('/Student_Information', 'FrontendController@information')->name('information');
+Route::get('/Student_Information', 'FrontendController@stuinformation')->name('stuinformation');
 Route::post('/Send-Message','ContactController@sendEmail')->name('contact.send');
 Route::get('/Our_Contact_Test', 'FrontendController@contacttest')->name('contacttest');
-
-Route::get('/Our_Testing_Page', 'FrontendController@testingpage')->name('testingpage');
+/*
+Route::get('/Our_Testing_Page', 'FrontendController@testingpage')->name('testingpage');*/
 

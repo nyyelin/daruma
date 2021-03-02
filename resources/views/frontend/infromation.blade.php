@@ -8,10 +8,10 @@
       <div class="container">
 
         <ol>
-          <li><a href="{{route('home')}}">Home</a></li>
+          <li><a href="{{route('main')}}">Home</a></li>
           <li>Profile</li>
         </ol>
-        <h2>Student Profile</h2>
+        <h2> Profile For Your Information</h2>
 
       </div>
     </section><!-- End Breadcrumbs -->
@@ -23,7 +23,7 @@
    <div class="row">
      <div class="col-lg-4">
        <div class="wrapper">
-  <div class="box">
+  <div class="boxx">
     <div class="js--image-preview"></div>
     <div class="upload-options">
       <label>

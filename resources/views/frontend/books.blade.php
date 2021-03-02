@@ -7,7 +7,7 @@
       <div class="container">
 
         <ol>
-          <li><a href="{{route('home')}}">Home</a></li>
+          <li><a href="{{route('main')}}">Home</a></li>
           <li>{{$journalvideo->name}}</li>
         </ol>
         <h2>{{$journalvideo->name}}</h2>

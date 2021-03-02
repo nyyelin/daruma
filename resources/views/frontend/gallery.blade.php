@@ -7,7 +7,7 @@
       <div class="container">
 
         <ol>
-          <li><a href="{{route('home')}}">Home</a></li>
+          <li><a href="{{route('main')}}">Home</a></li>
           <li>Gallery</li>
         </ol>
         <h2>Gallery</h2>
@@ -25,7 +25,7 @@
 
 @foreach($gallerys as $gallery)
 @if($gallery->categories=='Class Photo')
-          <div class="col-lg-4 col-md-6 portfolio-item filter-app">
+          <div class="col-lg-4 col-md-6 portfolio-item filter-app " data-aos="zoom-in">
             <div class="portfolio-wrap">
               <img src="{{$gallery->photo}}" class="img-fluid" alt="">
               <div class="portfolio-info">
@@ -65,7 +65,7 @@
           <h2>Other Photo</h2>
         </div>
 
-        <div class="owl-carousel clients-carousel">
+        <div class="owl-carousel clients-carousel" data-aos="zoom-in">
 @foreach($gallerys as $gallery)
 @if($gallery->categories=='Other Photo')
           <img src="{{$gallery->photo}}" alt="">

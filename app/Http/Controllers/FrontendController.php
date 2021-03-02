@@ -75,7 +75,7 @@ class FrontendController extends Controller
      public function books($id,Request $request){
 
       $journalvideo = Journalvideo::Find($id);
-      $addjournalvideos = Addjournalvideo::orderBy('id','DESC')->get();
+     
       $addjournalvideos = Addjournalvideo::where('detail_id',$id)->get(); 
 
     	return view('frontend.books',compact('addjournalvideos','journalvideo'));
@@ -105,9 +105,9 @@ class FrontendController extends Controller
 
     	return view('frontend.readingstory');
     }
-    public function information(){
+    public function stuinformation(){
 
-    	return view('frontend.information');
+    	return view('frontend.infromation');
     }
     public function contacttest(){
 

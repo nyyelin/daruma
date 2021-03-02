@@ -48,7 +48,7 @@
                             <td>{{$video->auth_name}}</td>
                            
                               <td>{{$video->dob}}</td>
-                              <td style="width: 600px;">{!!$video->subject!!}</td>
+                              <td >{!!$video->subject!!}</td>
                              
                               <td>
                                  <a href="{{route('backendvideo.edit',$video->id)}}" class="btn btn-warning my-3">E d i t</a>

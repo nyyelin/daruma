@@ -17,11 +17,25 @@
               
                     <div class="row">
 
-                        <div class="form-group col-6">
+                       <!--  <div class="form-group col-6">
                       <label for="profile"> New Video</label>
                       <input id="profile" type="file" class="form-control-file" name="profile"  >
                        <input type="hidden" name="oldimage" value="{{$video->photo}}">
+                    </div> -->
+
+               <!--               <div class="form-group col-6">
+                      <label for="name">Header</label>
+                      <input id="name" type="text" class="form-control" name="name" autofocus placeholder="Enter Name" value="{{$video->name}}">
+                      <div class="form-control-feedback text-danger"> {{$errors->first('name') }} </div>
                     </div>
+ -->
+
+                            <div class="form-group col-6">
+                      <label for="videourl">Video URL</label>
+                      <input id="videourl" type="text" class="form-control" name="videourl" autofocus placeholder="Enter a Video URL" value="{{$video->videourl}}">
+                      <div class="form-control-feedback text-danger"> {{$errors->first('videourl') }} </div>
+                    </div>
+
 
 
                             <div class="form-group col-6">

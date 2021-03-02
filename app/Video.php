@@ -9,7 +9,7 @@ class Video extends Model
 {
      use SoftDeletes;
     protected $table = 'videos';
-    protected $fillable=[ 'name','auth_name','dob','subject','photo'];
+    protected $fillable=[ 'name','auth_name','dob','subject','videourl'];
 
     public function user($value='')
     {

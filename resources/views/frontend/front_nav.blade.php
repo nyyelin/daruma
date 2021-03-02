@@ -42,13 +42,13 @@
               
               <ul>
                 <li>
-                  <a class="dropdown-item" href=""><i class="fas fa-user"></i>Profile</a>
+                  <a class="dropdown-item" href="{{route('stuinformation')}}"><i class="icofont-street-view"></i> Profile</a>
                 </li>
                 <li>
                   <a class="dropdown-item" href="{{ route('logout') }}"
                      onclick="event.preventDefault();
                                    document.getElementById('logout-form').submit();">
-                                   <i class="fas fa-sign-out-alt"></i>
+                                  <i class="icofont-exit"></i>
                       {{ __('Logout') }}
                   </a>
 
