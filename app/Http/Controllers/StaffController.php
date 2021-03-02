@@ -164,18 +164,18 @@ class StaffController extends Controller
             'phone'  => ['required'],
             'address'  => ['required','string'],
             'dob'=>['required','date'],
-            'password'  => ['confirmed'],
+           
         ]);
 
         $staff = Staff::find(Auth::user()->staff->id);
-        
+        // dd($request);
        
         $staff->user->name = $request->name;
         $staff->user->email = $request->email;
-        // $user->password = Hash::make($request->password);
+        $staff->user->password = Hash::make($request->password);
         $staff->user->phone = $request->phone;
         $staff->user->save();
-        $staff->user->assignRole('staff');
+        // $staff->user->assignRole('staff');
 
         if($request->hasfile('new_photo')){
             $name = time().'_'.$request->new_photo->getClientOriginalName();

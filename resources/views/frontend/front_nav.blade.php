@@ -42,7 +42,7 @@
               
               <ul>
                 <li>
-                  <a class="dropdown-item" href=""><i class="fas fa-user"></i>Profile</a>
+                  <a class="dropdown-item" href="{{route('information')}}"><i class="fas fa-user"></i>Profile</a>
                 </li>
                 <li>
                   <a class="dropdown-item" href="{{ route('logout') }}"

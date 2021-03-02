@@ -286,6 +286,7 @@ wow.init();
   <script type="text/javascript">
   AOS.init();
 </script>
+@yield('script')
 
 </body>
 
