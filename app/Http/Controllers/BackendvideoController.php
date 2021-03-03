@@ -43,7 +43,7 @@ class BackendvideoController extends Controller
          $validator = $request->validate([
             'name'  => ['required', 'string', 'max:255'],
             'auth_name'  => ['required', 'string', 'max:255'],
-            
+              'videourl'  => ['required', 'string', 'max:255'],
             'dob'=>['required','date'],
             'subject'  => ['required','string']
            
@@ -51,13 +51,7 @@ class BackendvideoController extends Controller
      
         
 
-      if($request->hasfile('profile')){
-            $name = time().'_'.$request->profile->getClientOriginalName();
-            $filepath = $request->file('profile')->storeAs('profile',$name,'public');
-            $photo = "/storage/".$filepath;
-        }else{
-            $photo = "profile/profile_1.png";
-        }
+    
 
 
         $video = new Video;
@@ -65,7 +59,7 @@ class BackendvideoController extends Controller
         $video->auth_name = $request->auth_name;
         $video->dob = $request->dob;
         $video->subject = $request->subject;
-        $video->photo = $photo; 
+        $video->videourl = $request->videourl; 
         $video->save();
         
         return redirect()->route('backendvideo.index');
@@ -116,26 +110,19 @@ class BackendvideoController extends Controller
          $request->validate([
             'name'=>'required',
             'auth_name'=> 'required',
+             'videourl'=> 'required',
             'dob'=> 'required',
             'subject' => 'required'
         ]);
 
 
-           if($request->hasfile('profile')){
-            $name = time().'_'.$request->profile->getClientOriginalName();
-            $filepath = $request->file('profile')->storeAs('profile',$name,'public');
-            $photo = "/storage/".$filepath;
-        }else{
-             $photo = request('oldimage');
-        }
-
-
+   
 
         $video->name = $request->name;
         $video->auth_name = $request->auth_name;
         $video->dob = $request->dob; 
         $video->subject = $request->subject;
-        $video->photo = $photo; 
+        $video->videourl = $request->videourl;
         $video->save();
 
        

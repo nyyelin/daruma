@@ -44,6 +44,7 @@ class BackendaddjournalvideoController extends Controller
         $validator = $request->validate([
             'auth_name'  => ['required', 'string', 'max:255'],
              'header'  => ['required', 'string', 'max:255'],
+              'videourl'  => ['required', 'string', 'max:255'],
             'dob'=>['required','date'],
             'subject'  => ['required','string'],
            
@@ -64,6 +65,7 @@ class BackendaddjournalvideoController extends Controller
         $addjournalvideo = new Addjournalvideo;
         $addjournalvideo->detail_id = $request->detail_id;
         $addjournalvideo->auth_name = $request->auth_name;
+        $addjournalvideo->videourl = $request->videourl;
         $addjournalvideo->header = $request->header;
         $addjournalvideo->dob = $request->dob;
         $addjournalvideo->photo = $photo;
@@ -119,6 +121,7 @@ class BackendaddjournalvideoController extends Controller
             'auth_name'=>'required',
             'header'=>'required',
             'dob'=>'required',
+            'videourl'=>'required',
             'subject'=>'required'
             
         ]);
@@ -136,6 +139,7 @@ class BackendaddjournalvideoController extends Controller
             
         $addjournalvideo->detail_id = $request->detail_id;
         $addjournalvideo->auth_name = $request->auth_name;
+        $addjournalvideo->videourl = $request->videourl;
         $addjournalvideo->header = $request->header;
         $addjournalvideo->dob = $request->dob;
         $addjournalvideo->subject = $request->subject;

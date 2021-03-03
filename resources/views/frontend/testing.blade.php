@@ -82,7 +82,7 @@
       <div class="container">
 
         <ol>
-          <li><a href="{{route('home')}}">Home</a></li>
+          <li><a href="{{route('main')}}">Home</a></li>
           <!-- <li>Blog</li> -->
           <li>Video</li>
         </ol>
@@ -112,7 +112,7 @@
 
         <ul class="demo2" style="overflow: scroll; height: 298px; background-color:#f7f7f7; ">
              @foreach($videos as $video)
-            <li><a href="https://www.youtube.com/watch?v=0JwaYorDRzE">{{$video->name}}</a></li>
+            <li><a href="{{$video->videourl}}">{{$video->name}}</a></li>
 
            @endforeach
         </ul>

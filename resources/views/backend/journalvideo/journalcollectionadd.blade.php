@@ -35,7 +35,7 @@
 
 
                       <div class="form-group col-6">
-                      <label for="profile">Detail Photo (OR) Video</label>
+                      <label for="profile">Journal & Video Photo</label>
                       <input id="profile" type="file" class="form-control-file" name="profile" value="{{old('profile')}}">
                     </div>
 
@@ -45,6 +45,21 @@
                       <label for="auth_name">Auth_Name</label>
                       <input id="auth_name" type="text" class="form-control" name="auth_name" autofocus placeholder="Enter a Author Name"  value="{{old('auth_name')}}">
                       <div class="form-control-feedback text-danger"> {{$errors->first('auth_name') }} </div>
+                    </div>
+
+                   
+                       
+                    </div>
+
+                    <div class="row">
+
+
+
+
+               <div class="form-group col-12">
+                      <label for="videourl">Video URL</label>
+                      <input id="videourl" type="text" class="form-control" name="videourl" autofocus placeholder="Enter a Video URL"  value="{{old('videourl')}}">
+                      <div class="form-control-feedback text-danger"> {{$errors->first('videourl') }} </div>
                     </div>
 
                    

@@ -253,7 +253,7 @@ class StudentController extends Controller
         $payment->discount = $request->discount;
         $payment->note = $request->note;
         $payment->status = $request->paymenttype;
-        $payment->staff_id = 1; //Auth::user()->staff->id
+        $payment->user_id = Auth::id(); //Auth::user()->staff->id
         $payment->save();
         return redirect()->route('students.index')->with('success','Successfully added');
 

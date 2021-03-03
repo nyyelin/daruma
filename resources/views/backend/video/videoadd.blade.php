@@ -15,9 +15,16 @@
               
                     <div class="row">
 
-                        <div class="form-group col-6">
+                     <!--    <div class="form-group col-6">
                       <label for="profile">Video</label>
                       <input id="profile" type="file" class="form-control-file" name="profile" value="{{old('profile')}}" >
+                    </div> -->
+
+
+                           <div class="form-group col-6">
+                      <label for="videourl">Video URL</label>
+                      <input id="videourl" type="text" class="form-control" name="videourl" autofocus placeholder="Enter a Video URL" value="{{old('videourl')}}">
+                      <div class="form-control-feedback text-danger"> {{$errors->first('videourl') }} </div>
                     </div>
 
 

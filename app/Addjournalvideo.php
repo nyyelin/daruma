@@ -9,7 +9,7 @@ class Addjournalvideo extends Model
 {
      use SoftDeletes;
     protected $table = 'addjournalvideos';
-    protected $fillable=[ 'detail_id','auth_name','header','dob','photo','subject'];
+    protected $fillable=[ 'detail_id','auth_name','header','dob','photo','subject','videourl'];
 
     public function user($value='')
     {

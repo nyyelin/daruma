@@ -20,7 +20,7 @@ use Carbon;
 use App\Student;
 use Auth;
 use Illuminate\Support\Facades\Hash;
-
+use App\User;
 
 class FrontendController extends Controller
 {
@@ -79,7 +79,7 @@ class FrontendController extends Controller
      public function books($id,Request $request){
 
       $journalvideo = Journalvideo::Find($id);
-      $addjournalvideos = Addjournalvideo::orderBy('id','DESC')->get();
+     
       $addjournalvideos = Addjournalvideo::where('detail_id',$id)->get(); 
 
     	return view('frontend.books',compact('addjournalvideos','journalvideo'));
@@ -111,8 +111,10 @@ class FrontendController extends Controller
     }
     public function information(){
 
+
       $student = Student::where('user_id',Auth::id())->first();
     	return view('frontend.information',compact('student'));
+
     }
     public function contacttest(){
 
@@ -161,6 +163,38 @@ class FrontendController extends Controller
 
         $student->save();
         return redirect()->back()->with('msg','Successfully update');
+    }
+
+
+
+    public function reset_password(Request $request)
+    {
+      $request->validate([
+          'email' => 'required',
+          'password' => 'required|min:8|confirmed',
+      ]);
+      $data = [
+          'email' => $request->email,
+          'msg' => 'Your email does not exit in our record',
+      ];
+      $email = $request->email;
+      $users = User::all();
+      $array = array();
+      foreach ($users as $user) {
+        if($user->email == $request->email){
+          array_push($array,$user->id);
+        }
+      }
+      if(count($array) == 0){
+        return redirect()->back()->with('failed','Your email does not exit in our record')->with('email',$email);
+      }else{
+        $user = User::find($array[0]);
+        $user->password = Hash::make($request->password);
+        $user->save();
+        return redirect()->route('login');
+      }
+
+
     }
     
 

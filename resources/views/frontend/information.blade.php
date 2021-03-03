@@ -22,13 +22,13 @@
 
    <div class="row">
      <div class="col-lg-4">
-       <div class="wrapper">
+      
 
 <form class="" action="{{route('update_information')}}" method="post" enctype="multipart/form-data">
 @csrf
   <div class="box">
-    <div class="js--image-preview"></div>
-    <div class="upload-options">
+   
+    <div class="">
       
       <div class="row">
         <div class="col-md-12 mx-auto ml-5">
@@ -36,7 +36,7 @@
          </div>
       </div>
       <div class="row">
-       <div class="col-md-4 mt-3 newphoto">
+       <div class="col-md-6 mt-3 newphoto">
          <input type="file" name="new_photo" >
          <input type="hidden" name="old_photo" value="{{$student->photo}}">
        </div>
@@ -48,9 +48,8 @@
   
 
 
-</div>
      </div>
-     <div class="col-lg-8">
+     <div class="col-lg-8 mx-auto">
         
               <div class="row mt-4">
                   <div class="col-6">
@@ -213,6 +212,8 @@
       $('.phone').prop('disabled',true);
       $('.dob').prop('disabled',true);
       $('.address').prop('disabled',true);
+      $('.fb_link').prop('disabled',true);
+
 
     })
   })
