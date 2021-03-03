@@ -51,7 +51,7 @@ class StudentController extends Controller
      */
     public function store(Request $request)
     {
-        dd($request);
+        // dd($request);
         $request->validate([
             'name' => 'required',
             'phone' => 'required|unique:users',
@@ -62,10 +62,11 @@ class StudentController extends Controller
         $student_codeno = 0;
 
         $timetable = Timetable::find($request->timetable);
-        if($timetable->students){
+        if(count($timetable->students) > 0){
             foreach ($timetable->students as $student) {
                 $timetable_student = $student->codeno;
             }
+
 
             $num = substr($timetable_student, 8,10 );
             $student_codeno = date('Ymd',strtotime($timetable->start_date)).$num+1;
@@ -75,7 +76,7 @@ class StudentController extends Controller
             $student_codeno = date('Ymd',strtotime($timetable->start_date))."001";
         }
 
-        dd($student_codeno);
+        // dd($student_codeno);
         // dd($student_codeno);
         // dd('hi');
 
@@ -107,7 +108,7 @@ class StudentController extends Controller
         $payment->user_id = Auth::id(); //Auth::user()->staff->id
         $payment->save();
 
-        // return redirect()->route('students.index')->with('success','New Student added');
+        return redirect()->route('students_index')->with('success','New Student added');
         
     }
 
