@@ -17,6 +17,7 @@ use App\Timetable;
 use App\Level;
 use App\Day;
 use Carbon;
+use Mail;
 
 class FrontendController extends Controller
 {
@@ -119,5 +120,7 @@ class FrontendController extends Controller
         $videos = Video::all();
       return view('frontend.testing',compact('videos'));
     }
+
+  
 
 }

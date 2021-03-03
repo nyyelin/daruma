@@ -18,7 +18,9 @@
     <!-- ======= Contact Section ======= -->
     <section id="contact" class="contact">
       <div class="container">
- @foreach($contacts as $contact)
+
+
+         @foreach($contacts as $contact)
         <div class="row">
           <div class="col-lg-6">
             <div class="info-box mb-4">
@@ -44,38 +46,35 @@
             </div>
           </div>
 
-        </div>
-
-        <div class="row">
-
           <div class="col-lg-6 ">
             <iframe class="mb-4 mb-lg-0" src="{{$contact->map}}}" frameborder="0" style="border:0; width: 100%; height: 384px;" allowfullscreen></iframe>
           </div>
 
-          <div class="col-lg-6">
-            @if(Session::has('message_sent'))
-            <div class="alert alert-success" role="alert">
-              {{Session::get('message_sent')}}
-            </div>
-            @endif
-            <form action="{{route('contact.send')}}" method="post" role="form" class="php-email-form" enctype="multipart/form-data">
+
+     <div class="col-lg-6 mt-5">
+      
+
+        @if(session('flash'))
+        <p style="color: green;">{{ session('flash') }}</p>
+        @endif
+              <form method="POST" action="/Our_Contact" enctype="multipart/form-data">
               @csrf
               <div class="form-row">
                 <div class="col form-group">
-                  <input type="text" name="name" class="form-control" id="name" placeholder="Your Name" data-rule="minlen:4" data-msg="Please enter at least 4 chars" />
+                  <input type="text" name="name" class="form-control" id="name" placeholder="Your Name" required="" />
                   <div class="validate"></div>
                 </div>
                 <div class="col form-group">
-                  <input type="email" class="form-control" name="email" id="email" placeholder="Your Email" data-rule="email" data-msg="Please enter a valid email" />
+                  <input type="email" class="form-control" name="email" id="email" placeholder="Your Email" required="" />
                   <div class="validate"></div>
                 </div>
               </div>
               <div class="form-group">
-                <input type="text" class="form-control" name="subject" id="subject" placeholder="Subject" data-rule="minlen:4" data-msg="Please enter at least 8 chars of subject" />
+                <input type="text" class="form-control" name="subject" id="subject" placeholder="Subject" required="" />
                 <div class="validate"></div>
               </div>
               <div class="form-group">
-                <textarea class="form-control" name="message" rows="5" data-rule="required" data-msg="Please write something for us" placeholder="Message"></textarea>
+                <textarea class="form-control" name="message" rows="5" required="" placeholder="Message"></textarea>
                 <div class="validate"></div>
               </div>
               <!-- <div class="mb-3">
@@ -85,16 +84,22 @@
               </div> -->
               <div class="text-center">
                 
-             <button type="submit" class="btn btn-primary">Send Message</button> 
+             <input type="submit" class="btn btn-primary" value="submit" name="">
               </div>
             </form>
           </div>
 
+
+
         </div>
 @endforeach
+ 
+ 
       </div>
     </section><!-- End Contact Section -->
 
   </main><!-- End #main -->
+
+  
 
 @endsection

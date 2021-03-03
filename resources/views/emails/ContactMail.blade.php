@@ -1,13 +1,16 @@
 <!DOCTYPE html>
 <html>
 <head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-sclae=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
 	<title>Contact Form</title>
 </head>
 <body>
 <h1>Contact Message</h1>
-<p>Name : {{$details['name']}}</p>
-<p>Email : {{$details['email']}}</p>
-<p>Subject : {{$details['subject']}}</p>
-<p>Message : {{$details['message']}}</p>
+<p>Name : {{ $dataReceived['name'] }}</p>
+<p>Email : {{ $dataReceived['email'] }}</p>
+<p>Subject : {{ $dataReceived['subject'] }}</p>
+<p>Message : {{ $dataReceived['message'] }}</p>
 </body>
 </html>
