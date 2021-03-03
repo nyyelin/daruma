@@ -41,9 +41,12 @@
             <a href="javascript:void(0)">{{Auth::user()->name}}</a>
               
               <ul>
+                @role('student')
                 <li>
-                  <a class="dropdown-item" href="{{route('stuinformation')}}"><i class="icofont-street-view"></i> Profile</a>
+                  <a class="dropdown-item" href="{{route('information')}}"><i class="fas fa-user"></i>Profile</a>
+
                 </li>
+                @endrole
                 <li>
                   <a class="dropdown-item" href="{{ route('logout') }}"
                      onclick="event.preventDefault();

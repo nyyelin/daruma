@@ -380,6 +380,7 @@ function initDropEffect(box){
   }
 }
 </script>
+@yield('script')
 
 </body>
 

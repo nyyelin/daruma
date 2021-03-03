@@ -35,8 +35,8 @@
                     fa-user"></i> Profile
               </a> 
               @else('admin')
-              <a href="javascript:void(0)" class="dropdown-item has-icon btn_change_password"> <i class="far
-                    fa-lock"></i> Change Password
+              <a href="javascript:void(0)" class="dropdown-item has-icon btn_change_password"> <i class="fas
+                    fa-code"></i> Change Password
               </a> 
               @endrole
               <div class="dropdown-divider"></div>

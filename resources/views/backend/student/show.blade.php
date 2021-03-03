@@ -1,7 +1,20 @@
     @extends('backend_template')
 @section('content')
+
 <section class="section">
+        
       <div class="section-body">
+        <div class="row">
+           <form action="{{route('students_index')}}" method="post" class="d-inline-block">
+              @csrf
+              <input type="hidden" value="{{$level_id}}" name="level_id">
+              <input type="hidden" value="{{$start_date}}" name="start_date">
+              <input type="hidden" value="{{$end_date}}" name="end_date">
+
+
+                <button type="submit" class="btn btn-info ml-3">Go Back</button>
+            </form>
+        </div>
         <div class="row mt-sm-4">
           <div class="col-12 col-md-12 col-lg-4">
             <div class="card author-box">
@@ -144,6 +157,17 @@
                           @endif
                         </span>
                       </p>
+
+                      <p class="clearfix">
+                        <span class="float-left">
+                          Fb Link or Fb Name
+                        </span>
+                        <span class="float-right text-info" >
+                          {{$student->profile_link}}
+                        </span>
+                      </p>
+
+
                       <p class="clearfix">
                         <span class="float-left">
                           Address

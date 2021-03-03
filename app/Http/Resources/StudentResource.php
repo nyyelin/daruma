@@ -17,7 +17,7 @@ class StudentResource extends JsonResource
 
         $timetable_id = Array();
         for ($i=0; $i < $this->timetables->count() ; $i++) { 
-                $timetable_id = $this->timetables[$i]->timetable_id;  
+                $timetable_id = $this->timetables[$i]->id;  
         };
 
 
@@ -53,6 +53,8 @@ class StudentResource extends JsonResource
         for ($i=0; $i < $this->timetables->count() ; $i++) { 
                 $level = $this->timetables[$i]->level->name;  
         };
+
+       
        
         $days = Array();
         for ($i=0; $i < $this->timetables->count() ; $i++) { 

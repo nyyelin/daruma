@@ -25,9 +25,9 @@ class StudentController extends Controller
      */
     public function index()
     {
-        $students = Student::all();
-        $levels = Level::orderBy('id','DESC')->get();
-        return view('backend.student.index',compact('students','levels'));
+        // $students = Student::all();
+        // $levels = Level::orderBy('id','DESC')->get();
+        // return view('backend.student.index',compact('students','levels'));
     }
 
     /**
@@ -117,7 +117,7 @@ class StudentController extends Controller
      */
     public function show(Student $student)
     {
-        return view('backend.student.show',compact('student'));
+        
     }
 
     /**
@@ -253,7 +253,7 @@ class StudentController extends Controller
         $payment->discount = $request->discount;
         $payment->note = $request->note;
         $payment->status = $request->paymenttype;
-        $payment->staff_id = 1; //Auth::user()->staff->id
+        $payment->user_id = Auth::id(); //Auth::user()->staff->id
         $payment->save();
         return redirect()->route('students.index')->with('success','Successfully added');
 
@@ -287,12 +287,33 @@ class StudentController extends Controller
 
     public function getstudentinstallment(Request $request)
     {
+        // dd($request);
         $student_id = $request->student_id;
         $timetable_id = $request->timetable_id;
         $student = Student::where('id',$student_id)->with(array('payments'=>function($query) use ($timetable_id){
             $query->where('timetable_id',$timetable_id)->with('timetable');
         }))->first();
         return response()->json($student);
+    }
+
+    public function students_show($id,Request $request)
+    {
+        $student = Student::find($id);
+        $level_id = $request->level_id;
+        $start_date = $request->start_date;
+        $end_date = $request->end_date;
+
+        return view('backend.student.show',compact('student','level_id','start_date','end_date'));
+    }
+
+    public function students_index(Request $request)
+    {
+        $level_id = $request->level_id;
+        $start_date = $request->start_date;
+        $end_date = $request->end_date;
+        $students = Student::all();
+        $levels = Level::orderBy('id','DESC')->get();
+        return view('backend.student.index',compact('students','levels','level_id','start_date','end_date'));
     }
 }
 

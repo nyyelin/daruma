@@ -21,7 +21,7 @@
           
           </div>
         <div class="card-body">
-          {{-- <div class="row my-3">
+          <div class="row my-3">
             <div class="col-md-4">
               <label>Start Date</label>
               <input type="date" name="startdate" class="start_date form-control" >
@@ -33,9 +33,9 @@
             <div class="col-md-4 mt-4">
               <button class="btn btn-success btn_search">Search</button>
             </div>
-          </div> --}}
+          </div>
           <div class="table-responsive">
-            <table class="table table-striped dataTable">
+            <table class="table table-striped" id="timetable_list">
               <thead>
                 <tr>
                   <th>#</th>
@@ -158,7 +158,8 @@
 
     $('.alert_msg').hide(3000);
 
-    $('.btn_detail').click(function(){
+    $('#timetable_list tbody').on('click','.btn_detail',function(){
+
       var name = $(this).data('name');
       var level = $(this).data('level');
       var start_date = $(this).data('start_date');
@@ -169,7 +170,9 @@
       var duration = $(this).data('duration');
       var fee = $(this).data('fee');
       var description = $(this).data('description');
+
       var days = $(this).data('day');
+      // alert(days);
       var status = $(this).data('status');
       var html = '';
       $('.detail_name').text(name);
@@ -191,23 +194,168 @@
         $('.type').text('Online/Offline');
       }
 
-      $.each(days,function(i,v) {
+      // $.each(days,function(i,v) {
 
-        html+=`${v.name}`;
-        if(days.length - 1 == i){
-          html+=``;
-        }else{
-          html+=`,`;
-        }
+      //   html+=`${v.name}`;
+      //   if(days.length - 1 == i){
+      //     html+=``;
+      //   }else{
+      //     html+=`,`;
+      //   }
 
-      })
+      // })
 
-      $('.detail_days').html(html);
+      $('.detail_days').html(days);
       $('#detailModal').modal('show');
 
 
     })
 
+     var data_table = $('#timetable_list').DataTable( {
+        "lengthMenu": [[10, 25, 50, 100, 200 , 300 , 400 , 500], [10, 25, 50, 100, 200 , 300 , 400 , 500]],
+        "pageLength": 500,
+        
+        fixedHeader: {
+            header: true,
+            footer: true
+        }
+        } );
+
+   
+
+    $('.btn_search').click(function() {
+        var start_date = $('.start_date').val();
+        var end_date = $('.end_date').val();
+
+        var url = '/getdata';
+        var table = $('#timetable_list').DataTable();
+        table.destroy();
+        $('#timetable_list').dataTable({
+
+          "lengthMenu": [[10, 25, 50, 100, 200 , 300 , 400 , 500], [10, 25, 50, 100, 200 , 300 , 400 , 500]],
+          "pageLength": 500,
+          "bPaginate": true,
+          "bLengthChange": true,
+          "bFilter": true,
+          "bSort": true,
+          "bInfo": true,
+          "bAutoWidth": true,
+          "bStateSave": true,
+
+          "aoColumnDefs": [
+          { 'bSortable': false, 'aTargets': [ -1,0] },
+         
+          ],
+          "bserverSide": true,
+          "bprocessing":true,
+          "ajax": {
+            data : {
+  
+              'start_date':start_date,
+              'end_date':end_date
+
+            },
+            url: url,
+            type: "POST",
+            dataType:'json',
+          },
+         
+          "columns": [
+          {"data":'DT_RowIndex'},
+          
+          {
+            "data":null,
+            render:function(data){
+              if(data.status == 1){
+                return `<span class="mt-2">${data.name}</span><br><p class="badge badge-dark text-white">Online</p>`
+              }else if(data.status == 2){
+                return `<span class="mt-2">${data.name}</span><br><p class="badge badge-dark text-white">Offline</p>`
+              }else if(data.status == 3){
+                return `<span class="mt-2">${data.name}</span><br><p class="badge badge-dark text-white">Online/Offline</p>`
+              }
+              
+              
+            }
+          },
+
+          {
+            "data":null,
+            render:function(data){
+              return `${formatDate(data.start_date)}`
+              
+            }
+          },
+          {
+            "data":null,
+            render:function(data){
+              return data.days
+              
+            }
+          },
+          
+
+          {
+           "data":null,
+            render:function(data){
+              return `${data.start_time} ~ ${data.end_time} `
+              
+            }
+          },
+
+          {
+           "data":null,
+            render:function(data){
+              return data.duration
+              
+            }
+          },
+
+          {
+           "data":null,
+            render:function(data){
+              return data.fee
+              
+            }
+          },
+
+          {
+           "data":null,
+            render:function(data){
+              var edit_route = "{{route('timetables.edit',':id')}}";
+                  edit_route= edit_route.replace(':id',data.id);
+
+              var delete_route = "{{route('timetables.destroy',':id')}}";
+                  delete_route= edit_route.replace(':id',data.id);
+
+
+              return `
+                <a href="javascript:void(0)" class="btn btn-info btn_detail" data-name="${data.name}" data-level = "${data.level}" data-start_date = "${formatDate(data.start_date)}" data-start_time = "${data.start_time}" data-end_time = "${data.end_time}" data-duration="${data.duration}" data-fee = "${data.fee}" data-description = "${data.description}" data-day="${data.days}" data-status="${data.status}" data-end_date = "${formatDate(data.end_date)}">Detail</a>
+
+                    <a href="${edit_route}" class="btn btn-warning d-inline-block">Edit</a>
+
+                    <form action="${delete_route}" method="post" class="d-inline-block">
+                      @csrf
+                      @method('DELETE')
+                      <button type="submit" class="btn btn-danger" onclick="return confirm('Are you sure to delete')">Delete</button>
+                    </form>`
+              
+            }
+          },
+          
+         ],
+
+
+         "info":false
+        });
+    })
+
+
+    function formatDate (input) {
+        var datePart = input.match(/\d+/g),
+        year = datePart[0].substring(0,4), // get only two digits
+        month = datePart[1], day = datePart[2];
+        return day+'-'+month+'-'+year;
+      }
    
 
 

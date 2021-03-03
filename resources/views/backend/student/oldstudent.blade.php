@@ -176,7 +176,7 @@
                     <div class="col-md-6">
 
                       <div class="form-group installment_show">
-                        <label>Installment</label>
+                        <label>Payment</label>
                         <div class="input-group">
                           <div class="input-group-prepend">
                             <div class="input-group-text">

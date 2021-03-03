@@ -18,7 +18,7 @@
               <a href="#" class="menu-toggle nav-link has-dropdown"><i
                   data-feather="users"></i><span>Students</span></a>
               <ul class="dropdown-menu">
-                <li class="{{ Request::is('students*') ? 'active' : '' }}"><a class="nav-link" href="{{route('students.index')}}">Student List</a></li>
+                <li class="{{ Request::is('students*') ? 'active' : '' }}"><a class="nav-link" href="{{route('students_index')}}">Student List</a></li>
 
                   <li class="{{ Request::is('students/create') ? 'active' : '' }}"><a href="{{route('students.create')}}" class="nav-link">New Student </a></li>
             

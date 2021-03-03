@@ -41,6 +41,9 @@ Route::get('/getstudents','BackendController@getstudents')->name('getstudents');
 
 
 Route::resource('students','StudentController');
+Route::post('students_show/{id}','StudentController@students_show')->name('students_show');
+Route::any('students','StudentController@students_index')->name('students_index');
+
 Route::post('/gettimetablebylevel','StudentController@gettimetablebylevel')->name('gettimetablebylevel');
 Route::post('/getdatabytimetable','StudentController@getdatabytimetable')->name('getdatabytimetable');
 
@@ -67,7 +70,10 @@ Route::get('/Student_Account_Lists','BackendController@student_account_lists')->
 Route::get('/Class_Timetables','BackendController@class_timetables')->name('class_timetables');
 // Route::get('/Class_Timetables_Add','BackendController@class_timetables_add')->name('class_timetables_add');
 Route::resource('timetables','TimetableController');
-Route::post('timetables/getdata','TimetableController@getdata')->name('timetables.getdata');
+Route::get('/getalltimetable','TimetableController@getalltimetable')->name('timetables.getalltimetable');
+
+Route::post('/getdata','TimetableController@getdata')->name('timetables.getdata');
+
 
 Route::get('/Contact_Add','BackendController@contact_add')->name('contactadd');
 /*Route::get('/Journal_Video','BackendController@journal_video')->name('journal_video');*/
@@ -145,9 +151,19 @@ Route::get('/Japan-Myanmar_Day', 'FrontendController@japanmyanmarday')->name('ja
 Route::get('/General_Journal', 'FrontendController@generaljournal')->name('generaljournal');
 Route::get('/Knowledge_Video', 'FrontendController@knowledgevideo')->name('knowledgevideo');
 Route::get('/Reading_Story', 'FrontendController@readingstory')->name('readingstory');
-Route::get('/Student_Information', 'FrontendController@stuinformation')->name('stuinformation');
+/*
+Route::get('/Student_Information', 'FrontendController@stuinformation')->name('stuinformation');*/
 /*Route::post('/Send-Message','ContactController@sendEmail')->name('contact.send');*/
+
+Route::get('/Student_Information', 'FrontendController@information')->name('information');
+Route::post('/update_information', 'FrontendController@update_information')->name('update_information');
+
+Route::post('/Send-Message','ContactController@sendEmail')->name('contact.send');
+
 Route::get('/Our_Contact_Test', 'FrontendController@contacttest')->name('contacttest');
+Route::post('/reset_password', 'FrontendController@reset_password')->name('reset_password');
+
+
 /*
 Route::get('/Our_Testing_Page', 'FrontendController@testingpage')->name('testingpage');*/
 

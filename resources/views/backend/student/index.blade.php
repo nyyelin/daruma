@@ -13,19 +13,19 @@
                 <select class="form-control level_id">
                   {{-- <option value="" data-level="0">Choose Level</option> --}}
                   @foreach($levels as $level)
-                    <option value="{{$level->id}}">{{$level->name}}</option>
+                    <option @if($level->id == $level_id) selected="" @endif value="{{$level->id}}" data-name="{{$level->name}}">{{$level->name}}</option>
                   @endforeach
                 </select>
               </div>
 
               <div class="col-md-3">
                 <label class="d-block">Start date</label>
-                <input type="date" name="start_date" class="form-control start_date">
+                <input type="date" name="start_date" class="form-control start_date" value="{{$start_date}}">
               </div>
 
               <div class="col-md-3">
                 <label class="d-block">End date</label>
-                <input type="date" name="start_date" class="form-control end_date">
+                <input type="date" name="start_date" class="form-control end_date" value="{{$end_date}}">
                 
               </div>
               <div class="col-md-3">
@@ -45,7 +45,7 @@
         <div class="card">
           <div class="card-header">
            
-            <div class="col-lg-10 "> <h4>${res.level.name} Student List</h4></div>
+            <div class="col-lg-10 "> <h4 class="stuent_list">Student List</h4></div>
              <div class="col-lg-2 ">   
                 <div class="form-group mt-2">
            
@@ -130,6 +130,13 @@
         }
       });
 
+    var level_id = $('.level_id').val();
+    var start_date = $('.start_date').val();
+    var end_date = $('.end_date').val();
+    var html = '';
+    var j =1;
+    showdata(level_id,start_date,end_date);
+
 
     $('.search').click(function() {
       var level_id = $('.level_id').val();
@@ -137,6 +144,9 @@
       var end_date = $('.end_date').val();
       var html = '';
       var j =1;
+      var name = $('.level_id option:selected').data('name');
+      $('.stuent_list').html(name + ' Student List');
+      showdata(level_id,start_date,end_date);
       
       
     //   $.post('/getstudentlist',{level_id:level_id,start_date:start_date,end_date:end_date},function(res) {
@@ -233,107 +243,126 @@
     //       $('.table').html(html);
     //   }
     // })
+     })
 
+    // function function_name(argument) {
+    //   // body...
+    // }
 
-        var url = '/getstudentlist';
-        $('#student_list').dataTable({
+      function showdata(level_id,start_date,end_date){
+        console.log(level_id,start_date,end_date);
+        if(level_id && start_date  && end_date ){
+          var url = '/getstudentlist';
+          $('#student_list').dataTable({
 
-          "lengthMenu": [[10, 25, 50, 100, 200 , 300 , 400 , 500], [10, 25, 50, 100, 200 , 300 , 400 , 500]],
-          "pageLength": 500,
-          "bPaginate": true,
-          "bLengthChange": true,
-          "bFilter": true,
-          "bSort": true,
-          "bInfo": true,
-          "bAutoWidth": true,
-          "bStateSave": true,
+            "lengthMenu": [[10, 25, 50, 100, 200 , 300 , 400 , 500], [10, 25, 50, 100, 200 , 300 , 400 , 500]],
+            "pageLength": 500,
+            "bPaginate": true,
+            "bLengthChange": true,
+            "bFilter": true,
+            "bSort": true,
+            "bInfo": true,
+            "bAutoWidth": true,
+            "bStateSave": true,
 
-          "aoColumnDefs": [
-          { 'bSortable': false, 'aTargets': [ -1,0] },
-         
-          ],
-          "bserverSide": true,
-          "bprocessing":true,
-          "ajax": {
-            data : {
-              
-              'level_id':level_id,
-              'start_date':start_date,
-              'end_date':end_date
+            "aoColumnDefs": [
+            { 'bSortable': false, 'aTargets': [ -1,0] },
+           
+            ],
+            "bserverSide": true,
+            "bprocessing":true,
+            "ajax": {
+              data : {
+                
+                'level_id':level_id,
+                'start_date':start_date,
+                'end_date':end_date
 
+              },
+              url: url,
+              type: "POST",
+              dataType:'json',
             },
-            url: url,
-            type: "POST",
-            dataType:'json',
-          },
-         
-          "columns": [
-          {"data":'DT_RowIndex'},
-          
-          {
-            "data":null,
-            render:function(data){
-              return data.student_codeno
-              
-            }
-          },
+           
+            "columns": [
+            {"data":'DT_RowIndex'},
+            
+            {
+              "data":null,
+              render:function(data){
+                return data.student_codeno
+                
+              }
+            },
 
-          {
-            "data":null,
-            render:function(data){
-              return data.student_name
-              
-            }
-          },
-          {
-            "data":null,
-            render:function(data){
-              return data.student_phone
-              
-            }
-          },
-          {
-            "data":null,
-            render:function(data){
-              return `<span class="mt-2">${data.timetable_name}</span><br><p class="badge badge-dark text-white">${formatDate(data.timetable_start_date)}</p> `
-              
-            }
-          },
+            {
+              "data":null,
+              render:function(data){
+                return data.student_name
+                
+              }
+            },
+            {
+              "data":null,
+              render:function(data){
+                return data.student_phone
+                
+              }
+            },
+            {
+              "data":null,
+              render:function(data){
+                return `<span class="mt-2">${data.timetable_name}</span><br><p class="badge badge-dark text-white">${formatDate(data.timetable_start_date)}</p> `
+                
+              }
+            },
 
-          {
-           "data":null,
-            render:function(data){
-              return `<span class="mt-2">${data.timetable_days}</span><br><p class="badge badge-dark text-white">${data.timetable_start_time} ~ ${data.timetable_end_time}</p> `
-              
-            }
-          },
+            {
+             "data":null,
+              render:function(data){
+                return `<span class="mt-2">${data.timetable_days}</span><br><p class="badge badge-dark text-white">${data.timetable_start_time} ~ ${data.timetable_end_time}</p> `
+                
+              }
+            },
 
-          {
-           "data":null,
-            render:function(data){
-              return data.timetable_level
-              
-            }
-          },
+            {
+             "data":null,
+              render:function(data){
+                return data.timetable_level
+                
+              }
+            },
 
-          {
-           "data":null,
-            render:function(data){
-              var route = "{{route('students.show',':id')}}";
-                  route= route.replace(':id',data.id);
-              return `<a href="${route}" class="btn btn-primary">Detail</a>
-                      <a href="javascript:void(0)" class="btn btn-info btn_installment" data-student_id="${data.id}" data-timetable_id = "${data.timetable_id}">Installment</a>`
-              
-            }
-          },
-          
-         ],
+            {
+             "data":null,
+              render:function(data){
+                var route = "{{route('students_show',':id')}}";
+                    route= route.replace(':id',data.id);
+                return `
+                  <form action="${route}" method="post" class="d-inline-block">
+                  @csrf
+                  <input type="hidden" value="${level_id}" name="level_id">
+                  <input type="hidden" value="${start_date}" name="start_date">
+                  <input type="hidden" value="${end_date}" name="end_date">
 
 
-         "info":false
-        });
+                    <button type="submit" class="btn btn-primary">Detail</button>
+                  </form>
+                
+                        <a href="javascript:void(0)" class="btn btn-info btn_installment" data-student_id="${data.id}" data-timetable_id = "${data.timetable_id}">Installment</a>`
+                
+              }
+            },
+            
+           ],
+
+
+           "info":false
+          });
+        }
         
-      })
+      }
+     
     
 
 

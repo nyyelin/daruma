@@ -17,7 +17,14 @@ use App\Timetable;
 use App\Level;
 use App\Day;
 use Carbon;
+
 use Mail;
+
+use App\Student;
+use Auth;
+use Illuminate\Support\Facades\Hash;
+use App\User;
+
 
 class FrontendController extends Controller
 {
@@ -106,9 +113,12 @@ class FrontendController extends Controller
 
     	return view('frontend.readingstory');
     }
-    public function stuinformation(){
+    public function information(){
 
-    	return view('frontend.infromation');
+
+      $student = Student::where('user_id',Auth::id())->first();
+    	return view('frontend.information',compact('student'));
+
     }
     public function contacttest(){
 
@@ -121,6 +131,79 @@ class FrontendController extends Controller
       return view('frontend.testing',compact('videos'));
     }
 
+
   
+
+    public function update_information(Request $request)
+    {
+      $validator = $request->validate([
+            'name'  => ['required', 'string', 'max:255'],
+            'phone'  => ['required'],
+            'address'  => ['required','string'],
+            'dob'=>['required','date'],
+            'password'  => ['confirmed'],
+        ]);
+
+        $student = Student::where('user_id',Auth::id())->first();
+        
+       
+        $student->user->name = $request->name;
+        $student->user->email = $request->email;
+        $student->user->password = Hash::make($request->password);
+        $student->user->phone = $request->phone;
+        $student->user->save();
+        
+
+        if($request->hasfile('new_photo')){
+            $name = time().'_'.$request->new_photo->getClientOriginalName();
+            $filepath = $request->file('new_photo')->storeAs('profile',$name,'public');
+            $photo = "/storage/".$filepath;
+        }else{
+            $photo = $request->old_photo;
+        }
+
+        $student->user_id = $student->user->id;
+        $student->address = $request->address;
+        $student->dob = $request->dob;
+        $student->photo = $photo;
+        $student->profile_link = $request->fb_name;
+
+        $student->save();
+        return redirect()->back()->with('msg','Successfully update');
+    }
+
+
+
+    public function reset_password(Request $request)
+    {
+      $request->validate([
+          'email' => 'required',
+          'password' => 'required|min:8|confirmed',
+      ]);
+      $data = [
+          'email' => $request->email,
+          'msg' => 'Your email does not exit in our record',
+      ];
+      $email = $request->email;
+      $users = User::all();
+      $array = array();
+      foreach ($users as $user) {
+        if($user->email == $request->email){
+          array_push($array,$user->id);
+        }
+      }
+      if(count($array) == 0){
+        return redirect()->back()->with('failed','Your email does not exit in our record')->with('email',$email);
+      }else{
+        $user = User::find($array[0]);
+        $user->password = Hash::make($request->password);
+        $user->save();
+        return redirect()->route('login');
+      }
+
+
+    }
+    
+
 
 }

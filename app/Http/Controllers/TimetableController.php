@@ -7,6 +7,7 @@ use App\Level;
 use App\Day;
 use Carbon;
 use Yajra\DataTables\Facades\DataTables;
+use App\Http\Resources\TimetableResource;
 
 
 class TimetableController extends Controller
@@ -149,13 +150,25 @@ class TimetableController extends Controller
 
     }
 
+    public function getalltimetable($value='')
+    {
+        $timetables = Timetable::orderBy('start_date','DESC')->get();
+        $mydata =  TimetableResource::collection($timetables);
 
-    // public function getdata(Request $request)
-    // {
-    //     $start_date = $request->start_date;
-    //     $end_date = $request->end_date;
+        return Datatables::of($mydata)->addIndexColumn()->toJson(); 
+    }
 
-    //     $timetables = Timetable::where('start_date','>=',$start_date)->where('start_date','<=',$end_date)->with('level')->with('days')->get();
-    //     return Datatables::of($timetables)->addIndexColumn()->toJson(); 
-    // }
+
+    public function getdata(Request $request)
+    {
+        // dd($request);
+        $start_date = $request->start_date;
+        $end_date = $request->end_date;
+
+        $timetables = Timetable::where('start_date','>=',$start_date)->where('start_date','<=',$end_date)->with('level')->with('days')->get();
+
+        $mydata =  TimetableResource::collection($timetables);
+
+        return Datatables::of($mydata)->addIndexColumn()->toJson(); 
+    }
 }

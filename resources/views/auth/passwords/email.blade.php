@@ -7,47 +7,70 @@
       <div class="row">
         <div class="col-lg-2"></div>
        
-        <div class="col-lg-8"><div class="containmer  " style="border-radius: 20px;">
+        <div class="col-lg-8"><div class="containmer" style="border-radius: 20px;">
       <div class="user signinBx">
         <div class="imgBx"><img src="{{asset('frontend/assets/img/logo2.jpg')}}" alt="" class="img-fluid img-responsive"></div>
         <div class="formBx">
-         <form method="POST" action="{{ route('password.email') }}">
-                        @csrf
+         <form method="POST" action="{{ route('reset_password') }}">
+                  @csrf
 
-                             @if (session('status'))
-                        <div class="alert alert-success" role="alert">
-                            {{ session('status') }}
-                        </div>
-                    @endif
+                   @if (session('status'))
+                    <div class="alert alert-success" role="alert">
+                        {{ session('status') }}
+                    </div>
+                  @endif
 
             <h2>{{ __('Reset Password') }}</h2>
 
-             <div class="form-group row">
-                            <!-- <label for="email" class="col-md-6 col-form-label text-md-right">{{ __('E-Mail Address') }}</label>
- -->
+            <div class="form-group row">
+              <label for="email">Email</label> 
+              <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }} @if(session('email')) {{session('email')}} @endif"  autocomplete="email" autofocus placeholder="Your Email Address">
+
+              @if(session('failed'))
+                <span  role="alert">
+                    <strong class="text-danger fs-2">{{ session("failed") }}</strong>
+                </span>
+              @endif
+
+              @error('email')
+                  <span class="invalid-feedback" role="alert">
+                      <strong>{{ $message }}</strong>
+                  </span>
+              @enderror
+
+              
+            </div>
+
+            <div class="form-group row">
                       
-                                <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus placeholder="Your Email Address">
+              <label for="password">Password</label>
+              <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="new-password" placeholder="Enter new password">
 
-                                @error('email')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                          
-                        </div>
+              @error('password')
+                  <span class="invalid-feedback" role="alert">
+                      <strong>{{ $message }}</strong>
+                  </span>
+              @enderror
+                
+            </div>
 
+            <div class="form-group row">
+                      
+               <label for="password-confirm" >{{ __('Confirm Password') }}</label>
+
+              <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required autocomplete="new-password" placeholder="Confirm password">
+               
+                
+            </div>
 
      
-                 <div class="form-group row mb-0">
-                         
-                                <button type="submit" class="btn btn-primary">
-                                    {{ __('Send Password Reset Link') }}
-                                </button>
-
-                       
-
+            <div class="form-group row mb-0">
              
-                        </div>
+              <button type="submit" class="btn btn-primary">
+                  {{ __('Send Password Reset Link') }}
+              </button>
+
+            </div>
 
           </form>
         </div>
@@ -61,7 +84,7 @@
   </section> 
 
   <style type="text/css">
-  @import url('https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,500,600,700,800,900&display=swap');
+  /** @import url('https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,500,600,700,800,900&display=swap'); **/
 
 
 section .containmer {
