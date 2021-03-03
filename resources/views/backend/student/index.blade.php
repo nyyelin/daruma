@@ -136,6 +136,8 @@
     var html = '';
     var j =1;
     showdata(level_id,start_date,end_date);
+    var table = $('#student_list').DataTable();
+        table.destroy();
 
 
     $('.search').click(function() {
@@ -146,6 +148,8 @@
       var j =1;
       var name = $('.level_id option:selected').data('name');
       $('.stuent_list').html(name + ' Student List');
+      var table = $('#student_list').DataTable();
+        table.destroy();
       showdata(level_id,start_date,end_date);
       
       
@@ -250,6 +254,7 @@
     // }
 
       function showdata(level_id,start_date,end_date){
+
         console.log(level_id,start_date,end_date);
         if(level_id && start_date  && end_date ){
           var url = '/getstudentlist';

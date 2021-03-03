@@ -19,7 +19,7 @@ class TimetableController extends Controller
      */
     public function index()
     {
-        $timetables = Timetable::orderBy('start_date','DESC')->get();
+        $timetables = Timetable::whereMonth('start_date',Carbon\Carbon::now()->month)->orderBy('start_date','DESC')->get();
         return view('backend.timetable.index',compact('timetables'));
     }
 
