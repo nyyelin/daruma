@@ -11,9 +11,10 @@
               <div class="card-header">
                 <h4>New Student Register</h4>
               </div>
-              <div class="card-body">
-                <form method="POST" action="{{route('students.store')}}">
+              <form method="POST" action="{{route('students.store')}}">
                   @csrf
+              <div class="card-body">
+                
                   <div class="row">
                     <div class="form-group col-6">
                       <label for="name">Name</label>
@@ -197,8 +198,9 @@
                       Register
                     </button>
                   </div>
-                </form>
+                
               </div>
+              </form>
             
             </div>
           </div>

@@ -33,9 +33,15 @@
 
 
 
-  <link rel="stylesheet" type="text/css" href="{{ asset('plugin/select2/css/select2.min.css') }}">
+  {{-- <link rel="stylesheet" type="text/css" href="{{ asset('plugin/select2/css/select2.min.css') }}"> --}}
 
-
+  {{-- <style>
+    .js-example-basic-multiple .select2-container--default .select2-selection--multiple .select2-selection__rendered
+    {
+        color: green ;
+    }
+  </style>
+ --}}
 </head>
 
 <body>
@@ -166,7 +172,7 @@
   
 
 
-  <script type="text/javascript" src="{{ asset('plugin/select2/js/select2.min.js') }}"></script>
+  {{-- <script type="text/javascript" src="{{ asset('plugin/select2/js/select2.min.js') }}"></script> --}}
 
   <script type="text/javascript">
     $(document).ready(function() {

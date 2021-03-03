@@ -42,7 +42,7 @@ Route::get('/getstudents','BackendController@getstudents')->name('getstudents');
 
 Route::resource('students','StudentController');
 Route::post('students_show/{id}','StudentController@students_show')->name('students_show');
-Route::any('students','StudentController@students_index')->name('students_index');
+Route::any('student','StudentController@students_index')->name('students_index');
 
 Route::post('/gettimetablebylevel','StudentController@gettimetablebylevel')->name('gettimetablebylevel');
 Route::post('/getdatabytimetable','StudentController@getdatabytimetable')->name('getdatabytimetable');
