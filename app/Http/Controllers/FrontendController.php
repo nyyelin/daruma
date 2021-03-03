@@ -17,10 +17,14 @@ use App\Timetable;
 use App\Level;
 use App\Day;
 use Carbon;
+
+use Mail;
+
 use App\Student;
 use Auth;
 use Illuminate\Support\Facades\Hash;
 use App\User;
+
 
 class FrontendController extends Controller
 {
@@ -127,6 +131,9 @@ class FrontendController extends Controller
       return view('frontend.testing',compact('videos'));
     }
 
+
+  
+
     public function update_information(Request $request)
     {
       $validator = $request->validate([
@@ -197,5 +204,6 @@ class FrontendController extends Controller
 
     }
     
+
 
 }

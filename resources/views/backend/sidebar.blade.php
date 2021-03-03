@@ -1,6 +1,6 @@
  <aside id="sidebar-wrapper">
           <div class="sidebar-brand">
-            <a href="index.html"> <img alt="image" src="{{ asset('backend/assets/img/logo.jpg') }}" class="header-logo" /> <span
+            <a href="{{route('dashboard')}}"> <img alt="image" src="{{ asset('backend/assets/img/logo.jpg') }}" class="header-logo" /> <span
                 class="logo-name">Damura</span>
             </a>
           </div>

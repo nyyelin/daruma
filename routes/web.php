@@ -140,6 +140,8 @@ Route::get('/Our_Class', 'FrontendController@class')->name('class');
 Route::get('/Our_Video', 'FrontendController@testingpage')->name('testingpage');
 Route::get('/Review', 'FrontendController@review')->name('review');
 Route::get('/Our_Contact', 'FrontendController@contact')->name('contact');
+/*Route::post('/Our_Contact','FrontendController@sendEmail')->name('contact.submit');*/
+
 Route::get('/Regular_Class', 'FrontendController@regular_class')->name('regularclass');
 Route::get('/Online_Class', 'FrontendController@online_class')->name('onlineclass');
 Route::get('/Latest_New/{id}', 'FrontendController@latestnew')->name('latestnew');
@@ -149,10 +151,15 @@ Route::get('/Japan-Myanmar_Day', 'FrontendController@japanmyanmarday')->name('ja
 Route::get('/General_Journal', 'FrontendController@generaljournal')->name('generaljournal');
 Route::get('/Knowledge_Video', 'FrontendController@knowledgevideo')->name('knowledgevideo');
 Route::get('/Reading_Story', 'FrontendController@readingstory')->name('readingstory');
+/*
+Route::get('/Student_Information', 'FrontendController@stuinformation')->name('stuinformation');*/
+/*Route::post('/Send-Message','ContactController@sendEmail')->name('contact.send');*/
+
 Route::get('/Student_Information', 'FrontendController@information')->name('information');
 Route::post('/update_information', 'FrontendController@update_information')->name('update_information');
 
 Route::post('/Send-Message','ContactController@sendEmail')->name('contact.send');
+
 Route::get('/Our_Contact_Test', 'FrontendController@contacttest')->name('contacttest');
 Route::post('/reset_password', 'FrontendController@reset_password')->name('reset_password');
 
@@ -160,3 +167,12 @@ Route::post('/reset_password', 'FrontendController@reset_password')->name('reset
 /*
 Route::get('/Our_Testing_Page', 'FrontendController@testingpage')->name('testingpage');*/
 
+Route::post('/Our_Contact',function(){
+	$data = request(['name','email','subject','message']);
+
+	\Illuminate\Support\Facades\Mail::to('nyiyl345@gmail.com')
+	->send(new \App\Mail\ContactMe($data));
+
+	return redirect('/Our_Contact')
+	->with('flash','Message Send Succesully');
+});
