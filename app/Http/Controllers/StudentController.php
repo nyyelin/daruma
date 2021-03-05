@@ -51,7 +51,7 @@ class StudentController extends Controller
      */
     public function store(Request $request)
     {
-        // dd($request);
+        // dd(trim($request->name));
         $request->validate([
             'name' => 'required',
             'phone' => 'required|unique:users',
@@ -94,8 +94,9 @@ class StudentController extends Controller
         $student->codeno = $student_codeno;
         $student->user_id = $user->id;
         $student->photo = 'profile/profile_1.png';
-        $student->address = $request->address;
+        $student->address = trim($request->address);
         $student->dob = $request->dob;
+        $student->gender = $request->gender;
         $student->save();
 
         $student->timetables()->attach($request->timetable,['status'=>'Active']);

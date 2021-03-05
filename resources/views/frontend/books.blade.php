@@ -92,7 +92,7 @@
               <div class="col-lg-8">
                   <div class="blog_left_sidebar">
                       <article class="row blog_item">
-                          <div class="col-md-3">
+                          {{-- <div class="col-md-3">
                               <div class="blog_info text-right">
                                   <div class="post_tag">
                                       <a href="#">Food,</a>
@@ -114,8 +114,8 @@
                                      
                                   </ul>
                               </div>
-                          </div>
-                          <div class="col-md-9">
+                          </div> --}}
+                          <div class="col-md-9 mx-auto">
                               <div class="blog_post">
                                   <img src="{{asset('frontend/assets/img/popular-post/m-blog-1.jpg')}}" alt="">
                                   <div class="blog_details">
@@ -133,7 +133,7 @@
 
 
 <article class="row blog_item">
-                          <div class="col-md-3">
+                         {{--  <div class="col-md-3">
                               <div class="blog_info text-right">
                                   <div class="post_tag">
                                       <a href="#">Food,</a>
@@ -155,8 +155,8 @@
                                      
                                   </ul>
                               </div>
-                          </div>
-                          <div class="col-md-9">
+                          </div> --}}
+                          <div class="col-md-9 mx-auto">
                               <div class="blog_post">
                                   <img src="{{asset('frontend/assets/img/popular-post/m-blog-1.jpg')}}" alt="">
                                   <div class="blog_details">

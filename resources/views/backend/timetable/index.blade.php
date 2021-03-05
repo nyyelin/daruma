@@ -174,7 +174,10 @@
       var days = $(this).data('day');
       // alert(days);
       var status = $(this).data('status');
+      // console.log(status);
       var html = '';
+      
+      
       $('.detail_name').text(name);
       $('.detail_level').text(level);
       $('.detail_start_date').text(start_date);
@@ -193,19 +196,30 @@
       else if(status == 3){
         $('.type').text('Online/Offline');
       }
+      if(typeof(days) == 'object'){
 
-      // $.each(days,function(i,v) {
+        $.each(days,function(i,v) {
 
-      //   html+=`${v.name}`;
-      //   if(days.length - 1 == i){
-      //     html+=``;
-      //   }else{
-      //     html+=`,`;
-      //   }
+          html+=`${v.name}`;
 
-      // })
+          if(days.length - 1 == i){
 
-      $('.detail_days').html(days);
+            html+=``;
+
+          }else{
+
+            html+=`,`;
+
+          }
+
+        })
+        $('.detail_days').html(html);
+      }else{
+        $('.detail_days').html(days);
+      }
+      
+
+      
       $('#detailModal').modal('show');
 
 

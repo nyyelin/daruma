@@ -6,7 +6,7 @@
     <section class="section">
       <div class="container">
         <div class="row">
-          <div class="col-12 col-sm-10 offset-sm-1 col-md-8 offset-md-2 col-lg-8 offset-lg-2 col-xl-8 offset-xl-2">
+          <div class="col-12 col-sm-10 offset-sm-1 col-md-10 offset-md-2 col-lg-8 offset-lg-2 col-xl-8 offset-xl-2">
             <div class="card card-primary">
               <div class="card-header">
                 <h4>New Student Register</h4>
@@ -67,6 +67,17 @@
 
                     </div>
                   </div>
+
+                  <div class="row">
+                    <div class="form-group col-12">
+                      <label for="gender" class="d-block">Gender</label>
+                      <input type="radio" name="gender" value="Male" checked="" id="male"><label for="male" class="ml-2">Male</label>
+                      <input type="radio" name="gender" value="Female" id="female"><label for="female" class="ml-2">Female</label>
+
+                      <div class="form-control-feedback text-danger"> {{$errors->first('address') }} </div>
+                    </div>
+                  </div>
+
                   <div class="row">
                     <div class="form-group col-12">
                       <label for="password" class="d-block">Address</label>

@@ -149,7 +149,7 @@
       var name = $('.level_id option:selected').data('name');
       $('.stuent_list').html(name + ' Student List');
       var table = $('#student_list').DataTable();
-        table.destroy();
+      table.destroy();
       showdata(level_id,start_date,end_date);
       
       
@@ -254,8 +254,9 @@
     // }
 
       function showdata(level_id,start_date,end_date){
-
-        console.log(level_id,start_date,end_date);
+      var table = $('#student_list').DataTable();
+      table.destroy();
+        // console.log(level_id,start_date,end_date);
         if(level_id && start_date  && end_date ){
           var url = '/getstudentlist';
           $('#student_list').dataTable({
@@ -287,6 +288,10 @@
               url: url,
               type: "POST",
               dataType:'json',
+              // success:function(res){
+              //   console.log(res);
+              // }
+
             },
            
             "columns": [
@@ -317,7 +322,9 @@
             {
               "data":null,
               render:function(data){
+                if(data.timetable_start_date){
                 return `<span class="mt-2">${data.timetable_name}</span><br><p class="badge badge-dark text-white">${formatDate(data.timetable_start_date)}</p> `
+                  }
                 
               }
             },
@@ -343,23 +350,41 @@
               render:function(data){
                 var route = "{{route('students_show',':id')}}";
                     route= route.replace(':id',data.id);
-                return `
-                  <form action="${route}" method="post" class="d-inline-block">
-                  @csrf
-                  <input type="hidden" value="${level_id}" name="level_id">
-                  <input type="hidden" value="${start_date}" name="start_date">
-                  <input type="hidden" value="${end_date}" name="end_date">
+                if(data.status == "Active" || data.status == "Finished"){
+                  return `
+                    <form action="${route}" method="post" class="d-inline-block my-1">
+                    @csrf
+                    <input type="hidden" value="${level_id}" name="level_id">
+                    <input type="hidden" value="${start_date}" name="start_date">
+                    <input type="hidden" value="${end_date}" name="end_date">
 
 
-                    <button type="submit" class="btn btn-primary">Detail</button>
-                  </form>
-                
-                        <a href="javascript:void(0)" class="btn btn-info btn_installment" data-student_id="${data.id}" data-timetable_id = "${data.timetable_id}">Installment</a>`
+                      <button type="submit" class="btn btn-primary">Detail</button>
+                    </form>
+                  
+                          <a href="javascript:void(0)" class="btn btn-info btn_installment" data-student_id="${data.id}" data-timetable_id = "${data.timetable_id}">Installment</a>`
+                }else{
+                  return `<button type="button" class="btn btn-danger">Leave</button>`
+                }
+
                 
               }
             },
             
            ],
+
+           rowCallback: function (row, data) {
+            
+            if (data.status == "Active" || data.status == "Finished") {
+                
+            }else{
+              $(row).addClass('table-warning');
+                $(data).val(0);
+
+            }
+
+            
+          },
 
 
            "info":false
@@ -402,18 +427,25 @@
       })
     })
 
-    function formatDate (input) {
-        var datePart = input.match(/\d+/g),
-        year = datePart[0].substring(0,4), // get only two digits
-        month = datePart[1], day = datePart[2];
-        return day+'-'+month+'-'+year;
-      }
+    
 
     function thousands_separators(num){
       var num_parts = num.toString().split(".");
       num_parts[0] = num_parts[0].replace(/\B(?=(\d{3})+(?!\d))/g, ",");
       return num_parts.join(".");
     }
+
+    function formatDate (data) {
+      if(data.length > 0){
+        console.log(data);
+        var datePart = data.match(/\d+/g),
+        year = datePart[0].substring(0,4), // get only two digits
+        month = datePart[1], day = datePart[2];
+        return day+'-'+month+'-'+year;
+        }
+      }
+
+
   })
 </script>
 @endsection

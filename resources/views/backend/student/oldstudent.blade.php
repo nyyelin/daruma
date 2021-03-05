@@ -67,6 +67,16 @@
                     </div>
                   </div> --}}
 
+                  <div class="row">
+                    <div class="form-group col-12">
+                      <label for="gender" class="d-block">Gender</label>
+                      <input type="radio" name="gender" value="Male" checked="" id="male" class="male"><label for="male" class="ml-2">Male</label>
+                      <input type="radio" name="gender" value="Female" id="female" class="female"><label for="male" class="ml-2">Female</label>
+
+                      <div class="form-control-feedback text-danger"> {{$errors->first('address') }} </div>
+                    </div>
+                  </div>
+
 
                   <div class="row">
                     <div class="form-group col-6">
@@ -323,6 +333,12 @@
         $('.phone').val(res.student.user.phone);
         $('.dob').val(res.student.dob);
         $('.address').text(res.student.address);
+        if(res.student.gender == "Male"){
+          $('.male').attr('checked','checked');
+
+        }else if(res.student.gender == "Female"){
+          $('.female').attr('checked','checked');
+        }
 
         $.each(res.levels,function(i,v){
 

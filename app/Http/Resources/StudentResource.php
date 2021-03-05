@@ -54,6 +54,11 @@ class StudentResource extends JsonResource
                 $level = $this->timetables[$i]->level->name;  
         };
 
+        $status = Array();
+        for ($i=0; $i < $this->timetables->count() ; $i++) { 
+                $status = $this->timetables[$i]->pivot->status;  
+        };
+
        
        
         $days = Array();
@@ -85,6 +90,7 @@ class StudentResource extends JsonResource
             'timetable_end_time' => $end_time,
             'timetable_level' => $level,
             'timetable_days' => $days,
+            'status' => $status,
 
        ];
     }
