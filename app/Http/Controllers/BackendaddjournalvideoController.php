@@ -44,7 +44,7 @@ class BackendaddjournalvideoController extends Controller
         $validator = $request->validate([
             'auth_name'  => ['required', 'string', 'max:255'],
              'header'  => ['required', 'string', 'max:255'],
-              'videourl'  => ['required', 'string', 'max:255'],
+              
             'dob'=>['required','date'],
             'subject'  => ['required','string'],
            
@@ -60,15 +60,25 @@ class BackendaddjournalvideoController extends Controller
             $photo = "profile/profile_1.png";
         }
 
+
+         if($request->hasfile('profile2')){
+            $name = time().'_'.$request->profile2->getClientOriginalName();
+            $filepath2 = $request->file('profile2')->storeAs('profile',$name,'public');
+            $photo2 = "/storage/".$filepath2;
+        }else{
+            $photo2 = "profile/profile_1.png";
+        }
+
          
 
         $addjournalvideo = new Addjournalvideo;
         $addjournalvideo->detail_id = $request->detail_id;
         $addjournalvideo->auth_name = $request->auth_name;
-        $addjournalvideo->videourl = $request->videourl;
+        $addjournalvideo->popular = $request->popular;
         $addjournalvideo->header = $request->header;
         $addjournalvideo->dob = $request->dob;
         $addjournalvideo->photo = $photo;
+        $addjournalvideo->photo2 = $photo2;
         $addjournalvideo->subject = $request->subject;
       
         $addjournalvideo->save();
@@ -121,7 +131,7 @@ class BackendaddjournalvideoController extends Controller
             'auth_name'=>'required',
             'header'=>'required',
             'dob'=>'required',
-            'videourl'=>'required',
+            
             'subject'=>'required'
             
         ]);
@@ -131,7 +141,15 @@ class BackendaddjournalvideoController extends Controller
             $filepath = $request->file('profile')->storeAs('profile',$name,'public');
             $photo = "/storage/".$filepath;
         }else{
-            $photo = "profile/profile_1.png";
+            $photo = request('oldimage');
+        }
+
+             if($request->hasfile('profile2')){
+            $name = time().'_'.$request->profile2->getClientOriginalName();
+            $filepath2 = $request->file('profile2')->storeAs('profile',$name,'public');
+            $photo2 = "/storage/".$filepath2;
+        }else{
+            $photo2 = "profile/profile_1.png";
         }
 
 
@@ -139,11 +157,12 @@ class BackendaddjournalvideoController extends Controller
             
         $addjournalvideo->detail_id = $request->detail_id;
         $addjournalvideo->auth_name = $request->auth_name;
-        $addjournalvideo->videourl = $request->videourl;
+         $addjournalvideo->popular = $request->popular;
         $addjournalvideo->header = $request->header;
         $addjournalvideo->dob = $request->dob;
         $addjournalvideo->subject = $request->subject;
         $addjournalvideo->photo = $photo;
+        $addjournalvideo->photo2 = $photo2;
       
         $addjournalvideo->save();
 

@@ -41,11 +41,12 @@
 
 
 
-               <div class="form-group col-6">
-                      <label for="auth_name">Auth_Name</label>
-                      <input id="auth_name" type="text" class="form-control" name="auth_name" autofocus placeholder="Enter a Author Name"  value="{{old('auth_name')}}">
-                      <div class="form-control-feedback text-danger"> {{$errors->first('auth_name') }} </div>
+                     <div class="form-group col-6">
+                      <label for="profile2"> Video </label>
+                      <input id="profile2" type="file" class="form-control-file" name="profile2" value="{{old('profile2')}}">
                     </div>
+
+            
 
                    
                        
@@ -56,12 +57,25 @@
 
 
 
-               <div class="form-group col-12">
-                      <label for="videourl">Video URL</label>
-                      <input id="videourl" type="text" class="form-control" name="videourl" autofocus placeholder="Enter a Video URL"  value="{{old('videourl')}}">
-                      <div class="form-control-feedback text-danger"> {{$errors->first('videourl') }} </div>
+
+
+                       <div class="form-group col-6">
+                      <label for="auth_name">Auth_Name</label>
+                      <input id="auth_name" type="text" class="form-control" name="auth_name" autofocus placeholder="Enter a Author Name"  value="{{old('auth_name')}}">
+                      <div class="form-control-feedback text-danger"> {{$errors->first('auth_name') }} </div>
                     </div>
 
+
+                          <div class="form-group col-6">
+                    <label for="popular">Poular Post</label>
+                   <select class="form-control selectric" name="popular" value="{{old('popular')}}">
+                        <option value="YES">YES</option>
+                        <option value="NO">NO</option>
+                        
+                      </select>
+                    <div class="invalid-feedback">
+                    </div>
+                  </div>
                    
                        
                     </div>

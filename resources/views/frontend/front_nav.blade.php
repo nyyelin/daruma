@@ -24,17 +24,17 @@
 
       <nav class="nav-menu d-none d-lg-block">
         <ul>
-          <li class="active"><a href="{{route('main')}}">Home</a></li>
-          <li class="{{ Request::is('/About_Us') ? 'active' : '' }}"><a href="{{route('about')}}">About Us</a></li>
-          <li class=""><a href="{{route('gallery')}}">Gallery</a></li>
-          <li class="drop-down"><a href="">More</a>
+          <li class="{{ Request::is('/') ? 'active' : '' }}"><a href="{{route('main')}}">Home</a></li>
+          <li class="{{ Request::is('About_Us') ? 'active' : '' }}"><a href="{{route('about')}}">About Us</a></li>
+          <li class="{{ Request::is('Gallery_Class') ? 'active' : '' }}"><a href="{{route('gallery')}}">Gallery</a></li>
+          <li class="drop-down {{ Request::segment(1) === 'Our_Class' || Request::segment(1) === 'Our_Video' || Request::segment(1) === 'Review' ? 'active' : '' }}"><a href="">More</a>
             <ul>
               <li><a href="{{route('class')}}">Our Class</a></li>
               <li><a href="{{route('testingpage')}}">Our Video</a></li>
               <li><a href="{{route('review')}}">Review</a></li>
             </ul>
           </li>
-          <li><a href="{{route('contact')}}">Contact</a></li>
+          <li class="{{ Request::is('Our_Contact') ? 'active' : '' }}"><a href="{{route('contact')}}">Contact</a></li>
           @if(Auth::user())
 
           <li class="drop-down">
@@ -43,7 +43,7 @@
               <ul>
                 @role('student')
                 <li>
-                  <a class="dropdown-item" href="{{route('information')}}"><i class="fas fa-user"></i>Profile</a>
+                  <a class="dropdown-item" href="{{route('information')}}"><i class="icofont-street-view"></i> Profile</a>
 
                 </li>
                 @endrole
@@ -63,7 +63,8 @@
             </ul>
         </li>
           @else
-          <li><a href="{{url('/login')}}">Log In</a></li>
+          
+          <li class="{{ Request::segment(1) === 'login' || Request::segment(1) === 'Admin/login'  ? 'active' : '' }}"><a href="{{url('/login')}}">Log In</a></li>
           @endif
         </ul>
       </nav><!-- .nav-menu -->

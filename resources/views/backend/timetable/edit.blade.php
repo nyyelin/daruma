@@ -174,9 +174,9 @@
              
 
           <div class="card-footer text-center ">
-            <button class="btn btn-primary mr-1" type="submit">UPDATE</button>
+            <button class="btn btn-primary mr-1  btn-lg "  type="submit">UPDATE</button>
             <a href="{{route('timetables.index')}}">
-              <button class="btn btn-danger mr-1" type="button">B A C K</button>
+              <button class="btn btn-danger mr-1  btn-lg " type="button">B A C K</button>
             </a>
 
           </div>

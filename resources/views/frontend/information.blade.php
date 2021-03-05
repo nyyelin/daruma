@@ -31,9 +31,14 @@
     <div class="">
       
       <div class="row">
+
         <div class="col-md-12 mx-auto ml-5">
-           <img alt="image" src="{{ asset($student->photo) }}" class="user-img-radious-style" width="150px" height="150px"> <span class="d-sm-none d-lg-inline-block"></span>
+
+           <img alt="image" src="{{ asset($student->photo) }}" class="user-img-radious-style" width="200px" height="200px" style="border-radius: 10px;"> <span class="d-sm-none d-lg-inline-block"></span>
+
          </div>
+
+
       </div>
       <div class="row">
        <div class="col-md-6 mt-3 newphoto">
@@ -51,7 +56,7 @@
      </div>
      <div class="col-lg-8 mx-auto">
         
-              <div class="row mt-4">
+              <div class="row ">
                   <div class="col-6">
                     <div class="form-group ">
                       <input type="text" class="form-control name" id="name" name="name" value="{{$student->user->name}}" disabled="" />
@@ -98,9 +103,11 @@
                   </div>
 
                   <div class="col-6">
-                     <textarea class="form-control address" name="address" disabled="" >
+                     <textarea class="form-control address " name="address" disabled=""placeholder="Enter a address" >
                        {{$student->address}}
                      </textarea>
+
+
                   </div>
               </div>
 

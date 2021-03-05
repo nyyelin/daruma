@@ -107,7 +107,7 @@
                     </select>
                     </div>
 
-                    <div class="form-group">
+                    <div class="form-group row">
                       <label>Day</label>
                       <select class="form-control js-example-basic-multiple days" multiple="">
                         

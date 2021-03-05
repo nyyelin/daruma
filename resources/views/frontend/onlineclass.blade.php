@@ -16,12 +16,12 @@
 
     <!-- ======= About Section ======= -->
 
-    <section class="blog knowledge">
+    <section class="blog knowledge" >
       <div class="container">
         <div class="row">
           <div class="col-lg-12 entries">
 
-            <article class="entry">
+            <article class="entry" style="border-radius: 10px;">
 
               <div class="row content table-responsive ml-1" data-aos="fade-up">
           <div class="container">
@@ -56,8 +56,7 @@
                   </td>
                  <td>{{$timetable->fees}}</td>
                 </tr>
-                @elseif($timetable->status ==2)
-                <h2>No Online Class</h2>
+               
                 @endif
                 @endforeach
               </tbody>

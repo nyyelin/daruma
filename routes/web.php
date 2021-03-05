@@ -144,6 +144,7 @@ Route::get('/Our_Contact', 'FrontendController@contact')->name('contact');
 
 Route::get('/Regular_Class', 'FrontendController@regular_class')->name('regularclass');
 Route::get('/Online_Class', 'FrontendController@online_class')->name('onlineclass');
+Route::get('/Special_Only_Class', 'FrontendController@special_class')->name('specialclass');
 Route::get('/Latest_New/{id}', 'FrontendController@latestnew')->name('latestnew');
 Route::get('/Journal&Videos/{id}', 'FrontendController@books')->name('books');
 Route::get('/DetailJournal&Videos/{id}', 'FrontendController@detailbooks')->name('detailbooks');

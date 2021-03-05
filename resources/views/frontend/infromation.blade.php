@@ -21,7 +21,9 @@
       <div class="container">
 
    <div class="row">
+
      <div class="col-lg-4">
+      
        <div class="wrapper">
   <div class="boxx">
     <div class="js--image-preview"></div>
@@ -37,6 +39,10 @@
 
 </div>
      </div>
+
+
+
+
      <div class="col-lg-8">
         <form class="mt-3">
 

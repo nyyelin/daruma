@@ -8,9 +8,9 @@
 
         <ol>
           <li><a href="{{route('main')}}">Home</a></li>
-          <li>Regular Classes</li>
+          <li>Special Only Classes</li>
         </ol>
-        <h2>Regular Classes</h2>
+        <h2>Special Only Classes</h2>
 
       </div>
     </section><!-- End Breadcrumbs -->
@@ -40,7 +40,7 @@
               </thead>
               <tbody>
                  @foreach($timetables as $timetable)
-                 @if($timetable->status ==2)
+                 @if($timetable->status ==3)
                 <tr>
                   <th scope="row">{{$timetable->name}}</th>
                   <td>{{$timetable->start_date}}</td>
