@@ -1,21 +1,88 @@
-    @extends('frontend_template')
-@section('content')
-     <main id="mainn">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+ <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+<!--   <meta http-equiv="X-UA-Compatible" content="ie=edge"> -->
+
+
+  <title>DARUMA Japanese Language School</title>
+  <meta content="" name="description">
+  <meta content="" name="keywords">
+
+
+  <!-- Favicons -->
+  <link href="{{asset('frontend/assets/img/logo.jpg')}}" rel="icon">
+  <link href="{{asset('frontend/assets/img/apple-touch-icon.png')}}" rel="apple-touch-icon">
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+
+  <!-- Vendor CSS Files -->
+  <link href="{{asset('frontend/assets/vendor/bootstrap/css/bootstrap.min.css')}}" rel="stylesheet">
+  <link href="{{asset('frontend/assets/vendor/icofont/icofont.min.css')}}" rel="stylesheet">
+  <link href="{{asset('frontend/assets/vendor/boxicons/css/boxicons.min.css')}}" rel="stylesheet">
+  <link href="{{asset('frontend/assets/vendor/animate.css/animate.min.css')}}" rel="stylesheet">
+  <link href="{{asset('frontend/assets/vendor/owl.carousel/assets/owl.carousel.min.css')}}" rel="stylesheet">
+  <link href="{{asset('frontend/assets/vendor/venobox/venobox.css')}}" rel="stylesheet">
+
+  <!-- Template Main CSS File -->
+  <link href="{{asset('frontend/assets/css/style.css')}}" rel="stylesheet">
+  <link href="http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css" rel="stylesheet" />
+  <link href="http://mynameismatthieu.com/WOW/css/libs/animate.css" rel="stylesheet" />
+  <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-bs4.min.css" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-bs4.min.js"></script>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+ 
+
+<link rel="stylesheet" href="{{asset('frontend/vendors/bootstrap/bootstrap.min.css')}}">
+<link rel="stylesheet" href="{{asset('frontend/vendors/owl-carousel/owl.carousel.min.css')}}">
+
+    <link rel="stylesheet" href="{{asset('frontend/vendors/linericon/style.css')}}">
+
+  <link rel="stylesheet" href="{{asset('frontend/style.css')}}">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</head>
+<body>
+
+ @include('frontend.front_nav')
+   <main id="mainn">
 
     <!-- ======= Breadcrumbs ======= -->
     <section id="breadcrumbs" class="breadcrumbs">
       <div class="container">
 
-        <ol>
+          <ol>
           <li><a href="{{route('main')}}">Home</a></li>
           <li>Contact</li>
         </ol>
         <h2>Contact</h2>
 
+
       </div>
     </section><!-- End Breadcrumbs -->
 
-    <!-- ======= Contact Section ======= -->
+        <!-- ======= Contact Section ======= -->
     <section id="contact" class="contact">
       <div class="container">
 
@@ -51,42 +118,44 @@
           </div>
 
 
-     <div class="col-lg-6 mt-5">
+     <div class="col-lg-6 my-1">
       
-
-        @if(session('flash'))
+<div class="comment-form" style="margin-top: -1px;">
+                      <h4>Leave a Reply</h4>
+                         @if(session('flash'))
         <p style="color: green;">{{ session('flash') }}</p>
         @endif
-              <form method="POST" action="/Our_Contact" enctype="multipart/form-data">
+                     <form method="POST" action="/Our_Contact" enctype="multipart/form-data">
               @csrf
-              <div class="form-row">
-                <div class="col form-group">
-                  <input type="text" name="name" class="form-control" id="name" placeholder="Your Name" required="" />
-                  <div class="validate"></div>
-                </div>
-                <div class="col form-group">
-                  <input type="email" class="form-control" name="email" id="email" placeholder="Your Email" required="" />
-                  <div class="validate"></div>
-                </div>
-              </div>
-              <div class="form-group">
-                <input type="text" class="form-control" name="subject" id="subject" placeholder="Subject" required="" />
-                <div class="validate"></div>
-              </div>
-              <div class="form-group">
-                <textarea class="form-control" name="message" rows="5" required="" placeholder="Message"></textarea>
-                <div class="validate"></div>
-              </div>
-              <!-- <div class="mb-3">
-                <div class="loading">Loading</div>
-                <div class="error-message"></div>
-                <div class="sent-message">Your message has been sent. Thank you!</div>
-              </div> -->
-              <div class="text-center">
-                
-             <input type="submit" class="btn btn-primary" value="submit" name="">
-              </div>
-            </form>
+                          <div class="form-group form-inline">
+                              <div class="form-group col-lg-6 col-md-6 name">
+                                  <input type="text" class="form-control"  name="name" id="name" placeholder="Enter Name" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Enter Name'" required="">
+                                     <div class="validate"></div>
+                              </div>
+                              <div class="form-group col-lg-6 col-md-6 email">
+                                  <input type="email" class="form-control" name="email" id="email" placeholder="Enter email address" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Enter email address'" required="">
+                                   <div class="validate"></div>
+                              </div>
+                          </div>
+                          <div class="form-group">
+                              <input type="text" class="form-control" id="subject"  name="subject" placeholder="Subject" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Subject'" required="">
+                              <div class="validate"></div>
+                          </div>
+                          <div class="form-group">
+                              <textarea class="form-control mb-10" rows="5" name="message" placeholder="Messege" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Messege'"
+                                  required=""></textarea>
+                                    <div class="validate"></div>
+                          </div>
+                          <input type="submit" class="btn btn-primary" value="S U B M I T" name="">
+                      </form>
+                  </div>
+
+
+
+
+
+       
+
           </div>
 
 
@@ -97,9 +166,31 @@
  
       </div>
     </section><!-- End Contact Section -->
+<br>
+</main>
+@include('frontend.front_footer')
+</body>
 
-  </main><!-- End #main -->
-
+  <a href="#" class="back-to-top"><i class="icofont-simple-up"></i></a>
   
+ 
 
-@endsection
+
+
+  <script src="{{asset('frontend/assets/vendor/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
+
+
+  <script src="{{asset('frontend/assets/vendor/jquery.easing/jquery.easing.min.js')}}"></script>
+  <script src="{{asset('frontend/assets/vendor/php-email-form/validate.js')}}"></script>
+
+
+  <script src="{{asset('frontend/assets/vendor/jquery-sticky/jquery.sticky.js')}}"></script>
+  <script src="{{asset('frontend/assets/vendor/owl.carousel/owl.carousel.min.js')}}"></script>
+  <script src="{{asset('frontend/assets/vendor/waypoints/jquery.waypoints.min.js')}}"></script>
+  <script src="{{asset('frontend/assets/vendor/counterup/counterup.min.js')}}"></script>
+  <script src="{{asset('frontend/assets/vendor/isotope-layout/isotope.pkgd.min.js')}}"></script>
+  <script src="{{asset('frontend/assets/vendor/venobox/venobox.min.js')}}"></script>
+  <!-- Template Main JS File -->
+  <script src="{{asset('frontend/assets/js/main.js')}}"></script>
+
+</html>

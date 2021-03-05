@@ -25,7 +25,7 @@
                       </div>
                       <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 pl-0">
                         <div class="banner-img">
-                          <img src="{{ asset('backend/assets/img/banner/1.png') }}" alt="">
+                          <img src="{{ asset('backend/assets/img/banner/teacher.png') }}" alt="">
                         </div>
                       </div>
                     </div>

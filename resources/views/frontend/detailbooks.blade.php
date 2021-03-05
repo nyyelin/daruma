@@ -99,16 +99,16 @@
                               
                           </div> -->
                           
-                          <div class="col-md-9 mx-auto">
+                          <div class="col-md-12 mx-auto">
                               <div class="blog_post">
-                                <div class="col-12" >
+                                <div class="col-lg-12 col-12" >
                                 @if($addjournalvideo->detail->categories =="journal")
               <img src="{{$addjournalvideo->photo}}" alt="" class="img-fluid img-responsive" >
               @elseif($addjournalvideo->detail->categories =="video")
-             <video src="{{$addjournalvideo->photo2}}" autoplay="" controls="" width="430px;"></video> 
-      <!--  <iframe width="420" height="345" src="https://www.youtube.com/embed/tgbNymZ7vqY?autoplay=1&mute=1">
-</iframe> -->
-
+              <video src="{{$addjournalvideo->photo2}}" autoplay="" controls="" width="430px;"></video>  
+<!--         <iframe width="436" height="270" src="https://www.youtube.com/embed/tgbNymZ7vqY?autoplay=1&mute=1">
+</iframe>
+ -->
               @endif
               </div>
                                   <div class="blog_details">
