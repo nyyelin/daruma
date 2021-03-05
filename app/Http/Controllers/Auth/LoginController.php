@@ -41,7 +41,7 @@ class LoginController extends Controller
 
         }else if($user->hasRole('staff')){
             if(Auth::user()->staff){
-                return redirect()->route('student');
+                return redirect()->route('students_index');
             }else{
                 Auth::logout();
                 return redirect()->route('login')->with('msg','You are not our staff');

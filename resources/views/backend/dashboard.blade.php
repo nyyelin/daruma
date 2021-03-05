@@ -179,7 +179,7 @@
           </div>
 
       </div>
-      <div class="col-12 col-sm-6 col-lg-4">
+      {{-- <div class="col-12 col-sm-6 col-lg-4">
         <div class="card">
           <div class="title">
              <h4 class="text-dark ml-3 mt-3">{{ __("Student List")}}</h4>
@@ -193,7 +193,7 @@
            </div>
         </div>
        
-      </div>
+      </div> --}}
     </div>
 
    
