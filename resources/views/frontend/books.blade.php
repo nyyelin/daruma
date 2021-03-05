@@ -89,129 +89,33 @@
   <section class="blog_area">
       <div class="container">
           <div class="row">
+       
               <div class="col-lg-8">
+                   @foreach($addjournalvideos as $addjournalvideo)
                   <div class="blog_left_sidebar">
+
                       <article class="row blog_item">
-                          <div class="col-md-3">
-                              <div class="blog_info text-right">
-                                  <div class="post_tag">
-                                      <a href="#">Food,</a>
-                                      <a class="active" href="#">Technology,</a>
-                                      <a href="#">Politics,</a>
-                                      <a href="#">Lifestyle</a>
-                                  </div>
-                                  <ul class="blog_meta list">
-                                      <li>
-                                          <a href="#">Mark wiens
-                                              <i class="lnr lnr-user"></i>
-                                          </a>
-                                      </li>
-                                      <li>
-                                          <a href="#">12 Dec, 2017
-                                              <i class="lnr lnr-calendar-full"></i>
-                                          </a>
-                                      </li>
-                                     
-                                  </ul>
-                              </div>
-                          </div>
-                          <div class="col-md-9">
+                        <!--   <div class="col-md-3">
+                              
+                          </div> -->
+                          
+                          <div class="col-md-9 mx-auto">
                               <div class="blog_post">
-                                  <img src="{{asset('frontend/assets/img/popular-post/m-blog-1.jpg')}}" alt="">
+                                  <img src="{{$addjournalvideo->photo}}" alt="">
                                   <div class="blog_details">
-                                      <a href="single-blog.html">
-                                          <h2>Astronomy Binoculars A Great Alternative</h2>
-                                      </a>
-                                      <p>MCSE boot camps have its supporters and its detractors. Some people do not understand
-                                          why you should have to spend money on boot camp when you can get the MCSE study
-                                          materials yourself at a fraction.</p>
-                                      <a class="button button-blog" href="single-blog.html">View More</a>
-                                  </div>
-                              </div>
-                          </div>
-                      </article>
-
-
-<article class="row blog_item">
-                          <div class="col-md-3">
-                              <div class="blog_info text-right">
-                                  <div class="post_tag">
-                                      <a href="#">Food,</a>
-                                      <a class="active" href="#">Technology,</a>
-                                      <a href="#">Politics,</a>
-                                      <a href="#">Lifestyle</a>
-                                  </div>
-                                  <ul class="blog_meta list">
-                                      <li>
-                                          <a href="#">Mark wiens
-                                              <i class="lnr lnr-user"></i>
-                                          </a>
-                                      </li>
-                                      <li>
-                                          <a href="#">12 Dec, 2017
-                                              <i class="lnr lnr-calendar-full"></i>
-                                          </a>
-                                      </li>
-                                     
-                                  </ul>
-                              </div>
-                          </div>
-                          <div class="col-md-9">
-                              <div class="blog_post">
-                                  <img src="{{asset('frontend/assets/img/popular-post/m-blog-1.jpg')}}" alt="">
-                                  <div class="blog_details">
-                                      <a href="single-blog.html">
-                                          <h2>Astronomy Binoculars A Great Alternative</h2>
-                                      </a>
-                                      <p>MCSE boot camps have its supporters and its detractors. Some people do not understand
-                                          why you should have to spend money on boot camp when you can get the MCSE study
-                                          materials yourself at a fraction.</p>
-                                      <a class="button button-blog" href="single-blog.html">View More</a>
-                                  </div>
-                              </div>
-                          </div>
-                      </article>
-
-
-
-<article class="row blog_item">
-                          <div class="col-md-3">
-                              <div class="blog_info text-right">
-                                  <div class="post_tag">
-                                      <a href="#">Food,</a>
-                                      <a class="active" href="#">Technology,</a>
-                                      <a href="#">Politics,</a>
-                                      <a href="#">Lifestyle</a>
-                                  </div>
-                                  <ul class="blog_meta list">
-                                      <li>
-                                          <a href="#">Mark wiens
-                                              <i class="lnr lnr-user"></i>
-                                          </a>
-                                      </li>
-                                      <li>
-                                          <a href="#">12 Dec, 2017
-                                              <i class="lnr lnr-calendar-full"></i>
-                                          </a>
-                                      </li>
                                       
-                                  </ul>
-                              </div>
-                          </div>
-                          <div class="col-md-9">
-                              <div class="blog_post">
-                                  <img src="{{asset('frontend/assets/img/popular-post/m-blog-1.jpg')}}" alt="">
-                                  <div class="blog_details">
-                                      <a href="single-blog.html">
-                                          <h2>Astronomy Binoculars A Great Alternative</h2>
-                                      </a>
-                                      <p>MCSE boot camps have its supporters and its detractors. Some people do not understand
-                                          why you should have to spend money on boot camp when you can get the MCSE study
-                                          materials yourself at a fraction.</p>
-                                      <a class="button button-blog" href="single-blog.html">View More</a>
+                                          <h2>{{$addjournalvideo->header}}</h2>
+                                      
+                                      <p><i class="lnr lnr-user"></i> &nbsp;{{$addjournalvideo->auth_name}} &nbsp;&nbsp;  <i class="lnr lnr-calendar-full"></i>  &nbsp;{{$addjournalvideo->dob}}</p>
+                                      <div class="" style="max-height: 140px;overflow: hidden; margin-top: -20px;" >
+                                         <p style="margin-top: -10px;">{!!$addjournalvideo->subject!!}</p>
+                                      </div>
+                                     <br>
+                                      <a class="button button-blog" href="{{route('detailbooks',$addjournalvideo->id)}}">View More</a>
                                   </div>
                               </div>
                           </div>
+                     
                       </article>
 
 
@@ -221,91 +125,49 @@
                    
                      
                    
-                      <nav class="blog-pagination justify-content-center d-flex">
-                          <ul class="pagination">
-                              <li class="page-item">
-                                  <a href="#" class="page-link" aria-label="Previous">
-                                      <span aria-hidden="true">
-                                          <span class="lnr lnr-chevron-left"></span>
-                                      </span>
-                                  </a>
-                              </li>
-                              <li class="page-item">
-                                  <a href="#" class="page-link">01</a>
-                              </li>
-                              <li class="page-item active">
-                                  <a href="#" class="page-link">02</a>
-                              </li>
-                              <li class="page-item">
-                                  <a href="#" class="page-link">03</a>
-                              </li>
-                              <li class="page-item">
-                                  <a href="#" class="page-link">04</a>
-                              </li>
-                              <li class="page-item">
-                                  <a href="#" class="page-link">09</a>
-                              </li>
-                              <li class="page-item">
-                                  <a href="#" class="page-link" aria-label="Next">
-                                      <span aria-hidden="true">
-                                          <span class="lnr lnr-chevron-right"></span>
-                                      </span>
-                                  </a>
-                              </li>
-                          </ul>
-                      </nav>
+             
                   </div>
+
+       @endforeach
+       <br>
+       <div class="" style="margin-left: 170px;">
+         {!!$addjournalvideos->links()!!}
+       </div>
+       
               </div>
-              <div class="col-lg-4">
-                  <div class="blog_right_sidebar">
+
+                        
+     
+              <div class="col-lg-4 my-1">
+                  <div class="blog_right_sidebar ">
                      
                       
                       <aside class="single_sidebar_widget popular_post_widget">
                           <h3 class="widget_title">Popular Posts</h3>
+                              @foreach($addjournalvideoed as $addjournalvideo)
+                                 @if($addjournalvideo->popular =="YES") 
                           <div class="media post_item">
-                              <img src="{{asset('frontend/assets/img/popular-post/post1.jpg')}}" alt="post">
+                              <img src="{{$addjournalvideo->photo}}" alt="post" style="width: 100px; height: 70px;" class="img-fluid img-responsive">
                               <div class="media-body">
-                                  <a href="single-blog.html">
-                                      <h3>Space The Final Frontier</h3>
+                                  <a href="{{route('detailbooks',$addjournalvideo->id)}}">
+                                      <h3>{{$addjournalvideo->header}}</h3>
                                   </a>
-                                  <p>02 Hours ago</p>
+                                  <p>{{$addjournalvideo->auth_name}}</p>
                               </div>
                           </div>
-                          <div class="media post_item">
-                              <img src="{{asset('frontend/assets/img/popular-post/post2.jpg')}}" alt="post">
-                              <div class="media-body">
-                                  <a href="single-blog.html">
-                                      <h3>The Amazing Hubble</h3>
-                                  </a>
-                                  <p>02 Hours ago</p>
-                              </div>
-                          </div>
-                          <div class="media post_item">
-                              <img src="{{asset('frontend/assets/img/popular-post/post3.jpg')}}" alt="post">
-                              <div class="media-body">
-                                  <a href="single-blog.html">
-                                      <h3>Astronomy Or Astrology</h3>
-                                  </a>
-                                  <p>03 Hours ago</p>
-                              </div>
-                          </div>
-                          <div class="media post_item">
-                              <img src="{{asset('frontend/assets/img/popular-post/post4.jpg')}}" alt="post">
-                              <div class="media-body">
-                                  <a href="single-blog.html">
-                                      <h3>Asteroids telescope</h3>
-                                  </a>
-                                  <p>01 Hours ago</p>
-                              </div>
-                          </div>
+                         @endif 
+                          @endforeach
+                     
+                 
+                    
                           <div class="br"></div>
                       </aside>
-                      <aside class="single_sidebar_widget ads_widget">
+                 <!--      <aside class="single_sidebar_widget ads_widget">
                           <a href="#">
                               <img class="img-fluid" src="{{asset('frontend/assets/img/popular-post/add.jpg')}}" alt="">
                           </a>
                          
-                      </aside>
+                      </aside> -->
                       
                 
                      

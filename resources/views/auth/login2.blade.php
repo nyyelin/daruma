@@ -5,9 +5,9 @@
   <section>
     <div class="container">
       <div class="row">
-        <div class="col-lg-2"></div>
+        <div class="col-lg-2 col-12"></div>
        
-        <div class="col-lg-8"><div class="containmer  " style="border-radius: 20px;">
+        <div class="col-lg-8 col-12"><div class="containmer  " style="border-radius: 20px;">
       <div class="user signinBx">
         <div class="imgBx"><img src="{{asset('frontend/assets/img/logo2.jpg')}}" alt="" class="img-fluid img-responsive"></div>
         <div class="formBx">

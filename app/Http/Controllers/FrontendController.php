@@ -31,9 +31,9 @@ class FrontendController extends Controller
     public function home()
     {
        $sliders = Slider::orderBy('id','DESC')->limit(3)->get();
-       $books = Book::all();
+       $books = Book::orderBy('id','DESC')->limit(3)->get();
        $journalvideos = Journalvideo::all();
-       $timetables = Timetable::where('start_date','>=',Carbon\Carbon::today())->get();
+       $timetables = Timetable::whereMonth('start_date',Carbon\Carbon::now()->month)->orderBy('start_date','DESC')->get();
     	return view('frontend.index',compact('sliders','books','journalvideos','timetables'));
     }
 
@@ -50,7 +50,7 @@ class FrontendController extends Controller
     	return view('frontend.gallery',compact('gallerys'));
     }
      public function class(){
-      $timetables = Timetable::where('start_date','>=',Carbon\Carbon::today())->get();
+      $timetables = Timetable::whereMonth('start_date',Carbon\Carbon::now()->month)->orderBy('start_date','DESC')->get();
     	return view('frontend.class',compact('timetables'));
     }
     public function video(){
@@ -67,34 +67,39 @@ class FrontendController extends Controller
     	return view('frontend.contact',compact('contacts'));
     }
     public function regular_class(){
-      $timetables = Timetable::where('start_date','>=',Carbon\Carbon::today())->get();
+     $timetables = Timetable::whereMonth('start_date',Carbon\Carbon::now()->month)->orderBy('start_date','DESC')->get();
     	return view('frontend.regularclass',compact('timetables'));
     }
+     public function special_class(){
+      $timetables = Timetable::whereMonth('start_date',Carbon\Carbon::now()->month)->orderBy('start_date','DESC')->get();
+      return view('frontend.specialclass',compact('timetables'));
+    }
     public function online_class(){
-      $timetables = Timetable::where('start_date','>=',Carbon\Carbon::today())->get();
+     $timetables = Timetable::whereMonth('start_date',Carbon\Carbon::now()->month)->orderBy('start_date','DESC')->get();
     	return view('frontend.onlineclass',compact('timetables'));
     }
      public function latestnew($id){
 
         $books = Book::Find($id);
-    	return view('frontend.latestnew',compact('books'));
+        $bookeds = Book::all();
+    	return view('frontend.latestnew',compact('books','bookeds'));
     }
 
      public function books($id,Request $request){
 
       $journalvideo = Journalvideo::Find($id);
-     
-      $addjournalvideos = Addjournalvideo::where('detail_id',$id)->get(); 
+      $addjournalvideoed = Addjournalvideo::all();
+      $addjournalvideos = Addjournalvideo::where('detail_id',$id)->paginate(2); 
 
-    	return view('frontend.books',compact('addjournalvideos','journalvideo'));
+    	return view('frontend.books',compact('addjournalvideos','journalvideo','addjournalvideoed'));
     }
 
     public function detailbooks($id,Request $request,Addjournalvideo $addjournalvideo){
 
       $addjournalvideo = Addjournalvideo::Find($id);
+       $addjournalvideoed = Addjournalvideo::all();
 
-
-      return view('frontend.detailbooks',compact('addjournalvideo'));
+      return view('frontend.detailbooks',compact('addjournalvideo','addjournalvideoed'));
     }
 
      public function japanmyanmarday(){

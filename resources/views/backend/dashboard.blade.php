@@ -167,7 +167,7 @@
 
 
     <div class="row">
-       <div class="col- col-sm-6 col-lg-8">
+       <div class="col-12 col-sm-6 col-lg-8">
           <div class="card ">
      
             <div class="tile">
@@ -177,6 +177,22 @@
                 </div>
             </div>
           </div>
+
+      </div>
+      <div class="col-12 col-sm-6 col-lg-4">
+        <div class="card">
+          <div class="title">
+             <h4 class="text-dark ml-3 mt-3">{{ __("Student List")}}</h4>
+             <div>
+           <h5>N5 students</h5>
+           <h5>N5 students</h5>
+           <h5>N5 students</h5>
+           <h5>N5 students</h5>
+           <h5>N5 students</h5>
+           </div>
+           </div>
+        </div>
+       
       </div>
     </div>
 

@@ -17,7 +17,7 @@
                   
               <div class="row">
 
-  <div class="form-group col-12">
+  <div class="form-group col-6">
                       <label for="profile">Stutend Photo</label>
 
 
@@ -95,7 +95,7 @@
                     
                   <div class="form-group ">
                       <label for="frist_name">Subject</label>
-                      <textarea class="form-control" name="subject" placeholder="Enter Subject" >{{$review->subject}}</textarea>
+                      <textarea class="form-control" id="summernote"  name="subject" placeholder="Enter Subject" >{{$review->subject}}</textarea>
                       <div class="form-control-feedback text-danger"> {{$errors->first('subject') }} </div>
                     </div>
                     

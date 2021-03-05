@@ -344,17 +344,17 @@
                 var route = "{{route('students_show',':id')}}";
                     route= route.replace(':id',data.id);
                 return `
-                  <form action="${route}" method="post" class="d-inline-block">
+                  <form action="${route}" method="post" class="d-inline-block my-1">
                   @csrf
                   <input type="hidden" value="${level_id}" name="level_id">
                   <input type="hidden" value="${start_date}" name="start_date">
                   <input type="hidden" value="${end_date}" name="end_date">
 
 
-                    <button type="submit" class="btn btn-primary">Detail</button>
+                    <button type="submit" class="btn btn-primary">D e t a i l</button>
                   </form>
                 
-                        <a href="javascript:void(0)" class="btn btn-info btn_installment" data-student_id="${data.id}" data-timetable_id = "${data.timetable_id}">Installment</a>`
+                        <a href="javascript:void(0)" class="btn btn-info btn_installment my-1" data-student_id="${data.id}" data-timetable_id = "${data.timetable_id}">Installment</a>`
                 
               }
             },

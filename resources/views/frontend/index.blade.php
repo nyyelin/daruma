@@ -64,7 +64,7 @@
             <div class="icon-box">
                 <i class="icofont-book"></i>
                 <h5>Special Only Class</h5>
-                <a href="">Read More</a>
+                <a href="{{route('specialclass')}}">Read More</a>
             </div>
           </div>
           <div class="col-lg-4 mt-4 mt-lg-0">
@@ -118,6 +118,7 @@
               </thead>
               <tbody>
                    @foreach($timetables as $timetable)
+                   @if($timetable->status ==2)
                 <tr>
                   <th scope="row">{{$timetable->name}}</th>
                   <td>{{$timetable->start_date}}</td>
@@ -134,6 +135,7 @@
                   </td>
                  <td>{{$timetable->fees}}</td>
                 </tr>
+                @endif
                 @endforeach
               </tbody>
 
@@ -234,7 +236,7 @@
 
 
                     <section class="" data-aos="flip-left">
-                    <div class="col my-3">
+                    <div class="col-lg-4 col-12 my-3">
 
 
 

@@ -66,6 +66,7 @@
               </thead>
               <tbody>
                 @foreach($timetables as $timetable)
+                @if($timetable->status ==1)
                 <tr>
                   <th scope="row">{{$timetable->name}}</th>
                   <td>{{$timetable->start_date}}</td>
@@ -82,6 +83,108 @@
                   </td>
                  <td>{{$timetable->fees}}</td>
                 </tr>
+                @endif
+                @endforeach
+              </tbody>
+
+              </table>
+            </div>
+          </div>
+        
+          
+        </div>
+            <!-- </div> -->
+          </div>
+
+
+
+          <div class="col-lg-12 col-md-12 portfolio-item filter-all ">
+            <!-- <div class="portfolio-wrap"> -->
+              <div class="row content" >
+          <div class="container">
+            <div class="bd-example">
+              <table class="table table-bordered table-hover ">
+                  <thead>
+                <tr>
+                  <th scope="col">CLASS</th>
+                  <th scope="col">STARTING</th>
+                  <th scope="col">DAYS</th>
+                  <th scope="col">TIME</th>
+                  <th scope="col">DURATION</th>
+                  <th scope="col">FEE</th>
+                </tr>
+              </thead>
+              <tbody>
+                @foreach($timetables as $timetable)
+                @if($timetable->status ==2)
+                <tr>
+                  <th scope="row">{{$timetable->name}}</th>
+                  <td>{{$timetable->start_date}}</td>
+                  <td>
+                    @foreach($timetable->days as $day)
+                    {{ $loop->first ? '' : ', ' }}
+                      {{$day->name}}
+
+                    @endforeach
+                  </td>
+                  <td>{{$timetable->start_time}} ~ {{$timetable->end_time}}</td>
+                  <td >
+                    {{$timetable->duration}}
+                  </td>
+                 <td>{{$timetable->fees}}</td>
+                </tr>
+                @endif
+                @endforeach
+              </tbody>
+
+              </table>
+            </div>
+          </div>
+        
+          
+        </div>
+            <!-- </div> -->
+          </div>
+
+
+
+
+          <div class="col-lg-12 col-md-12 portfolio-item filter-all ">
+            <!-- <div class="portfolio-wrap"> -->
+              <div class="row content" >
+          <div class="container">
+            <div class="bd-example">
+              <table class="table table-bordered table-hover ">
+                  <thead>
+                <tr>
+                  <th scope="col">CLASS</th>
+                  <th scope="col">STARTING</th>
+                  <th scope="col">DAYS</th>
+                  <th scope="col">TIME</th>
+                  <th scope="col">DURATION</th>
+                  <th scope="col">FEE</th>
+                </tr>
+              </thead>
+              <tbody>
+                @foreach($timetables as $timetable)
+                @if($timetable->status ==3)
+                <tr>
+                  <th scope="row">{{$timetable->name}}</th>
+                  <td>{{$timetable->start_date}}</td>
+                  <td>
+                    @foreach($timetable->days as $day)
+                    {{ $loop->first ? '' : ', ' }}
+                      {{$day->name}}
+
+                    @endforeach
+                  </td>
+                  <td>{{$timetable->start_time}} ~ {{$timetable->end_time}}</td>
+                  <td >
+                    {{$timetable->duration}}
+                  </td>
+                 <td>{{$timetable->fees}}</td>
+                </tr>
+                @endif
                 @endforeach
               </tbody>
 

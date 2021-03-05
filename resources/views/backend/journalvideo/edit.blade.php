@@ -22,17 +22,56 @@
 
 
                       <div class="form-group col-6">
-                      <label for="profile">Detail Photo (OR) Video</label>
-                      <input id="profile" type="file" class="form-control-file" name="profile" >
+                      <label for="profile">Detail Photo </label>
+                     
+
+
+
+
+
+
+
+                       <ul class="nav nav-tabs" id="myTab" role="tablist">
+              <li class="nav-item">
+                <a class="nav-link active text-info" id="old-tab" data-toggle="tab" href="#old" role="tab" aria-controls="old" aria-selected="true">Old Photo</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link text-info" id="new-tab" data-toggle="tab" href="#new" role="tab" aria-controls="new" aria-selected="false">New Photo</a>
+              </li>
+            </ul>
+            <div class="tab-content" id="myTabContent">
+              <div class="tab-pane fade show active" id="old" role="tabpanel" aria-labelledby="old-tab">
+                <img src="{{asset($addjournalvideo->photo)}}" class="img-fluid" width="100px" height="90px"  style="border-radius: 10px;">
+                  <input type="hidden" name="oldimage" value="{{$addjournalvideo->photo}}">
+              </div>
+              <div class="tab-pane fade" id="new" role="tabpanel" aria-labelledby="new-tab">
+             <input id="profile" type="file" class="form-control-file" name="profile"  value="{{$addjournalvideo->photo}}">
+             
+              </div>
+            </div>
+
                     </div>
 
 
 
-               <div class="form-group col-6">
-                      <label for="auth_name">Auth_Name</label>
-                      <input id="auth_name" type="text" class="form-control" name="auth_name" autofocus placeholder="Enter a Author Name"  value="{{$addjournalvideo->auth_name}}">
-                      <div class="form-control-feedback text-danger"> {{$errors->first('auth_name') }} </div>
+
+
+
+
+
+
+
+
+
+
+                      <div class="form-group col-6">
+                      <label for="profile2"> Video</label>
+                      <input id="profile2" type="file" class="form-control-file" name="profile2" >
                     </div>
+
+
+
+          
 
                    
                        
@@ -42,14 +81,37 @@
 
 
 
-
-               <div class="form-group col-12">
-                      <label for="videourl">Video URL</label>
-                      <input id="videourl" type="text" class="form-control" name="videourl" autofocus placeholder="Enter a Video URL"  value="{{$addjournalvideo->videourl}}">
-                      <div class="form-control-feedback text-danger"> {{$errors->first('videourl') }} </div>
+     <div class="form-group col-6">
+                      <label for="auth_name">Auth_Name</label>
+                      <input id="auth_name" type="text" class="form-control" name="auth_name" autofocus placeholder="Enter a Author Name"  value="{{$addjournalvideo->auth_name}}">
+                      <div class="form-control-feedback text-danger"> {{$errors->first('auth_name') }} </div>
                     </div>
 
+                    
+
+
+                                 <div class="form-group col-6">
+                    <label for="popular">Poular Post</label>
+                   <select class="form-control selectric" name="popular" value="{{old('popular')}}">
+                        <option value="YES">YES</option>
+                        <option value="NO">NO</option>
+                        
+                      </select>
+                    <div class="invalid-feedback">
+                    </div>
+                  </div>
                    
+
+                      <div class="form-group col-6">
+                    <label for="popular">Poular Post</label>
+                   <select class="form-control selectric" name="popular" value="{{$addjournalvideo->popular}}">
+                        <option @if($addjournalvideo->popular == 'YES') selected="selected" @endif>YES</option>
+                        <option @if($addjournalvideo->popular == 'NO') selected="selected" @endif>NO</option>
+                        
+                      </select>
+                    <div class="invalid-feedback">
+                    </div>
+                  </div>
                        
                     </div>
 
