@@ -179,21 +179,33 @@
           </div>
 
       </div>
-      {{-- <div class="col-12 col-sm-6 col-lg-4">
+      <div class="col-12 col-sm-6 col-lg-4">
         <div class="card">
           <div class="title">
              <h4 class="text-dark ml-3 mt-3">{{ __("Student List")}}</h4>
-             <div>
-           <h5>N5 students</h5>
-           <h5>N5 students</h5>
-           <h5>N5 students</h5>
-           <h5>N5 students</h5>
-           <h5>N5 students</h5>
-           </div>
+            <div class="card-body">
+              @foreach($levels as $level)
+               <h6 class="text-dark">{{$level->name}} students (
+                @if(count($level->timetables) > 0)
+                  @foreach($level->timetables as $timetable) 
+                    @if(count($timetable->students) > 0)
+                      {{count($timetable->students)}} 
+                    @else
+                      {{0}}
+                    @endif
+                  @endforeach
+                @else
+                {{0}}
+                @endif
+
+                  )
+                </h6>
+              @endforeach
+            </div>
            </div>
         </div>
        
-      </div> --}}
+      </div>
     </div>
 
    

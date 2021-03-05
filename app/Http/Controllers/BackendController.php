@@ -12,7 +12,7 @@ use Carbon;
 use App\Payment;
 use Response;
 use App\Staff;
-
+use App\Level;
 class BackendController extends Controller
 {
     public function dashboard(){
@@ -21,7 +21,8 @@ class BackendController extends Controller
       $timetables = Timetable::all();
       $payments = Payment::all();
       $staffs = Staff::all();
-    	return view('backend.dashboard',compact('students','timetables','payments','staffs'));
+      $levels = Level::orderBy('id','DESC')->get();
+    	return view('backend.dashboard',compact('students','timetables','payments','staffs','levels'));
     }
 
 
