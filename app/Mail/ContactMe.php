@@ -33,6 +33,6 @@ class ContactMe extends Mailable
     {
        /* dd($this->dataReceived);*/
 
-        return $this->view('emails.contactmail')->with('dataReceived',$this->dataReceived);
+        return $this->view('emails.showemail')->with('dataReceived',$this->dataReceived);
     }
 }
