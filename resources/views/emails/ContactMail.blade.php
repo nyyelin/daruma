@@ -7,7 +7,7 @@
 	<title>Contact Form</title>
 </head>
 <body>
-<h1>Contact Messages</h1>
+<h1>Contact Message</h1>
 <p>Name : {{ $dataReceived['name'] }}</p>
 <p>Email : {{ $dataReceived['email'] }}</p>
 <p>Subject : {{ $dataReceived['subject'] }}</p>
