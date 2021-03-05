@@ -9,5 +9,10 @@ class Level extends Model
 {
 	use SoftDeletes;
     protected $fillable=[ 'name' ];
+
+    public function timetables($value='')
+    {
+    	return $this->hasMany('App\Timetable');
+    }
     
 }

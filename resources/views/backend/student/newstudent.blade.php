@@ -108,13 +108,16 @@
                     </div>
 
                     <div class="form-group row">
-                      <label>Day</label>
-                      <select class="form-control js-example-basic-multiple days" multiple="">
+                      <div class=" col-md-12 col-lg-12 col-sm-12">
                         
-                        @foreach($days as $day)
-                        <option value="{{$day->id}}" >{{$day->name}}</option>
-                        @endforeach
-                      </select>
+                        <label class="form-control-label">Day</label>
+                        <select class="form-control js-example-basic-multiple days" multiple="">
+                          
+                          @foreach($days as $day)
+                          <option value="{{$day->id}}" >{{$day->name}}</option>
+                          @endforeach
+                        </select>
+                      </div>
                     </div>
 
 
